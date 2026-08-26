@@ -1,0 +1,1434 @@
+[
+  {
+    "id": 1,
+    "name": "Sachin Tendulker",
+    "country": "India",
+    "era": 1998,
+    "role": "BAT",
+    "batting": {
+      "avg": 55.0,
+      "sr": 89.0
+    },
+    "bowling": null,
+    "rating": 69.1,
+    "credit": 8.5,
+    "consistency": 0.85
+  },
+  {
+    "id": 2,
+    "name": "Sachin Tendulker",
+    "country": "India",
+    "era": 2010,
+    "role": "BAT",
+    "batting": {
+      "avg": 60.5,
+      "sr": 82.0
+    },
+    "bowling": null,
+    "rating": 72.7,
+    "credit": 9.0,
+    "consistency": 0.88
+  },
+  {
+    "id": 3,
+    "name": "Virat Kohly",
+    "country": "India",
+    "era": 2016,
+    "role": "BAT",
+    "batting": {
+      "avg": 63.0,
+      "sr": 92.0
+    },
+    "bowling": null,
+    "rating": 77.7,
+    "credit": 9.0,
+    "consistency": 0.9
+  },
+  {
+    "id": 4,
+    "name": "Virat Kohly",
+    "country": "India",
+    "era": 2023,
+    "role": "BAT",
+    "batting": {
+      "avg": 58.0,
+      "sr": 95.0
+    },
+    "bowling": null,
+    "rating": 73.3,
+    "credit": 9.0,
+    "consistency": 0.86
+  },
+  {
+    "id": 5,
+    "name": "Rahul Draviid",
+    "country": "India",
+    "era": 2002,
+    "role": "BAT",
+    "batting": {
+      "avg": 52.0,
+      "sr": 71.0
+    },
+    "bowling": null,
+    "rating": 61.6,
+    "credit": 8.5,
+    "consistency": 0.82
+  },
+  {
+    "id": 6,
+    "name": "Sourabh Ganguly",
+    "country": "India",
+    "era": 1999,
+    "role": "BAT",
+    "batting": {
+      "avg": 45.0,
+      "sr": 82.0
+    },
+    "bowling": {
+      "avg": 45.0,
+      "econ": 5.2,
+      "sr": 45.0
+    },
+    "rating": 56.4,
+    "credit": 8.0,
+    "consistency": 0.7
+  },
+  {
+    "id": 7,
+    "name": "VVS Laxsman",
+    "country": "India",
+    "era": 2001,
+    "role": "BAT",
+    "batting": {
+      "avg": 47.0,
+      "sr": 68.0
+    },
+    "bowling": null,
+    "rating": 54.6,
+    "credit": 8.0,
+    "consistency": 0.68
+  },
+  {
+    "id": 8,
+    "name": "MS Dhonir",
+    "country": "India",
+    "era": 2011,
+    "role": "WK",
+    "batting": {
+      "avg": 50.0,
+      "sr": 88.0
+    },
+    "bowling": null,
+    "rating": 64.2,
+    "credit": 8.5,
+    "consistency": 0.83
+  },
+  {
+    "id": 9,
+    "name": "Virender Sehwaag",
+    "country": "India",
+    "era": 2004,
+    "role": "BAT",
+    "batting": {
+      "avg": 49.0,
+      "sr": 104.0
+    },
+    "bowling": null,
+    "rating": 64.0,
+    "credit": 8.5,
+    "consistency": 0.65
+  },
+  {
+    "id": 10,
+    "name": "Yuvraj Singhal",
+    "country": "India",
+    "era": 2011,
+    "role": "AR",
+    "batting": {
+      "avg": 36.0,
+      "sr": 87.0
+    },
+    "bowling": {
+      "avg": 38.0,
+      "econ": 5.1,
+      "sr": 42.0
+    },
+    "rating": 46.6,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 11,
+    "name": "Kapeel Dev",
+    "country": "India",
+    "era": 1983,
+    "role": "AR",
+    "batting": {
+      "avg": 31.0,
+      "sr": 72.0
+    },
+    "bowling": {
+      "avg": 29.0,
+      "econ": 3.7,
+      "sr": 60.0
+    },
+    "rating": 56.1,
+    "credit": 8.0,
+    "consistency": 0.75
+  },
+  {
+    "id": 12,
+    "name": "Sunil Gavaskaar",
+    "country": "India",
+    "era": 1979,
+    "role": "BAT",
+    "batting": {
+      "avg": 51.0,
+      "sr": 62.0
+    },
+    "bowling": null,
+    "rating": 58.3,
+    "credit": 8.0,
+    "consistency": 0.8
+  },
+  {
+    "id": 13,
+    "name": "Anil Kumbley",
+    "country": "India",
+    "era": 1999,
+    "role": "BOWL",
+    "batting": {
+      "avg": 8.0,
+      "sr": 45.0
+    },
+    "bowling": {
+      "avg": 29.0,
+      "econ": 4.3,
+      "sr": 52.0
+    },
+    "rating": 48.0,
+    "credit": 8.0,
+    "consistency": 0.78
+  },
+  {
+    "id": 14,
+    "name": "Javagal Srinat",
+    "country": "India",
+    "era": 1996,
+    "role": "BOWL",
+    "batting": {
+      "avg": 10.0,
+      "sr": 48.0
+    },
+    "bowling": {
+      "avg": 28.0,
+      "econ": 4.5,
+      "sr": 45.0
+    },
+    "rating": 47.4,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 15,
+    "name": "Harbajan Singhh",
+    "country": "India",
+    "era": 2001,
+    "role": "BOWL",
+    "batting": {
+      "avg": 12.0,
+      "sr": 60.0
+    },
+    "bowling": {
+      "avg": 32.0,
+      "econ": 3.4,
+      "sr": 70.0
+    },
+    "rating": 44.1,
+    "credit": 7.5,
+    "consistency": 0.62
+  },
+  {
+    "id": 16,
+    "name": "Zaheer Khaan",
+    "country": "India",
+    "era": 2011,
+    "role": "BOWL",
+    "batting": {
+      "avg": 11.0,
+      "sr": 55.0
+    },
+    "bowling": {
+      "avg": 30.0,
+      "econ": 4.9,
+      "sr": 33.0
+    },
+    "rating": 45.3,
+    "credit": 7.5,
+    "consistency": 0.66
+  },
+  {
+    "id": 17,
+    "name": "Rohit Sharmaa",
+    "country": "India",
+    "era": 2019,
+    "role": "BAT",
+    "batting": {
+      "avg": 48.0,
+      "sr": 91.0
+    },
+    "bowling": null,
+    "rating": 62.7,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 18,
+    "name": "Shikar Dhawann",
+    "country": "India",
+    "era": 2015,
+    "role": "BAT",
+    "batting": {
+      "avg": 44.0,
+      "sr": 94.0
+    },
+    "bowling": null,
+    "rating": 56.8,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 19,
+    "name": "Ravindra Jadeja",
+    "country": "India",
+    "era": 2021,
+    "role": "AR",
+    "batting": {
+      "avg": 32.0,
+      "sr": 85.0
+    },
+    "bowling": {
+      "avg": 30.0,
+      "econ": 4.9,
+      "sr": 40.0
+    },
+    "rating": 54.1,
+    "credit": 8.0,
+    "consistency": 0.7
+  },
+  {
+    "id": 20,
+    "name": "Jasprit Bumrah",
+    "country": "India",
+    "era": 2020,
+    "role": "BOWL",
+    "batting": {
+      "avg": 6.0,
+      "sr": 40.0
+    },
+    "bowling": {
+      "avg": 20.0,
+      "econ": 4.2,
+      "sr": 30.0
+    },
+    "rating": 70.0,
+    "credit": 8.5,
+    "consistency": 0.85
+  },
+  {
+    "id": 21,
+    "name": "KL Rahull",
+    "country": "India",
+    "era": 2018,
+    "role": "WK",
+    "batting": {
+      "avg": 46.0,
+      "sr": 90.0
+    },
+    "bowling": null,
+    "rating": 57.8,
+    "credit": 8.0,
+    "consistency": 0.62
+  },
+  {
+    "id": 22,
+    "name": "Hardik Pandia",
+    "country": "India",
+    "era": 2022,
+    "role": "AR",
+    "batting": {
+      "avg": 34.0,
+      "sr": 105.0
+    },
+    "bowling": {
+      "avg": 32.0,
+      "econ": 5.5,
+      "sr": 34.0
+    },
+    "rating": 51.9,
+    "credit": 8.0,
+    "consistency": 0.55
+  },
+  {
+    "id": 23,
+    "name": "Don Bradmann",
+    "country": "Australia",
+    "era": 1948,
+    "role": "BAT",
+    "batting": {
+      "avg": 99.9,
+      "sr": 60.0
+    },
+    "bowling": null,
+    "rating": 72.6,
+    "credit": 9.0,
+    "consistency": 0.95
+  },
+  {
+    "id": 24,
+    "name": "Ricky Pontin",
+    "country": "Australia",
+    "era": 2003,
+    "role": "BAT",
+    "batting": {
+      "avg": 54.0,
+      "sr": 85.0
+    },
+    "bowling": null,
+    "rating": 67.2,
+    "credit": 8.5,
+    "consistency": 0.85
+  },
+  {
+    "id": 25,
+    "name": "Steven Waughe",
+    "country": "Australia",
+    "era": 1999,
+    "role": "BAT",
+    "batting": {
+      "avg": 51.0,
+      "sr": 68.0
+    },
+    "bowling": {
+      "avg": 37.0,
+      "econ": 3.8,
+      "sr": 65.0
+    },
+    "rating": 59.8,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 26,
+    "name": "Marcus Waughe",
+    "country": "Australia",
+    "era": 1998,
+    "role": "AR",
+    "batting": {
+      "avg": 41.0,
+      "sr": 75.0
+    },
+    "bowling": {
+      "avg": 41.0,
+      "econ": 4.4,
+      "sr": 55.0
+    },
+    "rating": 46.5,
+    "credit": 8.0,
+    "consistency": 0.63
+  },
+  {
+    "id": 27,
+    "name": "Adam Gilchrest",
+    "country": "Australia",
+    "era": 2003,
+    "role": "WK",
+    "batting": {
+      "avg": 47.0,
+      "sr": 96.0
+    },
+    "bowling": null,
+    "rating": 63.0,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 28,
+    "name": "Shane Warnie",
+    "country": "Australia",
+    "era": 1996,
+    "role": "BOWL",
+    "batting": {
+      "avg": 13.0,
+      "sr": 60.0
+    },
+    "bowling": {
+      "avg": 25.0,
+      "econ": 2.6,
+      "sr": 57.0
+    },
+    "rating": 68.7,
+    "credit": 8.5,
+    "consistency": 0.87
+  },
+  {
+    "id": 29,
+    "name": "Glenn McGrah",
+    "country": "Australia",
+    "era": 2001,
+    "role": "BOWL",
+    "batting": {
+      "avg": 7.0,
+      "sr": 42.0
+    },
+    "bowling": {
+      "avg": 21.0,
+      "econ": 2.5,
+      "sr": 51.0
+    },
+    "rating": 77.3,
+    "credit": 9.0,
+    "consistency": 0.86
+  },
+  {
+    "id": 30,
+    "name": "Dennis Lilee",
+    "country": "Australia",
+    "era": 1981,
+    "role": "BOWL",
+    "batting": {
+      "avg": 11.0,
+      "sr": 55.0
+    },
+    "bowling": {
+      "avg": 23.0,
+      "econ": 3.0,
+      "sr": 52.0
+    },
+    "rating": 66.7,
+    "credit": 8.5,
+    "consistency": 0.7
+  },
+  {
+    "id": 31,
+    "name": "Allan Bordor",
+    "country": "Australia",
+    "era": 1989,
+    "role": "BAT",
+    "batting": {
+      "avg": 50.0,
+      "sr": 65.0
+    },
+    "bowling": null,
+    "rating": 56.7,
+    "credit": 8.0,
+    "consistency": 0.7
+  },
+  {
+    "id": 32,
+    "name": "Michael Clarkson",
+    "country": "Australia",
+    "era": 2013,
+    "role": "BAT",
+    "batting": {
+      "avg": 49.0,
+      "sr": 78.0
+    },
+    "bowling": null,
+    "rating": 59.1,
+    "credit": 8.5,
+    "consistency": 0.72
+  },
+  {
+    "id": 33,
+    "name": "David Warnor",
+    "country": "Australia",
+    "era": 2017,
+    "role": "BAT",
+    "batting": {
+      "avg": 48.0,
+      "sr": 96.0
+    },
+    "bowling": null,
+    "rating": 61.3,
+    "credit": 8.5,
+    "consistency": 0.65
+  },
+  {
+    "id": 34,
+    "name": "Mitchell Starcy",
+    "country": "Australia",
+    "era": 2019,
+    "role": "BOWL",
+    "batting": {
+      "avg": 9.0,
+      "sr": 50.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 4.9,
+      "sr": 27.0
+    },
+    "rating": 59.0,
+    "credit": 8.5,
+    "consistency": 0.68
+  },
+  {
+    "id": 35,
+    "name": "Patrick Cumminz",
+    "country": "Australia",
+    "era": 2021,
+    "role": "BOWL",
+    "batting": {
+      "avg": 15.0,
+      "sr": 58.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 2.9,
+      "sr": 55.0
+    },
+    "rating": 69.1,
+    "credit": 8.5,
+    "consistency": 0.75
+  },
+  {
+    "id": 36,
+    "name": "Jeff Thomsen",
+    "country": "Australia",
+    "era": 1976,
+    "role": "BOWL",
+    "batting": {
+      "avg": 9.0,
+      "sr": 45.0
+    },
+    "bowling": {
+      "avg": 24.0,
+      "econ": 3.2,
+      "sr": 50.0
+    },
+    "rating": 62.4,
+    "credit": 8.5,
+    "consistency": 0.6
+  },
+  {
+    "id": 37,
+    "name": "Vivian Richardsson",
+    "country": "West Indies",
+    "era": 1980,
+    "role": "BAT",
+    "batting": {
+      "avg": 61.0,
+      "sr": 90.0
+    },
+    "bowling": null,
+    "rating": 75.1,
+    "credit": 9.0,
+    "consistency": 0.88
+  },
+  {
+    "id": 38,
+    "name": "Brian Lahra",
+    "country": "West Indies",
+    "era": 1994,
+    "role": "BAT",
+    "batting": {
+      "avg": 58.0,
+      "sr": 79.0
+    },
+    "bowling": null,
+    "rating": 68.9,
+    "credit": 8.5,
+    "consistency": 0.83
+  },
+  {
+    "id": 39,
+    "name": "Garfield Sobbers",
+    "country": "West Indies",
+    "era": 1966,
+    "role": "AR",
+    "batting": {
+      "avg": 57.0,
+      "sr": 70.0
+    },
+    "bowling": {
+      "avg": 34.0,
+      "econ": 3.0,
+      "sr": 68.0
+    },
+    "rating": 67.9,
+    "credit": 8.5,
+    "consistency": 0.82
+  },
+  {
+    "id": 40,
+    "name": "Gordon Greenwich",
+    "country": "West Indies",
+    "era": 1984,
+    "role": "BAT",
+    "batting": {
+      "avg": 44.0,
+      "sr": 66.0
+    },
+    "bowling": null,
+    "rating": 51.2,
+    "credit": 8.0,
+    "consistency": 0.65
+  },
+  {
+    "id": 41,
+    "name": "Malcolm Marshal",
+    "country": "West Indies",
+    "era": 1985,
+    "role": "BOWL",
+    "batting": {
+      "avg": 18.0,
+      "sr": 55.0
+    },
+    "bowling": {
+      "avg": 20.0,
+      "econ": 2.7,
+      "sr": 46.0
+    },
+    "rating": 77.3,
+    "credit": 9.0,
+    "consistency": 0.8
+  },
+  {
+    "id": 42,
+    "name": "Curtley Ambrosse",
+    "country": "West Indies",
+    "era": 1993,
+    "role": "BOWL",
+    "batting": {
+      "avg": 8.0,
+      "sr": 42.0
+    },
+    "bowling": {
+      "avg": 21.0,
+      "econ": 2.4,
+      "sr": 55.0
+    },
+    "rating": 74.8,
+    "credit": 9.0,
+    "consistency": 0.75
+  },
+  {
+    "id": 43,
+    "name": "Courtnay Walshe",
+    "country": "West Indies",
+    "era": 1995,
+    "role": "BOWL",
+    "batting": {
+      "avg": 7.0,
+      "sr": 40.0
+    },
+    "bowling": {
+      "avg": 24.0,
+      "econ": 2.9,
+      "sr": 52.0
+    },
+    "rating": 65.3,
+    "credit": 8.5,
+    "consistency": 0.66
+  },
+  {
+    "id": 44,
+    "name": "Andy Robarts",
+    "country": "West Indies",
+    "era": 1978,
+    "role": "BOWL",
+    "batting": {
+      "avg": 10.0,
+      "sr": 48.0
+    },
+    "bowling": {
+      "avg": 25.0,
+      "econ": 3.1,
+      "sr": 50.0
+    },
+    "rating": 61.7,
+    "credit": 8.5,
+    "consistency": 0.6
+  },
+  {
+    "id": 45,
+    "name": "Chris Gale",
+    "country": "West Indies",
+    "era": 2015,
+    "role": "BAT",
+    "batting": {
+      "avg": 40.0,
+      "sr": 92.0
+    },
+    "bowling": null,
+    "rating": 52.4,
+    "credit": 8.0,
+    "consistency": 0.55
+  },
+  {
+    "id": 46,
+    "name": "Shivnarine Chandrapaul",
+    "country": "West Indies",
+    "era": 2008,
+    "role": "BAT",
+    "batting": {
+      "avg": 51.0,
+      "sr": 60.0
+    },
+    "bowling": null,
+    "rating": 56.3,
+    "credit": 8.0,
+    "consistency": 0.7
+  },
+  {
+    "id": 47,
+    "name": "Ian Bothum",
+    "country": "England",
+    "era": 1981,
+    "role": "AR",
+    "batting": {
+      "avg": 33.0,
+      "sr": 75.0
+    },
+    "bowling": {
+      "avg": 28.0,
+      "econ": 3.2,
+      "sr": 55.0
+    },
+    "rating": 61.3,
+    "credit": 8.5,
+    "consistency": 0.72
+  },
+  {
+    "id": 48,
+    "name": "Graham Gooche",
+    "country": "England",
+    "era": 1990,
+    "role": "BAT",
+    "batting": {
+      "avg": 42.0,
+      "sr": 65.0
+    },
+    "bowling": null,
+    "rating": 48.6,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 49,
+    "name": "Kevin Peterson",
+    "country": "England",
+    "era": 2010,
+    "role": "BAT",
+    "batting": {
+      "avg": 47.0,
+      "sr": 86.0
+    },
+    "bowling": null,
+    "rating": 58.7,
+    "credit": 8.5,
+    "consistency": 0.68
+  },
+  {
+    "id": 50,
+    "name": "Andrew Flintoft",
+    "country": "England",
+    "era": 2005,
+    "role": "AR",
+    "batting": {
+      "avg": 32.0,
+      "sr": 79.0
+    },
+    "bowling": {
+      "avg": 32.0,
+      "econ": 4.7,
+      "sr": 45.0
+    },
+    "rating": 50.2,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 51,
+    "name": "James Andersen",
+    "country": "England",
+    "era": 2016,
+    "role": "BOWL",
+    "batting": {
+      "avg": 9.0,
+      "sr": 45.0
+    },
+    "bowling": {
+      "avg": 26.0,
+      "econ": 2.8,
+      "sr": 55.0
+    },
+    "rating": 64.4,
+    "credit": 8.5,
+    "consistency": 0.78
+  },
+  {
+    "id": 52,
+    "name": "Stuart Broade",
+    "country": "England",
+    "era": 2015,
+    "role": "BOWL",
+    "batting": {
+      "avg": 10.0,
+      "sr": 48.0
+    },
+    "bowling": {
+      "avg": 28.0,
+      "econ": 3.0,
+      "sr": 56.0
+    },
+    "rating": 58.2,
+    "credit": 8.0,
+    "consistency": 0.7
+  },
+  {
+    "id": 53,
+    "name": "Joe Root",
+    "country": "England",
+    "era": 2021,
+    "role": "BAT",
+    "batting": {
+      "avg": 50.0,
+      "sr": 74.0
+    },
+    "bowling": null,
+    "rating": 59.5,
+    "credit": 8.5,
+    "consistency": 0.75
+  },
+  {
+    "id": 54,
+    "name": "Ben Stoke",
+    "country": "England",
+    "era": 2019,
+    "role": "AR",
+    "batting": {
+      "avg": 40.0,
+      "sr": 95.0
+    },
+    "bowling": {
+      "avg": 32.0,
+      "econ": 5.0,
+      "sr": 40.0
+    },
+    "rating": 56.0,
+    "credit": 8.0,
+    "consistency": 0.62
+  },
+  {
+    "id": 55,
+    "name": "Alastair Cookie",
+    "country": "England",
+    "era": 2011,
+    "role": "BAT",
+    "batting": {
+      "avg": 47.0,
+      "sr": 55.0
+    },
+    "bowling": null,
+    "rating": 50.4,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 56,
+    "name": "Jos Buttlerr",
+    "country": "England",
+    "era": 2022,
+    "role": "WK",
+    "batting": {
+      "avg": 41.0,
+      "sr": 121.0
+    },
+    "bowling": null,
+    "rating": 59.6,
+    "credit": 8.5,
+    "consistency": 0.55
+  },
+  {
+    "id": 57,
+    "name": "Imraan Khan",
+    "country": "Pakistan",
+    "era": 1987,
+    "role": "AR",
+    "batting": {
+      "avg": 37.0,
+      "sr": 68.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 3.0,
+      "sr": 55.0
+    },
+    "rating": 69.8,
+    "credit": 8.5,
+    "consistency": 0.78
+  },
+  {
+    "id": 58,
+    "name": "Waseem Akrem",
+    "country": "Pakistan",
+    "era": 1992,
+    "role": "BOWL",
+    "batting": {
+      "avg": 22.0,
+      "sr": 65.0
+    },
+    "bowling": {
+      "avg": 23.0,
+      "econ": 3.9,
+      "sr": 40.0
+    },
+    "rating": 64.2,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 59,
+    "name": "Waqar Younus",
+    "country": "Pakistan",
+    "era": 1994,
+    "role": "BOWL",
+    "batting": {
+      "avg": 11.0,
+      "sr": 50.0
+    },
+    "bowling": {
+      "avg": 23.0,
+      "econ": 4.7,
+      "sr": 30.0
+    },
+    "rating": 59.3,
+    "credit": 8.5,
+    "consistency": 0.74
+  },
+  {
+    "id": 60,
+    "name": "Javed Miandaad",
+    "country": "Pakistan",
+    "era": 1986,
+    "role": "BAT",
+    "batting": {
+      "avg": 52.0,
+      "sr": 67.0
+    },
+    "bowling": null,
+    "rating": 59.1,
+    "credit": 8.5,
+    "consistency": 0.72
+  },
+  {
+    "id": 61,
+    "name": "Inzamam ul Haque",
+    "country": "Pakistan",
+    "era": 1999,
+    "role": "BAT",
+    "batting": {
+      "avg": 49.0,
+      "sr": 74.0
+    },
+    "bowling": null,
+    "rating": 56.3,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 62,
+    "name": "Shahid Afreedi",
+    "country": "Pakistan",
+    "era": 2007,
+    "role": "AR",
+    "batting": {
+      "avg": 23.0,
+      "sr": 117.0
+    },
+    "bowling": {
+      "avg": 34.0,
+      "econ": 4.6,
+      "sr": 35.0
+    },
+    "rating": 50.0,
+    "credit": 8.0,
+    "consistency": 0.5
+  },
+  {
+    "id": 63,
+    "name": "Babur Azam",
+    "country": "Pakistan",
+    "era": 2021,
+    "role": "BAT",
+    "batting": {
+      "avg": 56.0,
+      "sr": 88.0
+    },
+    "bowling": null,
+    "rating": 68.8,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 64,
+    "name": "Shaheen Afridee",
+    "country": "Pakistan",
+    "era": 2022,
+    "role": "BOWL",
+    "batting": {
+      "avg": 8.0,
+      "sr": 44.0
+    },
+    "bowling": {
+      "avg": 24.0,
+      "econ": 4.6,
+      "sr": 32.0
+    },
+    "rating": 57.1,
+    "credit": 8.0,
+    "consistency": 0.68
+  },
+  {
+    "id": 65,
+    "name": "Jacques Kallistad",
+    "country": "South Africa",
+    "era": 2005,
+    "role": "AR",
+    "batting": {
+      "avg": 55.0,
+      "sr": 72.0
+    },
+    "bowling": {
+      "avg": 32.0,
+      "econ": 3.1,
+      "sr": 60.0
+    },
+    "rating": 69.5,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 66,
+    "name": "AB de Villierz",
+    "country": "South Africa",
+    "era": 2015,
+    "role": "BAT",
+    "batting": {
+      "avg": 53.0,
+      "sr": 101.0
+    },
+    "bowling": null,
+    "rating": 68.9,
+    "credit": 8.5,
+    "consistency": 0.78
+  },
+  {
+    "id": 67,
+    "name": "Hashim Amlaa",
+    "country": "South Africa",
+    "era": 2012,
+    "role": "BAT",
+    "batting": {
+      "avg": 54.0,
+      "sr": 89.0
+    },
+    "bowling": null,
+    "rating": 66.4,
+    "credit": 8.5,
+    "consistency": 0.75
+  },
+  {
+    "id": 68,
+    "name": "Dale Steyne",
+    "country": "South Africa",
+    "era": 2013,
+    "role": "BOWL",
+    "batting": {
+      "avg": 10.0,
+      "sr": 45.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 2.9,
+      "sr": 42.0
+    },
+    "rating": 74.3,
+    "credit": 9.0,
+    "consistency": 0.83
+  },
+  {
+    "id": 69,
+    "name": "Allan Donaldd",
+    "country": "South Africa",
+    "era": 1998,
+    "role": "BOWL",
+    "batting": {
+      "avg": 9.0,
+      "sr": 44.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 3.4,
+      "sr": 40.0
+    },
+    "rating": 68.5,
+    "credit": 8.5,
+    "consistency": 0.72
+  },
+  {
+    "id": 70,
+    "name": "Faf du Plessy",
+    "country": "South Africa",
+    "era": 2016,
+    "role": "BAT",
+    "batting": {
+      "avg": 45.0,
+      "sr": 88.0
+    },
+    "bowling": null,
+    "rating": 57.0,
+    "credit": 8.0,
+    "consistency": 0.65
+  },
+  {
+    "id": 71,
+    "name": "Quinton de Kok",
+    "country": "South Africa",
+    "era": 2019,
+    "role": "WK",
+    "batting": {
+      "avg": 45.0,
+      "sr": 95.0
+    },
+    "bowling": null,
+    "rating": 58.8,
+    "credit": 8.5,
+    "consistency": 0.66
+  },
+  {
+    "id": 72,
+    "name": "Muttiah Muralidaran",
+    "country": "Sri Lanka",
+    "era": 2000,
+    "role": "BOWL",
+    "batting": {
+      "avg": 12.0,
+      "sr": 62.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 3.9,
+      "sr": 55.0
+    },
+    "rating": 62.3,
+    "credit": 8.5,
+    "consistency": 0.85
+  },
+  {
+    "id": 73,
+    "name": "Sanath Jayasuryah",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "role": "BAT",
+    "batting": {
+      "avg": 33.0,
+      "sr": 91.0
+    },
+    "bowling": {
+      "avg": 36.0,
+      "econ": 4.6,
+      "sr": 45.0
+    },
+    "rating": 47.2,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 74,
+    "name": "Kumar Sangakarra",
+    "country": "Sri Lanka",
+    "era": 2014,
+    "role": "WK",
+    "batting": {
+      "avg": 57.0,
+      "sr": 78.0
+    },
+    "bowling": null,
+    "rating": 67.3,
+    "credit": 8.5,
+    "consistency": 0.8
+  },
+  {
+    "id": 75,
+    "name": "Mahela Jayawardana",
+    "country": "Sri Lanka",
+    "era": 2006,
+    "role": "BAT",
+    "batting": {
+      "avg": 51.0,
+      "sr": 80.0
+    },
+    "bowling": null,
+    "rating": 61.6,
+    "credit": 8.5,
+    "consistency": 0.74
+  },
+  {
+    "id": 76,
+    "name": "Lasith Malingaa",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "role": "BOWL",
+    "batting": {
+      "avg": 13.0,
+      "sr": 55.0
+    },
+    "bowling": {
+      "avg": 20.0,
+      "econ": 4.9,
+      "sr": 25.0
+    },
+    "rating": 62.1,
+    "credit": 8.5,
+    "consistency": 0.66
+  },
+  {
+    "id": 77,
+    "name": "Arjuna Ranatungga",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "role": "AR",
+    "batting": {
+      "avg": 35.0,
+      "sr": 78.0
+    },
+    "bowling": {
+      "avg": 40.0,
+      "econ": 4.9,
+      "sr": 60.0
+    },
+    "rating": 40.7,
+    "credit": 7.5,
+    "consistency": 0.55
+  },
+  {
+    "id": 78,
+    "name": "Richard Hadlee-son",
+    "country": "New Zealand",
+    "era": 1985,
+    "role": "AR",
+    "batting": {
+      "avg": 27.0,
+      "sr": 60.0
+    },
+    "bowling": {
+      "avg": 22.0,
+      "econ": 2.6,
+      "sr": 51.0
+    },
+    "rating": 65.8,
+    "credit": 8.5,
+    "consistency": 0.75
+  },
+  {
+    "id": 79,
+    "name": "Martin Crowee",
+    "country": "New Zealand",
+    "era": 1991,
+    "role": "BAT",
+    "batting": {
+      "avg": 45.0,
+      "sr": 70.0
+    },
+    "bowling": null,
+    "rating": 53.4,
+    "credit": 8.0,
+    "consistency": 0.68
+  },
+  {
+    "id": 80,
+    "name": "Brendon McCullam",
+    "country": "New Zealand",
+    "era": 2014,
+    "role": "WK",
+    "batting": {
+      "avg": 38.0,
+      "sr": 96.0
+    },
+    "bowling": null,
+    "rating": 52.4,
+    "credit": 8.0,
+    "consistency": 0.6
+  },
+  {
+    "id": 81,
+    "name": "Kane Williamsen",
+    "country": "New Zealand",
+    "era": 2019,
+    "role": "BAT",
+    "batting": {
+      "avg": 54.0,
+      "sr": 82.0
+    },
+    "bowling": null,
+    "rating": 66.0,
+    "credit": 8.5,
+    "consistency": 0.82
+  },
+  {
+    "id": 82,
+    "name": "Trent Boultt",
+    "country": "New Zealand",
+    "era": 2019,
+    "role": "BOWL",
+    "batting": {
+      "avg": 12.0,
+      "sr": 50.0
+    },
+    "bowling": {
+      "avg": 24.0,
+      "econ": 4.6,
+      "sr": 30.0
+    },
+    "rating": 58.0,
+    "credit": 8.0,
+    "consistency": 0.7
+  },
+  {
+    "id": 83,
+    "name": "Daniel Vettory",
+    "country": "New Zealand",
+    "era": 2007,
+    "role": "BOWL",
+    "batting": {
+      "avg": 16.0,
+      "sr": 65.0
+    },
+    "bowling": {
+      "avg": 34.0,
+      "econ": 3.7,
+      "sr": 55.0
+    },
+    "rating": 42.6,
+    "credit": 7.5,
+    "consistency": 0.6
+  },
+  {
+    "id": 84,
+    "name": "Ross Taylorr",
+    "country": "New Zealand",
+    "era": 2015,
+    "role": "BAT",
+    "batting": {
+      "avg": 47.0,
+      "sr": 80.0
+    },
+    "bowling": null,
+    "rating": 56.8,
+    "credit": 8.0,
+    "consistency": 0.65
+  }
+]
