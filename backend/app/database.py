@@ -1,4 +1,5 @@
 import os
+from sqlalchemy.exc import IntegrityError, ProgrammingError
 from sqlmodel import SQLModel, create_engine, Session
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./crickdraft.db")
@@ -12,7 +13,12 @@ engine = create_engine(DATABASE_URL, echo=False, connect_args=connect_args)
 
 
 def init_db():
-    SQLModel.metadata.create_all(engine)
+    try:
+        SQLModel.metadata.create_all(engine)
+    except (IntegrityError, ProgrammingError):
+        # Concurrent cold starts on serverless can race to create the same
+        # tables; if another invocation already created them, that's fine.
+        pass
 
 
 def get_session():
