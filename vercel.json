@@ -1,9 +1,7 @@
 {
-  "framework": null,
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
-  "trailingSlash": false,
   "rewrites": [
-    { "source": "/((?!api/|assets/|favicon).*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
