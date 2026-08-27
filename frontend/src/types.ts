@@ -37,7 +37,7 @@ export interface DraftDetail {
 export interface User {
   id: number
   username: string
-  total_points: number
+  elo_rating: number
   matches_played: number
   wins: number
   losses: number
@@ -57,28 +57,37 @@ export interface PlayerPerformance {
   captain: boolean
 }
 
+export interface OverEvent {
+  over: number
+  bowler: string
+  balls: string[]
+  score: number
+  wickets: number
+}
+
 export interface MatchResult {
+  username: string
+  result: 'W' | 'L'
   opponent_name: string
+  opponent_rating: number
   team_score: number
   opponent_score: number
   team_wickets: number
   opponent_wickets: number
   team_overs: number
   opponent_overs: number
-  result: 'W' | 'L'
+  team_timeline: OverEvent[]
+  opponent_timeline: OverEvent[]
   scorecard: { team: PlayerPerformance[]; opponent: PlayerPerformance[] }
-}
-
-export interface SimulateResponse {
-  username: string
-  rounds: number
-  results: MatchResult[]
-  totals: { total_points: number; matches_played: number; wins: number; losses: number }
+  elo_before: number
+  elo_after: number
+  elo_delta: number
+  totals: { elo_rating: number; matches_played: number; wins: number; losses: number }
 }
 
 export interface LeaderboardEntry {
   username: string
-  total_points: number
+  elo_rating: number
   matches_played: number
   wins: number
   losses: number

@@ -9,7 +9,7 @@ class UserCreate(BaseModel):
 class UserOut(BaseModel):
     id: int
     username: str
-    total_points: float
+    elo_rating: float
     matches_played: int
     wins: int
     losses: int
@@ -32,12 +32,11 @@ class DraftOut(BaseModel):
 
 class SimulateRequest(BaseModel):
     draft_id: int
-    rounds: int = 5
 
 
 class LeaderboardEntry(BaseModel):
     username: str
-    total_points: float
+    elo_rating: float
     matches_played: int
     wins: int
     losses: int

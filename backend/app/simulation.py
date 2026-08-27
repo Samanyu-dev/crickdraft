@@ -92,6 +92,15 @@ def name_opponent(squad: List[dict]) -> str:
     return "World Select XI"
 
 
+def team_elo_rating(squad: List[dict]) -> float:
+    """Maps a squad's average player rating onto an Elo-like scale centered
+    on the default starting rating, so a random opponent's strength
+    actually moves the ladder math (beating a stacked legends XI is worth
+    more than beating a weak one)."""
+    avg_rating = sum(p["rating"] for p in squad) / len(squad)
+    return round(1200 + (avg_rating - 68.0) * 25, 1)
+
+
 def _team_fielding_avg(team: List[dict]) -> float:
     return sum(p.get("fielding", 55) for p in team) / len(team)
 
@@ -153,6 +162,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
     wickets_down = 0
     balls_bowled_total = 0
     chase_won = False
+    timeline: List[dict] = []
 
     def pick_bowler():
         nonlocal rotation_idx
@@ -169,6 +179,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
             break
         bowler = pick_bowler()
         overs_bowled[bowler["id"]] += 1
+        over_balls: List[str] = []
         for ball in range(6):
             if wickets_down >= 10:
                 break
@@ -195,6 +206,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
                 s["how_out"] = f"b {bowler['name']}"
                 bs["wickets"] += 1
                 wickets_down += 1
+                over_balls.append("W")
                 if wickets_down < 10 and next_in < 11:
                     striker_idx = next_in
                     next_in += 1
@@ -204,6 +216,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
                 s["runs"] += runs
                 score += runs
                 bs["runs_conceded"] += runs
+                over_balls.append(str(runs))
                 if runs == 4:
                     s["fours"] += 1
                 elif runs == 6:
@@ -214,6 +227,13 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
             if target is not None and score > target - 1:
                 chase_won = True
                 break
+        timeline.append({
+            "over": over + 1,
+            "bowler": bowler["name"],
+            "balls": over_balls,
+            "score": score,
+            "wickets": wickets_down,
+        })
         if wickets_down >= 10 or chase_won:
             break
         # strike rotates at the end of a completed over
@@ -227,6 +247,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
         "overs": round(overs_used, 1),
         "batting": list(stats.values()),
         "bowling": [b for b in bowl_stats.values() if b["balls"] > 0],
+        "timeline": timeline,
     }
 
 
@@ -288,12 +309,15 @@ def simulate_match(user_batting_order: List[dict], captain_id: int):
 
     return {
         "opponent_name": opponent_name,
+        "opponent_rating": team_elo_rating(opponent_order),
         "team_score": float(team_score),
         "opponent_score": float(opp_score),
         "team_wickets": first["wickets"],
         "opponent_wickets": second["wickets"],
         "team_overs": first["overs"],
         "opponent_overs": second["overs"],
+        "team_timeline": first["timeline"],
+        "opponent_timeline": second["timeline"],
         "result": result,
         "scorecard": {
             "team": scorecard_rows(first, second, team_points),

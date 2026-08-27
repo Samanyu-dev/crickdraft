@@ -1,21 +1,56 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useUser } from '../UserContext'
 import { api } from '../api'
 import FlipScore from '../components/FlipScore'
-import type { DraftDetail, MatchResult, User } from '../types'
+import RankBadge from '../components/RankBadge'
+import { getRank } from '../rankTiers'
+import type { DraftDetail, MatchResult, OverEvent, User } from '../types'
+
+const INNINGS_DURATION_MS = 4400
+const BREAK_MS = 1300
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+function eventFor(over: OverEvent): { text: string; kind: 'wicket' | 'six' | 'four' } | null {
+  if (over.balls.includes('W')) return { text: 'WICKET!', kind: 'wicket' }
+  if (over.balls.includes('6')) return { text: 'SIX!', kind: 'six' }
+  if (over.balls.includes('4')) return { text: 'FOUR!', kind: 'four' }
+  return null
+}
+
+type Side = { score: number; wickets: number; over: number }
+const ZERO_SIDE: Side = { score: 0, wickets: 0, over: 0 }
 
 export default function Team() {
   const { username } = useUser()
   const [draft, setDraft] = useState<DraftDetail | null | undefined>(undefined)
   const [user, setUser] = useState<User | null>(null)
-  const [rounds, setRounds] = useState(5)
-  const [results, setResults] = useState<MatchResult[] | null>(null)
-  const [liveScore, setLiveScore] = useState({ team: 0, opponent: 0, teamW: 0, oppW: 0, teamOv: 0, oppOv: 0 })
-  const [simulating, setSimulating] = useState(false)
+  const [live, setLive] = useState<{ team: Side; opp: Side }>({ team: ZERO_SIDE, opp: ZERO_SIDE })
+  const [activeSide, setActiveSide] = useState<'team' | 'opp' | null>(null)
+  const [banner, setBanner] = useState<{ text: string; kind: string } | null>(null)
+  const [shake, setShake] = useState(0)
+  const [breakText, setBreakText] = useState<string | null>(null)
+  const [lastMatch, setLastMatch] = useState<MatchResult | null>(null)
+  const [history, setHistory] = useState<MatchResult[]>([])
+  const [playing, setPlaying] = useState(false)
   const [expanded, setExpanded] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const scoreboardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (shake === 0) return
+    const el = scoreboardRef.current
+    if (!el) return
+    el.classList.remove('shake')
+    void el.offsetWidth
+    el.classList.add('shake')
+    const t = setTimeout(() => el.classList.remove('shake'), 400)
+    return () => clearTimeout(t)
+  }, [shake])
 
   function refresh() {
     if (!username) return
@@ -25,37 +60,42 @@ export default function Team() {
 
   useEffect(refresh, [username])
 
-  async function handleSimulate() {
-    if (!draft) return
-    setSimulating(true)
+  async function playTimeline(timeline: OverEvent[], side: 'team' | 'opp', durationMs: number) {
+    setActiveSide(side)
+    const stepDelay = durationMs / Math.max(1, timeline.length)
+    for (const over of timeline) {
+      const ev = eventFor(over)
+      setBanner(ev)
+      if (ev?.kind === 'wicket') setShake((n) => n + 1)
+      setLive((prev) => ({ ...prev, [side]: { score: over.score, wickets: over.wickets, over: over.over } }))
+      await sleep(stepDelay)
+    }
+    setBanner(null)
+  }
+
+  async function handlePlay() {
+    if (!draft || playing) return
+    setPlaying(true)
     setError(null)
-    setResults(null)
-    setLiveScore({ team: 0, opponent: 0, teamW: 0, oppW: 0, teamOv: 0, oppOv: 0 })
+    setLastMatch(null)
+    setLive({ team: ZERO_SIDE, opp: ZERO_SIDE })
+    setBreakText(null)
     try {
-      const res = await api.simulate(draft.id, rounds)
-      setUser((u) => (u ? { ...u, ...res.totals } : u))
-      // reveal matches one at a time so the scoreboard reads as a live feed
-      for (let i = 0; i < res.results.length; i++) {
-        const r = res.results[i]
-        setLiveScore({
-          team: r.team_score,
-          opponent: r.opponent_score,
-          teamW: r.team_wickets,
-          oppW: r.opponent_wickets,
-          teamOv: r.team_overs,
-          oppOv: r.opponent_overs,
-        })
-        setResults((prev) => [...(prev ?? []), r])
-        if (i < res.results.length - 1) {
-          await new Promise((resolve) => setTimeout(resolve, 1100))
-          setLiveScore({ team: 0, opponent: 0, teamW: 0, oppW: 0, teamOv: 0, oppOv: 0 })
-          await new Promise((resolve) => setTimeout(resolve, 250))
-        }
-      }
+      const match = await api.simulate(draft.id)
+      await playTimeline(match.team_timeline, 'team', INNINGS_DURATION_MS)
+      setActiveSide(null)
+      setBreakText(`Innings break — target ${match.team_score + 1}`)
+      await sleep(BREAK_MS)
+      setBreakText(null)
+      await playTimeline(match.opponent_timeline, 'opp', INNINGS_DURATION_MS)
+      setActiveSide(null)
+      setLastMatch(match)
+      setHistory((prev) => [match, ...prev])
+      setUser((u) => (u ? { ...u, ...match.totals } : u))
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Simulation failed')
     } finally {
-      setSimulating(false)
+      setPlaying(false)
     }
   }
 
@@ -71,6 +111,11 @@ export default function Team() {
       </div>
     )
   }
+
+  const promoted =
+    lastMatch && getRank(lastMatch.elo_before).name !== getRank(lastMatch.elo_after).name
+      ? getRank(lastMatch.elo_after)
+      : null
 
   return (
     <div className="team-layout">
@@ -98,59 +143,99 @@ export default function Team() {
         {user && (
           <div className="stat-row">
             <div>
-              <strong>{user.total_points.toFixed(0)}</strong>
-              <span>points</span>
+              <strong>{user.elo_rating.toFixed(0)}</strong>
+              <span>elo rating</span>
             </div>
             <div>
-              <strong>{user.matches_played}</strong>
-              <span>matches</span>
+              <RankBadge elo={user.elo_rating} />
+              <span>rank</span>
             </div>
             <div>
-              <strong>{user.wins}-{user.losses}</strong>
-              <span>W-L</span>
+              <strong>
+                {user.wins}-{user.losses}
+              </strong>
+              <span>W-L · {user.matches_played} played</span>
             </div>
           </div>
         )}
 
-        <div className="scoreboard">
-          <div className="scoreboard-side">
-            <div className="scoreboard-label">Your XI</div>
-            <FlipScore value={liveScore.team} />
-            <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
-              {liveScore.teamW} wkt · {liveScore.teamOv.toFixed(1)} ov
+        <div className="scoreboard-wrap" ref={scoreboardRef}>
+          <div className="scoreboard">
+            <div className={`scoreboard-side ${activeSide === 'team' ? 'active' : ''}`}>
+              <div className="scoreboard-label">Your XI</div>
+              <FlipScore value={live.team.score} />
+              <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
+                {live.team.wickets} wkt · ov {live.team.over}
+              </div>
+            </div>
+            <div className="scoreboard-vs">vs</div>
+            <div className={`scoreboard-side ${activeSide === 'opp' ? 'active' : ''}`}>
+              <div className="scoreboard-label">Opponent</div>
+              <FlipScore value={live.opp.score} />
+              <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
+                {live.opp.wickets} wkt · ov {live.opp.over}
+              </div>
             </div>
           </div>
-          <div className="scoreboard-vs">vs</div>
-          <div className="scoreboard-side">
-            <div className="scoreboard-label">Opponent</div>
-            <FlipScore value={liveScore.opponent} />
-            <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
-              {liveScore.oppW} wkt · {liveScore.oppOv.toFixed(1)} ov
-            </div>
-          </div>
+          <AnimatePresence>
+            {banner && (
+              <motion.div
+                key={banner.text + Math.random()}
+                className={`event-banner event-${banner.kind}`}
+                initial={{ opacity: 0, scale: 0.7, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.25 }}
+              >
+                {banner.text}
+              </motion.div>
+            )}
+            {breakText && (
+              <motion.div
+                key="break"
+                className="event-banner event-info"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                {breakText}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        <div className="sim-controls">
-          <label>
-            Rounds
-            <select value={rounds} onChange={(e) => setRounds(Number(e.target.value))} disabled={simulating}>
-              {[1, 3, 5, 10].map((n) => (
-                <option key={n} value={n}>
-                  {n}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button className="btn-primary" onClick={handleSimulate} disabled={simulating}>
-            {simulating ? 'Playing…' : `Simulate ${rounds} match${rounds > 1 ? 'es' : ''}`}
-          </button>
-        </div>
+        <button className="btn-primary" onClick={handlePlay} disabled={playing} style={{ width: '100%' }}>
+          {playing ? 'Match in progress…' : history.length === 0 ? 'Play a match' : 'Play another match'}
+        </button>
         {error && <p className="error">{error}</p>}
 
-        {results && (
+        <AnimatePresence>
+          {lastMatch && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="result-reveal"
+            >
+              <span className={`stamp ${lastMatch.result === 'W' ? 'win' : 'loss'}`}>
+                {lastMatch.result === 'W' ? 'Match Won' : 'Match Lost'}
+              </span>
+              <span className="elo-change">
+                {lastMatch.elo_before.toFixed(0)} → {lastMatch.elo_after.toFixed(0)}
+                <b className={lastMatch.elo_delta >= 0 ? 'up' : 'down'}>
+                  {' '}
+                  ({lastMatch.elo_delta >= 0 ? '+' : ''}
+                  {lastMatch.elo_delta.toFixed(1)})
+                </b>
+              </span>
+              {promoted && <span className="promo-banner">Promoted to {promoted.name}!</span>}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {history.length > 0 && (
           <div className="results-list">
             <AnimatePresence initial={false}>
-              {results.map((r, i) => (
+              {history.map((r, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 12 }}
@@ -164,6 +249,10 @@ export default function Team() {
                     </span>
                     <span>
                       {r.team_score.toFixed(0)}/{r.team_wickets} ({r.team_overs.toFixed(1)}) — {r.opponent_score.toFixed(0)}/{r.opponent_wickets} ({r.opponent_overs.toFixed(1)}) vs {r.opponent_name}
+                    </span>
+                    <span className={`ledger elo-pill ${r.elo_delta >= 0 ? 'up' : 'down'}`}>
+                      {r.elo_delta >= 0 ? '+' : ''}
+                      {r.elo_delta.toFixed(1)}
                     </span>
                     <span className="chevron">{expanded === i ? '▲' : '▼'}</span>
                   </div>
@@ -184,7 +273,9 @@ export default function Team() {
                         ))}
                       </div>
                       <div>
-                        <h4 style={{ fontSize: '0.85rem', color: 'var(--brass)' }}>{r.opponent_name}</h4>
+                        <h4 style={{ fontSize: '0.85rem', color: 'var(--brass)' }}>
+                          {r.opponent_name} <span className="muted">({r.opponent_rating.toFixed(0)} elo)</span>
+                        </h4>
                         {r.scorecard.opponent.map((p) => (
                           <div key={p.id} className="scorecard-row">
                             <span>
