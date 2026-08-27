@@ -37,8 +37,11 @@ def ground_truth_probs(x):
     # base rates for an "average" ball: [0,1,2,3,4,6,W]
     probs = [0.42, 0.30, 0.06, 0.01, 0.12, 0.04, 0.05]
 
-    # better batter relative to bowler -> more boundaries, fewer dots/wickets
-    shift = skill_diff * 0.22
+    # better batter relative to bowler -> more boundaries, fewer dots/wickets.
+    # This is the single biggest lever on how "stat-driven vs random" matches
+    # feel - a moderate rating gap should turn into a clearly better win rate,
+    # not something close to a coin flip.
+    shift = skill_diff * 0.55
     probs[4] += shift * 0.5
     probs[5] += shift * 0.3
     probs[0] -= shift * 0.5

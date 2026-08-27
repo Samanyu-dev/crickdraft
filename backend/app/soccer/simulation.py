@@ -115,7 +115,10 @@ def _simulate_match_score(home: List[dict], away: List[dict]):
             attacker_q, defender_q = away_attack * late_game_push, home_def
             team, opp_key = away, "home"
 
-        goal_prob = clip(0.11 + (attacker_q - defender_q) / 100.0 * 0.32, 0.03, 0.5)
+        # The (attacker_q - defender_q) coefficient is the main lever on how
+        # "stat-driven vs random" results feel - a moderate quality gap
+        # should turn into a clearly better record, not a near coin flip.
+        goal_prob = clip(0.11 + (attacker_q - defender_q) / 100.0 * 0.62, 0.03, 0.55)
         chance_prob = clip(goal_prob + 0.22, goal_prob, 0.75)
 
         roll = random.random()
