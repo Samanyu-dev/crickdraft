@@ -88,7 +88,7 @@ SQUADS = [
         ("Ian Bishopp", "BOWL", "B", 9, 11), ("Cameron Cuffey", "BOWL", "C", 10, 11),
     ]),
     ("West Indies", 2016, "T20 World Champions", [
-        ("Darren Sammyy", "AR", "B", 5, 8), ("Chris Gale", "BAT", "A", 1, 2), ("Marlon Samuelz", "BAT", "B", 2, 4),
+        ("Darren Sammyy", "BOWL", "B", 5, 8), ("Chris Gale", "BAT", "A", 1, 2), ("Marlon Samuelz", "BAT", "B", 2, 4),
         ("Andre Russel", "AR", "A", 5, 7), ("Dwayne Bravoo", "AR", "B", 5, 8), ("Carlos Brathwaitee", "AR", "C", 6, 9),
         ("Johnson Charless", "BAT", "C", 1, 3), ("Lendl Simmonz", "BAT", "C", 1, 3), ("Samuel Badreee", "BOWL", "C", 9, 11),
         ("Sulieman Bennn", "BOWL", "C", 9, 11), ("Denesh Ramdinn", "WK", "C", 4, 7),
@@ -183,7 +183,110 @@ SQUADS = [
         ("Colin de Grandhommee", "AR", "C", 5, 8), ("Mitchell Santnerr", "BOWL", "B", 8, 10), ("Tim Southeee", "BOWL", "A", 9, 11),
         ("Trent Boultt", "BOWL", "A", 10, 11), ("Kyle Jamiesonn", "BOWL", "B", 8, 10),
     ]),
+    ("Zimbabwe", 1999, "1999 World Cup Campaign", [
+        ("Andy Flowerr", "WK", "A", 4, 6), ("Grant Flowerr", "BAT", "B", 1, 2), ("Alistair Campbelll", "BAT", "B", 3, 5),
+        ("Neil Johnsonn", "AR", "A", 1, 3), ("Murray Goodwinn", "BAT", "B", 3, 5), ("Guy Whittalll", "AR", "B", 5, 7),
+        ("Heath Streakk", "AR", "A", 7, 9), ("Paul Strangg", "BOWL", "C", 9, 11), ("Henry Olongaa", "BOWL", "B", 10, 11),
+        ("Eddo Brandess", "BOWL", "C", 9, 11), ("Craig Wishartt", "BAT", "C", 1, 3),
+    ]),
+    ("Bangladesh", 2015, "2015 World Cup Upset Era", [
+        ("Mashrafee Mortazaa", "BOWL", "B", 8, 10), ("Tameem Iqball", "BAT", "A", 1, 2), ("Mahmudullahh", "AR", "B", 5, 7),
+        ("Shakeeb Al Hassan", "AR", "S", 3, 5), ("Mushfiqur Rahimm", "WK", "A", 5, 7), ("Soumya Sarkarr", "BAT", "B", 1, 3),
+        ("Rubel Hossaain", "BOWL", "B", 9, 11), ("Taskeen Ahmedd", "BOWL", "C", 9, 11), ("Nasir Hossaain", "AR", "C", 6, 8),
+        ("Imrul Kayess", "BAT", "C", 1, 2), ("Sabbir Rahmaan", "BAT", "C", 4, 6),
+    ]),
+    ("Afghanistan", 2023, "2023 World Cup Breakthrough", [
+        ("Rasheed Khaan", "BOWL", "S", 9, 11), ("Mohammad Nabee", "AR", "A", 6, 8), ("Hashmatullah Shahidee", "BAT", "A", 3, 5),
+        ("Ibraheem Zadraan", "BAT", "B", 1, 2), ("Rahmanullah Gurbaaz", "WK", "B", 1, 3), ("Najeebullah Zadraan", "BAT", "B", 5, 7),
+        ("Azmatullah Omarzaai", "AR", "C", 6, 9), ("Mujeeb Ur Rahmaan", "BOWL", "B", 10, 11), ("Naveen ul Haqq", "BOWL", "C", 9, 11),
+        ("Fazalhaq Farooqee", "BOWL", "C", 10, 11), ("Gulbadeen Naibb", "AR", "C", 7, 9),
+    ]),
+    ("India", 2007, "2007 T20 World Cup Winners", [
+        ("MS Dhonir", "WK", "A", 5, 7), ("Virender Sehwaag", "BAT", "A", 1, 2), ("Gautam Gambheer", "BAT", "B", 1, 2),
+        ("Robin Uthappaa", "BAT", "C", 3, 5), ("Yuvraj Singhal", "AR", "A", 3, 5), ("Suresh Rainaa", "BAT", "B", 4, 6),
+        ("Rohit Sharmaa", "BAT", "B", 1, 3), ("Irfaan Pathaan", "AR", "B", 6, 8), ("RP Singhh", "BOWL", "C", 9, 11),
+        ("Harbajan Singhh", "BOWL", "B", 8, 10), ("Sreesanthh", "BOWL", "C", 9, 11), ("Joginder Sharmaa", "BOWL", "C", 10, 11),
+    ]),
+    ("Australia", 2007, "2007 World Cup Dominant Era", [
+        ("Ricky Pontin", "BAT", "S", 2, 4), ("Adam Gilchrest", "WK", "S", 1, 3), ("Matthew Haydenn", "BAT", "A", 1, 2),
+        ("Glenn McGrah", "BOWL", "S", 10, 11), ("Brett Leey", "BOWL", "A", 9, 11), ("Michael Clarkee", "BAT", "A", 3, 5),
+        ("Andrew Symondz", "AR", "A", 4, 7), ("Mike Husseyy", "BAT", "A", 4, 6), ("Nathan Brackenn", "BOWL", "B", 9, 11),
+        ("Brad Hoggg", "BOWL", "B", 10, 11), ("Shane Warnie", "BOWL", "S", 8, 10),
+    ]),
+    ("England", 2022, "2022 T20 World Cup Winners", [
+        ("Jos Buttlerr", "WK", "A", 3, 5), ("Alex Haless", "BAT", "B", 1, 2), ("Ben Stoke", "AR", "A", 4, 6),
+        ("Moeen Alee", "AR", "B", 6, 8), ("Liam Livingstonn", "BAT", "B", 3, 6), ("Sam Curraan", "AR", "S", 5, 8),
+        ("Chris Woakess", "BOWL", "B", 7, 9), ("Adil Rashidd", "BOWL", "B", 9, 11), ("Mark Woodd", "BOWL", "B", 10, 11),
+        ("Phil Saltt", "BAT", "C", 1, 2), ("Chris Jordaan", "BOWL", "C", 9, 11),
+    ]),
+    ("West Indies", 2004, "2004 Champions Trophy Winners", [
+        ("Brian Lahra", "BAT", "S", 3, 4), ("Shivnarine Chanderpaull", "BAT", "A", 3, 5), ("Ramnaresh Sarwaan", "BAT", "B", 3, 5),
+        ("Chris Gale", "BAT", "A", 1, 2), ("Wavell Hindz", "BAT", "B", 1, 3), ("Marlon Samuelz", "AR", "B", 5, 7),
+        ("Dwayne Bravoo", "AR", "B", 6, 8), ("Courtney Brownee", "WK", "C", 6, 8), ("Vasbert Drakess", "BOWL", "C", 9, 11),
+        ("Corey Collymoree", "BOWL", "C", 10, 11), ("Ian Bradshaww", "BOWL", "C", 9, 11),
+    ]),
+    ("Pakistan", 2017, "2017 Champions Trophy Winners", [
+        ("Sarfaraz Ahmedd", "WK", "B", 5, 7), ("Fakhar Zamaan", "BAT", "B", 1, 2), ("Azhar Alii", "BAT", "B", 1, 3),
+        ("Babur Azam", "BAT", "S", 2, 4), ("Mohammad Hafeeze", "AR", "C", 1, 4), ("Shoaib Malikk", "AR", "B", 3, 6),
+        ("Imad Wasimm", "AR", "C", 5, 8), ("Shadab Khaan", "BOWL", "B", 9, 11), ("Hasan Alii", "BOWL", "B", 9, 11),
+        ("Mohammad Aamerr", "BOWL", "A", 10, 11), ("Junaid Khaan", "BOWL", "C", 9, 11),
+    ]),
+    ("India", 2023, "2023 World Cup Finalists", [
+        ("Rohit Sharmaa", "BAT", "S", 1, 2), ("Shubman Gilll", "BAT", "A", 1, 2), ("Virat Kohly", "BAT", "S", 2, 4),
+        ("Shreyas Iyerr", "BAT", "A", 3, 5), ("KL Rahull", "WK", "A", 1, 4), ("Ravindra Jadejaa", "AR", "A", 6, 8),
+        ("Suryakumar Yadhav", "BAT", "B", 3, 6), ("Mohammed Shamii", "BOWL", "A", 9, 11), ("Jasprit Bumraah", "BOWL", "S", 10, 11),
+        ("Kuldeep Yadhav", "BOWL", "B", 10, 11), ("Mohammed Sirajj", "BOWL", "B", 9, 11),
+    ]),
+    ("Pakistan", 1996, "1996 World Cup Campaign", [
+        ("Aamer Sohaill", "BAT", "B", 1, 2), ("Saeed Anwarr", "BAT", "A", 1, 2), ("Ijaz Ahmedd", "BAT", "B", 3, 5),
+        ("Inzamam ul Haque", "BAT", "A", 3, 5), ("Salim Malikk", "BAT", "B", 3, 5), ("Rameez Rajaa", "BAT", "B", 1, 2),
+        ("Moin Khaan", "WK", "C", 6, 8), ("Waseem Akrem", "BOWL", "S", 7, 9), ("Waqar Younuss", "BOWL", "S", 10, 11),
+        ("Mushtaq Ahmedd", "BOWL", "B", 9, 11), ("Ata ur Rehmaan", "BOWL", "C", 9, 11),
+    ]),
+    ("West Indies", 1983, "1983 World Cup Runners-up", [
+        ("Clive Loyd", "AR", "A", 4, 6), ("Gordon Greenwich", "BAT", "A", 1, 2), ("Desmond Haynz", "BAT", "B", 1, 2),
+        ("Vivian Richardsson", "BAT", "S", 2, 4), ("Larry Gomess", "BAT", "B", 3, 5), ("Faoud Bacchuss", "BAT", "C", 3, 6),
+        ("Jeff Dujonn", "WK", "B", 6, 8), ("Malcolm Marshalll", "BOWL", "S", 9, 11), ("Andy Robarts", "BOWL", "A", 9, 11),
+        ("Michael Holdinng", "BOWL", "S", 9, 11), ("Joel Garnerr", "BOWL", "A", 10, 11),
+    ]),
+    ("New Zealand", 2019, "2019 World Cup Finalists", [
+        ("Kane Williamsen", "BAT", "S", 2, 4), ("Martin Guptilll", "BAT", "B", 1, 2), ("Henry Nichollss", "BAT", "B", 3, 6),
+        ("Ross Taylorr", "BAT", "B", 3, 6), ("Tom Lathamm", "WK", "B", 1, 2), ("Jimmy Neeshamm", "AR", "B", 5, 8),
+        ("Colin de Grandhommee", "AR", "C", 5, 8), ("Mitchell Santnerr", "BOWL", "B", 8, 10), ("Matt Henryy", "BOWL", "B", 9, 11),
+        ("Trent Boultt", "BOWL", "A", 10, 11), ("Lockie Fergussonn", "BOWL", "A", 9, 11),
+    ]),
+    ("South Africa", 1992, "Return to International Cricket", [
+        ("Kepler Wesselss", "BAT", "B", 1, 3), ("Andrew Hudsonn", "BAT", "B", 1, 2), ("Peter Kirstenn", "BAT", "A", 2, 4),
+        ("Jimmy Cookk", "BAT", "C", 1, 2), ("Adrian Kuiperr", "AR", "B", 5, 7), ("Dave Richardsonn", "WK", "C", 6, 8),
+        ("Brian McMillann", "AR", "B", 6, 8), ("Allan Donaldd", "BOWL", "A", 9, 11), ("Meyrick Pringlee", "BOWL", "C", 9, 11),
+        ("Tim Shaww", "BOWL", "C", 10, 11), ("Richard Snelll", "BOWL", "C", 9, 11),
+    ]),
+    ("Sri Lanka", 2007, "2007 World Cup Finalists", [
+        ("Mahela Jayawardana", "BAT", "A", 3, 5), ("Sanath Jayasuryah", "AR", "A", 1, 2), ("Upul Tharangaa", "BAT", "B", 1, 2),
+        ("Kumar Sangakarra", "WK", "S", 2, 4), ("Tillakaratne Dilshann", "BAT", "A", 1, 2), ("Chamara Silvaa", "BAT", "C", 3, 6),
+        ("Russel Arnoldd", "BAT", "C", 4, 7), ("Chaminda Vaass", "BOWL", "A", 8, 10), ("Muttiah Muralidaran", "BOWL", "S", 10, 11),
+        ("Lasith Malingaa", "BOWL", "A", 9, 11), ("Dilhara Fernandoo", "BOWL", "C", 9, 11),
+    ]),
+    ("England", 2015, "ODI Rebuild Era", [
+        ("Eoin Morgenn", "BAT", "B", 3, 5), ("Jason Royy", "BAT", "B", 1, 2), ("Alex Haless", "BAT", "B", 1, 2),
+        ("Joe Rootes", "BAT", "S", 2, 4), ("Ben Stoke", "AR", "A", 4, 6), ("Jos Buttlerr", "WK", "A", 5, 7),
+        ("Adil Rashidd", "BOWL", "B", 10, 11), ("Chris Woakess", "AR", "B", 6, 8), ("David Willeyy", "BOWL", "B", 9, 11),
+        ("Steven Finnn", "BOWL", "C", 9, 11), ("Mark Woodd", "BOWL", "B", 10, 11),
+    ]),
+    ("Bangladesh", 2019, "Golden Generation", [
+        ("Shakeeb Al Hassan", "AR", "S", 3, 5), ("Tameem Iqball", "BAT", "A", 1, 2), ("Liton Dass", "BAT", "B", 1, 3),
+        ("Mushfiqur Rahimm", "WK", "A", 5, 7), ("Mohammad Mithunn", "BAT", "C", 3, 6), ("Mahmudullahh", "AR", "B", 5, 7),
+        ("Mosaddek Hossainn", "AR", "C", 6, 8), ("Mustafizur Rahmaan", "BOWL", "A", 9, 11), ("Mashrafee Mortazaa", "BOWL", "B", 8, 10),
+        ("Rubel Hossaain", "BOWL", "B", 9, 11), ("Saifuddinn", "BOWL", "C", 7, 9),
+    ]),
 ]
+
+# A handful of true legends get an explicit "overpowered outlier" boost past
+# the normal 100-point cap - a deliberate rare tier, not a formula quirk.
+LEGENDS = {
+    "Sachin Tendulker", "Vivian Richardsson", "Brian Lahra",
+    "Muttiah Muralidaran", "Shane Warnie", "Waseem Akrem",
+}
 
 
 def build_player(name, role, tier):
@@ -204,7 +307,7 @@ def build_player(name, role, tier):
     return base
 
 
-def rating_for(role, bat, bowl, fielding, consistency):
+def rating_for(role, bat, bowl, fielding, consistency, name):
     bat_score = 0.0
     if bat:
         bat_score = min(bat["avg"], 65) * 0.9 + min(bat["sr"], 130) * 0.25
@@ -217,11 +320,36 @@ def rating_for(role, bat, bowl, fielding, consistency):
         base = bowl_score + fielding * 0.05
     else:
         base = bat_score * 0.6 + bowl_score * 0.6 + fielding * 0.08
-    return round(base * (0.75 + 0.25 * consistency), 1)
+    raw = base * (0.75 + 0.25 * consistency)
+    # Regular players cap at 100 - a clean "out of 100" scale. A handful of
+    # true legends get a deliberate overpowered-outlier boost past it.
+    capped = min(raw, 100.0)
+    if name in LEGENDS:
+        # Guarantee legends land in the deliberate overpowered-outlier band
+        # regardless of how their random rolls happened to land.
+        return round(min(max(capped, 92.0) * 1.15, 120.0), 1)
+    return round(capped, 1)
+
+
+def rarity_for(rating):
+    if rating > 100.0:
+        return "Legend"
+    if rating >= 85.0:
+        return "Legendary"
+    if rating >= 72.0:
+        return "Epic"
+    if rating >= 58.0:
+        return "Rare"
+    if rating >= 45.0:
+        return "Uncommon"
+    return "Common"
 
 
 def credits_for(rating):
-    c = 6.0 + (min(rating, 130) / 130.0) * 5.0
+    # Keep plenty of slack under the 100-credit squad cap - a narrow spread
+    # (or an average too close to CREDIT_CAP / SQUAD_SIZE) makes careless
+    # drafting prone to unrecoverable budget dead-ends on the last pick.
+    c = 4.5 + (min(rating, 120.0) / 120.0) * 7.0
     return round(c * 2) / 2
 
 
@@ -230,7 +358,7 @@ pid = 1
 for country, era, squad_name, roster in SQUADS:
     for (name, role, tier, pos_min, pos_max) in roster:
         p = build_player(name, role, tier)
-        rating = rating_for(role, p["batting"], p["bowling"], p["fielding"], p["consistency"])
+        rating = rating_for(role, p["batting"], p["bowling"], p["fielding"], p["consistency"], name)
         credit = credits_for(rating)
         players.append({
             "id": pid,
@@ -244,6 +372,7 @@ for country, era, squad_name, roster in SQUADS:
             "fielding": p["fielding"],
             "morale": p["morale"],
             "rating": rating,
+            "rarity": rarity_for(rating),
             "credit": credit,
             "consistency": p["consistency"],
             "position_min": pos_min,

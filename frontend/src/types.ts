@@ -13,6 +13,7 @@ export interface Player {
   fielding: number
   morale: number
   rating: number
+  rarity: string
   credit: number
   consistency: number
   position_min: number

@@ -5,7 +5,9 @@ import { useUser } from '../UserContext'
 import { api } from '../api'
 import FlipScore from '../components/FlipScore'
 import RankBadge from '../components/RankBadge'
+import PlayerCard from '../components/PlayerCard'
 import { getRank } from '../rankTiers'
+import { cricketCardStats } from '../playerCardStats'
 import type { DraftDetail, HistoryEntry, InningsResult, MatchResult, OverEvent, User } from '../types'
 
 function sleep(ms: number) {
@@ -154,17 +156,20 @@ export default function Team() {
           {tournament.replace(/-/g, ' ')}
         </div>
         <h2>{draft.name}</h2>
-        <div className="team-list">
+        <div className="player-card-grid">
           {draft.players.map((p, i) => (
-            <div key={p.id} className="team-row">
-              <span className={`role-tag role-${p.role}`}>#{i + 1}</span>
-              <span className="p-name">
-                {p.name} {draft.captain_id === p.id && <span className="captain-star">★</span>}
-              </span>
-              <span className="muted ledger" style={{ fontSize: '0.75rem' }}>
-                {p.country} · {p.era}
-              </span>
-            </div>
+            <PlayerCard
+              key={p.id}
+              name={p.name}
+              role={p.role}
+              country={p.country}
+              era={p.era}
+              rating={p.rating}
+              rarity={p.rarity}
+              credit={p.credit}
+              stats={cricketCardStats(p)}
+              badge={draft.captain_id === p.id ? '★ C' : `#${i + 1}`}
+            />
           ))}
         </div>
         <Link to={`/draft?tournament=${tournament}`} className="link-btn">

@@ -423,36 +423,12 @@ main {
 
 .plaque-rows {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 0.55rem;
+  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  gap: 0.9rem;
+  justify-items: center;
 }
 
-.plaque-row-btn {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 0.7rem;
-  width: 100%;
-  text-align: left;
-  background: rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 77, 109, 0.16);
-  border-radius: 4px;
-  padding: 0.65rem 0.9rem;
-  color: var(--cream);
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.plaque-row-btn:hover:not(:disabled) {
-  background: rgba(255, 77, 109, 0.1);
-  border-color: var(--brass);
-}
-
-.plaque-row-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-.plaque-row-btn .role-tag {
+.role-tag {
   font-family: 'Space Mono', monospace;
   font-size: 0.68rem;
   font-weight: 700;
@@ -496,13 +472,13 @@ main {
   color: #ff9d9d;
 }
 
-.plaque-row-btn .p-name {
+.p-name {
   font-family: 'Archivo Black', 'Inter', sans-serif;
   font-size: 1rem;
   color: var(--cream);
 }
 
-.plaque-row-btn .p-stat {
+.p-stat {
   font-family: 'Space Mono', monospace;
   font-size: 0.72rem;
   color: var(--cream-dim);
@@ -510,11 +486,193 @@ main {
   margin-top: 0.1rem;
 }
 
-.plaque-row-btn .p-credit {
+.p-credit {
   font-family: 'Space Mono', monospace;
   color: var(--brass);
   font-size: 0.85rem;
   white-space: nowrap;
+}
+
+/* ---------- Player card (rarity-driven shield card) ---------- */
+.player-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  gap: 0.9rem;
+  justify-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.player-card {
+  position: relative;
+  width: 168px;
+  min-height: 258px;
+  padding: 32px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 3px;
+  border-style: solid;
+  clip-path: polygon(
+    50% 0%, 88% 6%, 100% 20%, 100% 62%, 74% 78%,
+    50% 100%, 26% 78%, 0% 62%, 0% 20%, 12% 6%
+  );
+  font-family: 'Space Mono', monospace;
+  cursor: default;
+  transition: transform 0.18s ease, filter 0.18s ease;
+  text-align: center;
+}
+
+button.player-card {
+  cursor: pointer;
+}
+
+button.player-card:hover:not(:disabled) {
+  transform: translateY(-5px) scale(1.03);
+}
+
+button.player-card:disabled {
+  opacity: 0.4;
+  filter: grayscale(0.65);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.player-card-shimmer {
+  overflow: hidden;
+}
+
+.player-card-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.75) 50%, transparent 65%);
+  background-size: 250% 250%;
+  animation: player-card-shimmer-sweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes player-card-shimmer-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -60% 0;
+  }
+}
+
+.player-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 4px;
+}
+
+.player-card-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.player-card-rating-num {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 1.5rem;
+}
+
+.player-card-role {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 0.15rem;
+}
+
+.player-card-flag {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.player-card-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.14);
+  margin: 4px 0 6px;
+}
+
+.player-card-name {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  width: 88%;
+  padding-bottom: 4px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.player-card-origin {
+  font-size: 0.6rem;
+  margin: 3px 0 5px;
+}
+
+.player-card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 10px;
+  width: 92%;
+  padding-top: 5px;
+  border-top-width: 1px;
+  border-top-style: solid;
+}
+
+.player-card-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-card-stat-value {
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.player-card-stat-label {
+  font-size: 0.52rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+}
+
+.player-card-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 92%;
+  margin-top: 6px;
+  padding-top: 4px;
+  border-top-width: 1px;
+  border-top-style: dashed;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.player-card-badge {
+  position: absolute;
+  top: 4px;
+  right: 26px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.1em 0.5em;
+  font-size: 0.6rem;
+  font-weight: 700;
 }
 
 .disabled-reason {
@@ -691,28 +849,6 @@ main {
   border: 1px solid var(--wood-hairline);
   border-radius: 8px;
   padding: 1.25rem;
-}
-
-.team-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.9rem;
-}
-
-.team-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.6rem;
-  align-items: center;
-  padding: 0.45rem 0.6rem;
-  background: rgba(0, 0, 0, 0.16);
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.team-row .p-name {
-  font-family: 'Archivo Black', 'Inter', sans-serif;
 }
 
 .captain-star {

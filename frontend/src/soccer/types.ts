@@ -13,6 +13,7 @@ export interface SoccerPlayer {
   pace: number
   morale: number
   rating: number
+  rarity: string
   credit: number
 }
 

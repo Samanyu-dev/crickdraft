@@ -4,6 +4,8 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { soccerApi } from './api'
 import { useUser } from '../UserContext'
 import type { SoccerPlayer, SoccerRole, SoccerSquad } from './types'
+import PlayerCard from '../components/PlayerCard'
+import { soccerCardStats } from '../playerCardStats'
 
 const ROLE_RULES: Record<SoccerRole, [number, number]> = {
   GK: [1, 1],
@@ -233,24 +235,21 @@ export default function SoccerDraft() {
                 {currentSquad.players.map((p) => {
                   const check = eligibility(picks, p)
                   return (
-                    <motion.button
-                      key={p.id}
-                      variants={rowVariants}
-                      className="plaque-row-btn"
-                      disabled={!check.ok}
-                      onClick={() => handlePick(p)}
-                      title={check.reason}
-                    >
-                      <span className={`role-tag role-${p.role}`}>{p.role}</span>
-                      <span>
-                        <span className="p-name">{p.name}</span>
-                        <span className="p-stat">
-                          ATK {p.attack.toFixed(0)} · DEF {p.defense.toFixed(0)} · PAS {p.passing.toFixed(0)} · PAC {p.pace.toFixed(0)}
-                        </span>
-                        {!check.ok && check.reason && <span className="disabled-reason">{check.reason}</span>}
-                      </span>
-                      <span className="p-credit">{p.credit.toFixed(1)} cr</span>
-                    </motion.button>
+                    <motion.div key={p.id} variants={rowVariants}>
+                      <PlayerCard
+                        name={p.name}
+                        role={p.role}
+                        country={p.country}
+                        era={p.era}
+                        rating={p.rating}
+                        rarity={p.rarity}
+                        credit={p.credit}
+                        stats={soccerCardStats(p)}
+                        disabled={!check.ok}
+                        disabledReason={check.reason}
+                        onClick={() => handlePick(p)}
+                      />
+                    </motion.div>
                   )
                 })}
               </motion.div>

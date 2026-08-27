@@ -5,6 +5,8 @@ import { api } from '../api'
 import { useUser } from '../UserContext'
 import { isValidOrder, tryAugment } from '../battingOrder'
 import type { Player, Role, Squad } from '../types'
+import PlayerCard from '../components/PlayerCard'
+import { cricketCardStats } from '../playerCardStats'
 
 const ROLE_RULES: Record<Role, [number, number]> = {
   WK: [1, 2],
@@ -341,27 +343,22 @@ export default function Draft() {
                 {currentSquad.players.map((p) => {
                   const check = eligibility(picks, positionAssignment, p)
                   return (
-                    <motion.button
-                      key={p.id}
-                      variants={rowVariants}
-                      className="plaque-row-btn"
-                      disabled={!check.ok}
-                      onClick={() => handlePick(p)}
-                      title={check.reason}
-                    >
-                      <span className={`role-tag role-${p.role}`}>{p.role}</span>
-                      <span>
-                        <span className="p-name">{p.name}</span>
-                        <span className="p-stat">
-                          {p.batting ? `Bat ${p.batting.avg.toFixed(0)} avg` : ''}
-                          {p.batting && p.bowling ? ' · ' : ''}
-                          {p.bowling ? `Bowl ${p.bowling.avg.toFixed(0)} avg` : ''}
-                          {' · '}Field {p.fielding.toFixed(0)} · Morale {p.morale.toFixed(0)} · #{p.position_min}-{p.position_max}
-                        </span>
-                        {!check.ok && check.reason && <span className="disabled-reason">{check.reason}</span>}
-                      </span>
-                      <span className="p-credit">{p.credit.toFixed(1)} cr</span>
-                    </motion.button>
+                    <motion.div key={p.id} variants={rowVariants}>
+                      <PlayerCard
+                        name={p.name}
+                        role={p.role}
+                        country={p.country}
+                        era={p.era}
+                        rating={p.rating}
+                        rarity={p.rarity}
+                        credit={p.credit}
+                        stats={cricketCardStats(p)}
+                        badge={`#${p.position_min}-${p.position_max}`}
+                        disabled={!check.ok}
+                        disabledReason={check.reason}
+                        onClick={() => handlePick(p)}
+                      />
+                    </motion.div>
                   )
                 })}
               </motion.div>
