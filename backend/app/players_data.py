@@ -39,6 +39,7 @@ CREDIT_CAP = 100.0
 
 
 def validate_squad(player_ids: List[int]):
+    """player_ids must already be in batting order: player_ids[i] bats at position i+1."""
     if len(player_ids) != SQUAD_SIZE:
         return False, f"Squad must have exactly {SQUAD_SIZE} players (got {len(player_ids)})."
     if len(set(player_ids)) != len(player_ids):
@@ -46,12 +47,14 @@ def validate_squad(player_ids: List[int]):
 
     role_counts = {"WK": 0, "BAT": 0, "BOWL": 0, "AR": 0}
     total_credit = 0.0
+    players = []
     for pid in player_ids:
         player = PLAYERS_BY_ID.get(pid)
         if not player:
             return False, f"Unknown player id {pid}."
         role_counts[player["role"]] += 1
         total_credit += player["credit"]
+        players.append(player)
 
     for role, (lo, hi) in ROLE_RULES.items():
         if not (lo <= role_counts[role] <= hi):
@@ -59,5 +62,13 @@ def validate_squad(player_ids: List[int]):
 
     if total_credit > CREDIT_CAP + 1e-9:
         return False, f"Squad costs {total_credit:.1f} credits, exceeds cap of {CREDIT_CAP:.0f}."
+
+    for i, player in enumerate(players):
+        position = i + 1
+        if not (player["position_min"] <= position <= player["position_max"]):
+            return False, (
+                f"{player['name']} can only bat between positions "
+                f"{player['position_min']}-{player['position_max']}, not {position}."
+            )
 
     return True, "ok"

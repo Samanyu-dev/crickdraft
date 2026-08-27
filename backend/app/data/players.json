@@ -7,17 +7,21 @@
     "squad_name": "1983 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 55.3,
-      "sr": 91.3
+      "avg": 57.9,
+      "sr": 101.9
     },
     "bowling": {
-      "avg": 19.3,
-      "econ": 3.0,
-      "sr": 44.8
+      "avg": 22.1,
+      "econ": 3.1,
+      "sr": 38.9
     },
-    "rating": 89.4,
+    "fielding": 78.4,
+    "morale": 80.5,
+    "rating": 96.3,
     "credit": 9.5,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 2,
@@ -27,13 +31,17 @@
     "squad_name": "1983 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 45.9,
-      "sr": 83.4
+      "avg": 50.1,
+      "sr": 75.5
     },
     "bowling": null,
-    "rating": 59.1,
+    "fielding": 68.5,
+    "morale": 69.4,
+    "rating": 66.0,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 3,
@@ -44,12 +52,16 @@
     "role": "BAT",
     "batting": {
       "avg": 36.4,
-      "sr": 78.1
+      "sr": 79.8
     },
     "bowling": null,
-    "rating": 48.4,
+    "fielding": 68.0,
+    "morale": 65.9,
+    "rating": 53.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 4,
@@ -59,17 +71,21 @@
     "squad_name": "1983 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 47.0,
-      "sr": 88.0
+      "avg": 52.0,
+      "sr": 81.8
     },
     "bowling": {
-      "avg": 25.3,
-      "econ": 3.3,
-      "sr": 49.9
+      "avg": 22.9,
+      "econ": 4.1,
+      "sr": 47.4
     },
-    "rating": 74.5,
+    "fielding": 68.1,
+    "morale": 81.1,
+    "rating": 79.8,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 5,
@@ -79,13 +95,17 @@
     "squad_name": "1983 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 34.1,
+      "avg": 40.6,
       "sr": 84.1
     },
     "bowling": null,
-    "rating": 47.8,
+    "fielding": 56.9,
+    "morale": 71.9,
+    "rating": 57.5,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 6,
@@ -95,17 +115,21 @@
     "squad_name": "1983 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 37.7,
-      "sr": 71.1
+      "avg": 38.2,
+      "sr": 79.0
     },
     "bowling": {
-      "avg": 31.7,
-      "econ": 4.2,
-      "sr": 50.9
+      "avg": 31.0,
+      "econ": 4.5,
+      "sr": 58.6
     },
-    "rating": 55.2,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 65.7,
+    "morale": 74.5,
+    "rating": 59.2,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 7,
@@ -116,13 +140,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 34.9,
-      "econ": 5.1,
-      "sr": 63.9
+      "avg": 30.6,
+      "econ": 4.7,
+      "sr": 55.9
     },
-    "rating": 27.5,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 55.5,
+    "morale": 41.1,
+    "rating": 41.6,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 8,
@@ -132,17 +160,21 @@
     "squad_name": "1983 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 39.9,
-      "sr": 87.5
+      "avg": 41.0,
+      "sr": 75.3
     },
     "bowling": {
-      "avg": 28.3,
-      "econ": 4.5,
-      "sr": 58.3
+      "avg": 28.2,
+      "econ": 4.1,
+      "sr": 52.7
     },
-    "rating": 58.8,
+    "fielding": 57.0,
+    "morale": 60.6,
+    "rating": 64.9,
     "credit": 8.5,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 9,
@@ -153,13 +185,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 31.2,
-      "econ": 4.5,
-      "sr": 57.0
+      "avg": 27.0,
+      "econ": 4.7,
+      "sr": 51.6
     },
-    "rating": 40.7,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 68.0,
+    "morale": 67.2,
+    "rating": 49.9,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 10,
@@ -169,13 +205,17 @@
     "squad_name": "1983 World Cup Winners",
     "role": "WK",
     "batting": {
-      "avg": 36.5,
-      "sr": 73.8
+      "avg": 40.1,
+      "sr": 81.7
     },
     "bowling": null,
-    "rating": 47.5,
+    "fielding": 74.8,
+    "morale": 67.8,
+    "rating": 57.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 11,
@@ -186,13 +226,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.6,
-      "econ": 4.5,
-      "sr": 58.1
+      "avg": 29.2,
+      "econ": 4.8,
+      "sr": 57.9
     },
-    "rating": 40.1,
+    "fielding": 57.1,
+    "morale": 45.7,
+    "rating": 42.4,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 12,
@@ -202,17 +246,21 @@
     "squad_name": "1983 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 38.0,
-      "sr": 75.4
+      "avg": 37.5,
+      "sr": 81.1
     },
     "bowling": {
-      "avg": 27.3,
-      "econ": 4.1,
-      "sr": 59.4
+      "avg": 28.4,
+      "econ": 4.9,
+      "sr": 54.6
     },
-    "rating": 58.9,
+    "fielding": 73.9,
+    "morale": 72.5,
+    "rating": 60.7,
     "credit": 8.5,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 13,
@@ -222,13 +270,17 @@
     "squad_name": "2011 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 62.9,
-      "sr": 88.9
+      "avg": 58.4,
+      "sr": 98.4
     },
     "bowling": null,
-    "rating": 76.9,
+    "fielding": 82.2,
+    "morale": 86.2,
+    "rating": 81.6,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 14,
@@ -238,13 +290,17 @@
     "squad_name": "2011 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 46.6,
-      "sr": 82.6
+      "avg": 55.0,
+      "sr": 85.2
     },
     "bowling": null,
-    "rating": 59.5,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 74.8,
+    "morale": 69.4,
+    "rating": 72.9,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 15,
@@ -254,13 +310,17 @@
     "squad_name": "2011 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 41.0,
-      "sr": 79.1
+      "avg": 40.9,
+      "sr": 83.8
     },
     "bowling": null,
-    "rating": 52.4,
+    "fielding": 55.9,
+    "morale": 57.2,
+    "rating": 57.6,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 16,
@@ -270,13 +330,17 @@
     "squad_name": "2011 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 53.4,
-      "sr": 90.5
+      "avg": 55.0,
+      "sr": 85.6
     },
     "bowling": null,
-    "rating": 67.2,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 69.1,
+    "morale": 72.6,
+    "rating": 72.6,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 17,
@@ -286,17 +350,21 @@
     "squad_name": "2011 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 45.3,
-      "sr": 81.3
+      "avg": 52.2,
+      "sr": 88.6
     },
     "bowling": {
-      "avg": 23.6,
+      "avg": 25.2,
       "econ": 3.3,
-      "sr": 53.4
+      "sr": 50.4
     },
-    "rating": 73.6,
+    "fielding": 82.6,
+    "morale": 65.2,
+    "rating": 83.5,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 18,
@@ -306,13 +374,17 @@
     "squad_name": "2011 World Cup Winners",
     "role": "WK",
     "batting": {
-      "avg": 48.1,
-      "sr": 88.1
+      "avg": 54.5,
+      "sr": 92.5
     },
     "bowling": null,
-    "rating": 62.0,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 75.4,
+    "morale": 74.1,
+    "rating": 74.3,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 19,
@@ -322,13 +394,17 @@
     "squad_name": "2011 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 44.1,
-      "sr": 77.2
+      "avg": 44.0,
+      "sr": 85.4
     },
     "bowling": null,
-    "rating": 54.6,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 65.0,
+    "morale": 58.6,
+    "rating": 61.2,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 20,
@@ -339,13 +415,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 23.5,
-      "econ": 3.7,
-      "sr": 46.6
+      "avg": 22.9,
+      "econ": 3.9,
+      "sr": 49.4
     },
-    "rating": 63.3,
+    "fielding": 78.9,
+    "morale": 77.2,
+    "rating": 65.4,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 21,
@@ -356,13 +436,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 31.4,
-      "econ": 4.3,
-      "sr": 52.2
+      "avg": 27.9,
+      "econ": 3.8,
+      "sr": 59.3
     },
-    "rating": 43.4,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 65.6,
+    "morale": 55.0,
+    "rating": 53.8,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 22,
@@ -373,13 +457,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 29.1,
-      "econ": 3.9,
-      "sr": 50.5
+      "avg": 26.3,
+      "econ": 4.9,
+      "sr": 59.5
     },
-    "rating": 50.6,
+    "fielding": 71.6,
+    "morale": 61.2,
+    "rating": 47.2,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 23,
@@ -390,13 +478,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 33.4,
-      "econ": 5.4,
-      "sr": 59.6
+      "avg": 34.3,
+      "econ": 5.3,
+      "sr": 56.4
     },
-    "rating": 28.4,
+    "fielding": 50.7,
+    "morale": 41.7,
+    "rating": 31.1,
     "credit": 7.0,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 24,
@@ -407,13 +499,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 28.3,
-      "econ": 5.0,
-      "sr": 55.3
+      "avg": 31.2,
+      "econ": 4.3,
+      "sr": 52.1
     },
-    "rating": 41.3,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 66.0,
+    "morale": 60.3,
+    "rating": 46.8,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 25,
@@ -423,17 +519,21 @@
     "squad_name": "2011 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 32.3,
-      "sr": 60.2
+      "avg": 25.7,
+      "sr": 79.9
     },
     "bowling": {
-      "avg": 34.0,
-      "econ": 5.2,
-      "sr": 60.9
+      "avg": 33.5,
+      "econ": 4.9,
+      "sr": 60.7
     },
-    "rating": 41.1,
-    "credit": 7.5,
-    "consistency": 0.6
+    "fielding": 56.1,
+    "morale": 45.0,
+    "rating": 46.5,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 26,
@@ -443,13 +543,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 63.3,
-      "sr": 87.6
+      "avg": 62.6,
+      "sr": 90.3
     },
     "bowling": null,
-    "rating": 76.9,
+    "fielding": 81.8,
+    "morale": 81.8,
+    "rating": 83.3,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 27,
@@ -459,13 +563,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 49.5,
-      "sr": 94.1
+      "avg": 47.3,
+      "sr": 93.1
     },
     "bowling": null,
-    "rating": 64.7,
+    "fielding": 69.2,
+    "morale": 77.6,
+    "rating": 67.8,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 28,
@@ -475,13 +583,17 @@
     "squad_name": "Modern Era",
     "role": "WK",
     "batting": {
-      "avg": 47.6,
-      "sr": 85.0
+      "avg": 51.7,
+      "sr": 79.3
     },
     "bowling": null,
-    "rating": 60.9,
+    "fielding": 69.2,
+    "morale": 69.8,
+    "rating": 68.3,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 4
   },
   {
     "id": 29,
@@ -491,13 +603,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 44.0,
-      "sr": 85.4
+      "avg": 39.2,
+      "sr": 83.7
     },
     "bowling": null,
-    "rating": 56.4,
+    "fielding": 73.7,
+    "morale": 66.4,
+    "rating": 57.4,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 30,
@@ -507,13 +623,17 @@
     "squad_name": "Modern Era",
     "role": "WK",
     "batting": {
-      "avg": 41.0,
-      "sr": 80.2
+      "avg": 38.7,
+      "sr": 76.5
     },
     "bowling": null,
-    "rating": 52.7,
+    "fielding": 58.8,
+    "morale": 56.9,
+    "rating": 54.3,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 31,
@@ -523,17 +643,21 @@
     "squad_name": "Modern Era",
     "role": "AR",
     "batting": {
-      "avg": 52.6,
-      "sr": 85.8
+      "avg": 54.8,
+      "sr": 77.0
     },
     "bowling": {
-      "avg": 26.7,
-      "econ": 3.6,
-      "sr": 44.0
+      "avg": 24.4,
+      "econ": 3.4,
+      "sr": 52.6
     },
-    "rating": 75.2,
+    "fielding": 80.4,
+    "morale": 78.5,
+    "rating": 82.9,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 32,
@@ -543,17 +667,21 @@
     "squad_name": "Modern Era",
     "role": "AR",
     "batting": {
-      "avg": 34.2,
-      "sr": 86.6
+      "avg": 38.6,
+      "sr": 73.6
     },
     "bowling": {
-      "avg": 31.3,
-      "econ": 4.8,
-      "sr": 53.1
+      "avg": 27.5,
+      "econ": 4.9,
+      "sr": 54.4
     },
-    "rating": 52.6,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 58.8,
+    "morale": 64.0,
+    "rating": 60.0,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 33,
@@ -564,13 +692,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 23.3,
-      "econ": 3.2,
-      "sr": 38.9
+      "avg": 24.0,
+      "econ": 3.1,
+      "sr": 47.7
     },
-    "rating": 71.9,
+    "fielding": 87.4,
+    "morale": 76.0,
+    "rating": 73.4,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 34,
@@ -581,13 +713,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 22.4,
-      "econ": 3.9,
-      "sr": 51.7
+      "avg": 24.9,
+      "econ": 3.3,
+      "sr": 48.0
     },
-    "rating": 61.8,
+    "fielding": 82.4,
+    "morale": 68.3,
+    "rating": 68.1,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 35,
@@ -598,13 +734,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 28.9,
-      "econ": 4.5,
-      "sr": 52.7
+      "avg": 27.6,
+      "econ": 4.7,
+      "sr": 54.6
     },
-    "rating": 45.3,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 62.6,
+    "morale": 74.7,
+    "rating": 47.9,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 36,
@@ -615,13 +755,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 28.5,
-      "econ": 4.1,
-      "sr": 55.4
+      "avg": 29.3,
+      "econ": 4.7,
+      "sr": 51.5
     },
-    "rating": 48.5,
+    "fielding": 74.1,
+    "morale": 74.9,
+    "rating": 46.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 37,
@@ -631,13 +775,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 36.2,
-      "sr": 74.2
+      "avg": 40.0,
+      "sr": 83.0
     },
     "bowling": null,
-    "rating": 47.3,
+    "fielding": 74.4,
+    "morale": 66.6,
+    "rating": 58.0,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 38,
@@ -648,13 +796,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 33.5,
-      "econ": 4.9,
-      "sr": 60.7
+      "avg": 35.0,
+      "econ": 4.6,
+      "sr": 65.6
     },
-    "rating": 32.0,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 52.9,
+    "morale": 52.6,
+    "rating": 33.4,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 39,
@@ -664,13 +816,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "BAT",
     "batting": {
-      "avg": 47.2,
-      "sr": 81.8
+      "avg": 51.8,
+      "sr": 79.7
     },
     "bowling": null,
-    "rating": 59.8,
+    "fielding": 71.2,
+    "morale": 76.9,
+    "rating": 68.6,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 40,
@@ -680,13 +836,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "BAT",
     "batting": {
-      "avg": 36.5,
-      "sr": 72.4
+      "avg": 40.5,
+      "sr": 80.4
     },
     "bowling": null,
-    "rating": 47.1,
+    "fielding": 72.8,
+    "morale": 59.9,
+    "rating": 57.7,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 41,
@@ -696,13 +856,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "BAT",
     "batting": {
-      "avg": 40.9,
-      "sr": 72.6
+      "avg": 44.3,
+      "sr": 72.1
     },
     "bowling": null,
-    "rating": 50.8,
+    "fielding": 66.7,
+    "morale": 65.5,
+    "rating": 58.5,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 42,
@@ -712,13 +876,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "BAT",
     "batting": {
-      "avg": 32.3,
-      "sr": 61.4
+      "avg": 30.1,
+      "sr": 66.0
     },
     "bowling": null,
-    "rating": 40.0,
+    "fielding": 45.3,
+    "morale": 49.9,
+    "rating": 42.5,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 43,
@@ -729,13 +897,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.0,
-      "econ": 3.3,
-      "sr": 45.3
+      "avg": 24.7,
+      "econ": 4.2,
+      "sr": 54.0
     },
-    "rating": 63.3,
+    "fielding": 80.8,
+    "morale": 66.5,
+    "rating": 58.9,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 44,
@@ -745,13 +917,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "WK",
     "batting": {
-      "avg": 40.3,
-      "sr": 77.5
+      "avg": 44.3,
+      "sr": 85.6
     },
     "bowling": null,
-    "rating": 51.5,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 59.3,
+    "morale": 60.3,
+    "rating": 61.1,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 45,
@@ -762,13 +938,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.8,
-      "econ": 4.0,
-      "sr": 51.0
+      "avg": 31.0,
+      "econ": 4.6,
+      "sr": 56.1
     },
-    "rating": 47.1,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 62.4,
+    "morale": 58.2,
+    "rating": 43.3,
+    "credit": 7.5,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 46,
@@ -778,13 +958,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "BAT",
     "batting": {
-      "avg": 38.7,
-      "sr": 77.3
+      "avg": 43.0,
+      "sr": 74.0
     },
     "bowling": null,
-    "rating": 50.1,
+    "fielding": 68.1,
+    "morale": 55.2,
+    "rating": 57.9,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 47,
@@ -794,13 +978,17 @@
     "squad_name": "1980s Ashes Era",
     "role": "BAT",
     "batting": {
-      "avg": 51.7,
-      "sr": 94.7
+      "avg": 46.2,
+      "sr": 77.1
     },
     "bowling": null,
-    "rating": 66.7,
+    "fielding": 84.0,
+    "morale": 67.7,
+    "rating": 64.2,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 48,
@@ -811,13 +999,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 31.8,
-      "econ": 4.8,
-      "sr": 64.5
+      "avg": 34.0,
+      "econ": 4.6,
+      "sr": 62.0
     },
-    "rating": 34.3,
+    "fielding": 46.0,
+    "morale": 55.1,
+    "rating": 35.5,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 49,
@@ -828,13 +1020,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 27.1,
-      "econ": 4.3,
+      "avg": 31.1,
+      "econ": 3.9,
       "sr": 54.2
     },
-    "rating": 49.2,
+    "fielding": 64.8,
+    "morale": 73.1,
+    "rating": 49.6,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 50,
@@ -844,13 +1040,17 @@
     "squad_name": "1999 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 47.5,
-      "sr": 93.5
+      "avg": 51.4,
+      "sr": 80.2
     },
     "bowling": null,
-    "rating": 62.8,
+    "fielding": 68.1,
+    "morale": 80.4,
+    "rating": 68.2,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 51,
@@ -860,13 +1060,17 @@
     "squad_name": "1999 World Cup Winners",
     "role": "WK",
     "batting": {
-      "avg": 66.2,
-      "sr": 97.7
+      "avg": 55.1,
+      "sr": 86.7
     },
     "bowling": null,
-    "rating": 80.9,
+    "fielding": 87.4,
+    "morale": 83.6,
+    "rating": 76.3,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 52,
@@ -876,13 +1080,17 @@
     "squad_name": "1999 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 55.0,
-      "sr": 91.7
+      "avg": 53.3,
+      "sr": 86.7
     },
     "bowling": null,
-    "rating": 68.8,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 83.4,
+    "morale": 75.9,
+    "rating": 72.5,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 53,
@@ -892,13 +1100,17 @@
     "squad_name": "1999 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 54.3,
-      "sr": 92.0
+      "avg": 54.0,
+      "sr": 90.9
     },
     "bowling": null,
-    "rating": 68.3,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 70.2,
+    "morale": 71.2,
+    "rating": 73.1,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 54,
@@ -908,13 +1120,17 @@
     "squad_name": "1999 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 39.3,
-      "sr": 72.3
+      "avg": 36.7,
+      "sr": 70.1
     },
     "bowling": null,
-    "rating": 49.4,
+    "fielding": 73.0,
+    "morale": 59.2,
+    "rating": 52.2,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 55,
@@ -924,13 +1140,17 @@
     "squad_name": "1999 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 34.6,
-      "sr": 75.6
+      "avg": 40.8,
+      "sr": 71.1
     },
     "bowling": null,
-    "rating": 46.3,
+    "fielding": 72.7,
+    "morale": 63.1,
+    "rating": 55.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 56,
@@ -941,13 +1161,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 19.6,
-      "econ": 3.0,
-      "sr": 42.6
+      "avg": 22.9,
+      "econ": 3.1,
+      "sr": 38.2
     },
-    "rating": 78.4,
+    "fielding": 92.7,
+    "morale": 94.5,
+    "rating": 78.1,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 57,
@@ -958,13 +1182,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 23.7,
-      "econ": 3.2,
-      "sr": 43.6
+      "avg": 22.8,
+      "econ": 3.1,
+      "sr": 46.1
     },
-    "rating": 69.9,
-    "credit": 8.5,
-    "consistency": 0.9
+    "fielding": 83.6,
+    "morale": 93.6,
+    "rating": 75.5,
+    "credit": 9.0,
+    "consistency": 0.9,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 58,
@@ -975,13 +1203,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.9,
-      "econ": 4.2,
-      "sr": 59.7
+      "avg": 31.2,
+      "econ": 4.8,
+      "sr": 52.2
     },
-    "rating": 48.8,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 70.7,
+    "morale": 57.2,
+    "rating": 42.8,
+    "credit": 7.5,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 59,
@@ -991,17 +1223,21 @@
     "squad_name": "1999 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 28.5,
-      "sr": 75.0
+      "avg": 31.5,
+      "sr": 64.6
     },
     "bowling": {
-      "avg": 29.4,
-      "econ": 5.1,
-      "sr": 60.5
+      "avg": 29.2,
+      "econ": 4.6,
+      "sr": 58.6
     },
-    "rating": 45.8,
+    "fielding": 50.1,
+    "morale": 47.6,
+    "rating": 52.4,
     "credit": 8.0,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 60,
@@ -1012,13 +1248,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.1,
-      "econ": 5.6,
-      "sr": 55.9
+      "avg": 33.5,
+      "econ": 4.9,
+      "sr": 65.8
     },
-    "rating": 32.6,
+    "fielding": 61.3,
+    "morale": 47.0,
+    "rating": 33.4,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 61,
@@ -1029,13 +1269,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 33.2,
-      "econ": 5.2,
-      "sr": 57.6
+      "avg": 35.8,
+      "econ": 4.6,
+      "sr": 65.6
     },
-    "rating": 30.9,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 60.7,
+    "morale": 42.9,
+    "rating": 32.6,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 62,
@@ -1046,13 +1290,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 23.3,
-      "econ": 2.5,
-      "sr": 43.9
+      "avg": 22.4,
+      "econ": 2.6,
+      "sr": 44.1
     },
-    "rating": 76.6,
+    "fielding": 79.8,
+    "morale": 83.7,
+    "rating": 80.9,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 63,
@@ -1062,13 +1310,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 49.2,
-      "sr": 86.7
+      "avg": 47.5,
+      "sr": 89.2
     },
     "bowling": null,
-    "rating": 62.7,
+    "fielding": 74.5,
+    "morale": 76.5,
+    "rating": 67.5,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 64,
@@ -1078,13 +1330,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 67.2,
-      "sr": 89.7
+      "avg": 64.4,
+      "sr": 102.1
     },
     "bowling": null,
-    "rating": 78.9,
-    "credit": 9.0,
-    "consistency": 0.9
+    "fielding": 93.7,
+    "morale": 85.8,
+    "rating": 88.7,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 65,
@@ -1094,13 +1350,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 47.4,
-      "sr": 82.9
+      "avg": 51.6,
+      "sr": 81.6
     },
     "bowling": null,
-    "rating": 60.2,
+    "fielding": 74.2,
+    "morale": 66.4,
+    "rating": 69.1,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 66,
@@ -1111,16 +1371,20 @@
     "role": "AR",
     "batting": {
       "avg": 48.0,
-      "sr": 81.3
+      "sr": 81.2
     },
     "bowling": {
-      "avg": 26.5,
-      "econ": 3.1,
-      "sr": 48.6
+      "avg": 24.5,
+      "econ": 3.5,
+      "sr": 47.0
     },
-    "rating": 74.2,
+    "fielding": 82.4,
+    "morale": 79.4,
+    "rating": 80.5,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 67,
@@ -1131,13 +1395,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 28.0,
-      "econ": 3.1,
-      "sr": 46.1
+      "avg": 26.1,
+      "econ": 4.1,
+      "sr": 50.2
     },
-    "rating": 61.7,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 75.1,
+    "morale": 83.8,
+    "rating": 58.5,
+    "credit": 8.0,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 68,
@@ -1148,13 +1416,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 27.6,
-      "econ": 4.1,
-      "sr": 52.8
+      "avg": 23.7,
+      "econ": 3.5,
+      "sr": 49.8
     },
-    "rating": 51.9,
-    "credit": 8.0,
-    "consistency": 0.8
+    "fielding": 77.3,
+    "morale": 65.0,
+    "rating": 67.5,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 69,
@@ -1165,13 +1437,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.9,
-      "econ": 4.8,
-      "sr": 57.0
+      "avg": 27.3,
+      "econ": 4.4,
+      "sr": 59.0
     },
-    "rating": 44.5,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 64.3,
+    "morale": 63.8,
+    "rating": 49.7,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 70,
@@ -1181,13 +1457,17 @@
     "squad_name": "Modern Era",
     "role": "WK",
     "batting": {
-      "avg": 44.9,
-      "sr": 81.1
+      "avg": 39.7,
+      "sr": 80.7
     },
     "bowling": null,
-    "rating": 56.1,
+    "fielding": 58.4,
+    "morale": 56.7,
+    "rating": 56.0,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 71,
@@ -1197,17 +1477,21 @@
     "squad_name": "Modern Era",
     "role": "AR",
     "batting": {
-      "avg": 43.0,
-      "sr": 74.0
+      "avg": 41.4,
+      "sr": 72.5
     },
     "bowling": {
-      "avg": 30.0,
-      "econ": 4.9,
-      "sr": 51.3
+      "avg": 27.2,
+      "econ": 3.8,
+      "sr": 52.4
     },
-    "rating": 56.2,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 71.4,
+    "morale": 70.0,
+    "rating": 68.2,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 7
   },
   {
     "id": 72,
@@ -1217,17 +1501,21 @@
     "squad_name": "Modern Era",
     "role": "AR",
     "batting": {
-      "avg": 35.2,
-      "sr": 79.1
+      "avg": 38.6,
+      "sr": 80.6
     },
     "bowling": {
-      "avg": 27.6,
-      "econ": 4.5,
-      "sr": 57.2
+      "avg": 27.2,
+      "econ": 4.6,
+      "sr": 54.9
     },
-    "rating": 56.1,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 72.0,
+    "morale": 56.5,
+    "rating": 63.6,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 73,
@@ -1237,13 +1525,17 @@
     "squad_name": "1979 World Cup Champions",
     "role": "BAT",
     "batting": {
-      "avg": 51.3,
-      "sr": 80.3
+      "avg": 52.5,
+      "sr": 90.4
     },
     "bowling": null,
-    "rating": 62.9,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 79.2,
+    "morale": 65.1,
+    "rating": 72.4,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 74,
@@ -1253,13 +1545,17 @@
     "squad_name": "1979 World Cup Champions",
     "role": "BAT",
     "batting": {
-      "avg": 66.8,
-      "sr": 104.5
+      "avg": 67.5,
+      "sr": 96.9
     },
     "bowling": null,
-    "rating": 82.5,
-    "credit": 9.0,
-    "consistency": 0.9
+    "fielding": 85.2,
+    "morale": 78.5,
+    "rating": 87.3,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 75,
@@ -1269,13 +1565,17 @@
     "squad_name": "1979 World Cup Champions",
     "role": "BAT",
     "batting": {
-      "avg": 49.2,
-      "sr": 80.5
+      "avg": 49.6,
+      "sr": 91.0
     },
     "bowling": null,
-    "rating": 61.2,
+    "fielding": 72.2,
+    "morale": 82.0,
+    "rating": 69.5,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 76,
@@ -1285,13 +1585,17 @@
     "squad_name": "1979 World Cup Champions",
     "role": "BAT",
     "batting": {
-      "avg": 42.5,
-      "sr": 80.7
+      "avg": 44.5,
+      "sr": 85.8
     },
     "bowling": null,
-    "rating": 54.0,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 74.8,
+    "morale": 66.9,
+    "rating": 62.4,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 77,
@@ -1301,13 +1605,17 @@
     "squad_name": "1979 World Cup Champions",
     "role": "BAT",
     "batting": {
-      "avg": 42.2,
+      "avg": 43.1,
       "sr": 79.0
     },
     "bowling": null,
-    "rating": 53.4,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 69.4,
+    "morale": 65.1,
+    "rating": 59.3,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 78,
@@ -1318,13 +1626,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 22.1,
-      "econ": 3.1,
-      "sr": 52.8
+      "avg": 23.6,
+      "econ": 3.3,
+      "sr": 50.4
     },
-    "rating": 68.8,
+    "fielding": 80.6,
+    "morale": 74.5,
+    "rating": 69.3,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 79,
@@ -1335,13 +1647,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 21.3,
-      "econ": 3.1,
-      "sr": 43.8
+      "avg": 19.6,
+      "econ": 2.4,
+      "sr": 40.9
     },
-    "rating": 74.5,
-    "credit": 9.0,
-    "consistency": 0.9
+    "fielding": 86.9,
+    "morale": 87.5,
+    "rating": 88.3,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 80,
@@ -1353,12 +1669,16 @@
     "batting": null,
     "bowling": {
       "avg": 22.8,
-      "econ": 3.4,
-      "sr": 53.0
+      "econ": 3.3,
+      "sr": 50.9
     },
-    "rating": 65.1,
+    "fielding": 73.4,
+    "morale": 75.8,
+    "rating": 70.0,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 81,
@@ -1369,13 +1689,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 31.2,
-      "econ": 4.9,
+      "avg": 29.3,
+      "econ": 4.3,
       "sr": 52.1
     },
-    "rating": 38.7,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 56.3,
+    "morale": 63.2,
+    "rating": 49.1,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 82,
@@ -1385,13 +1709,17 @@
     "squad_name": "1979 World Cup Champions",
     "role": "WK",
     "batting": {
-      "avg": 35.1,
-      "sr": 83.6
+      "avg": 41.7,
+      "sr": 85.1
     },
     "bowling": null,
-    "rating": 48.6,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 73.1,
+    "morale": 66.7,
+    "rating": 59.8,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 83,
@@ -1401,17 +1729,21 @@
     "squad_name": "1979 World Cup Champions",
     "role": "AR",
     "batting": {
-      "avg": 26.9,
-      "sr": 72.4
+      "avg": 26.2,
+      "sr": 75.1
     },
     "bowling": {
-      "avg": 30.1,
+      "avg": 35.0,
       "econ": 5.5,
-      "sr": 64.5
+      "sr": 59.6
     },
+    "fielding": 48.4,
+    "morale": 40.1,
     "rating": 41.5,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 84,
@@ -1421,13 +1753,17 @@
     "squad_name": "Lara's Prime",
     "role": "BAT",
     "batting": {
-      "avg": 65.5,
-      "sr": 105.3
+      "avg": 57.9,
+      "sr": 90.0
     },
     "bowling": null,
-    "rating": 82.7,
+    "fielding": 87.3,
+    "morale": 87.1,
+    "rating": 79.6,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 85,
@@ -1438,13 +1774,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.4,
-      "econ": 3.4,
-      "sr": 53.3
+      "avg": 26.1,
+      "econ": 3.5,
+      "sr": 45.7
     },
-    "rating": 59.5,
+    "fielding": 68.5,
+    "morale": 71.7,
+    "rating": 64.6,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 86,
@@ -1455,13 +1795,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 23.2,
-      "econ": 3.0,
-      "sr": 40.7
+      "avg": 18.2,
+      "econ": 2.7,
+      "sr": 43.6
     },
-    "rating": 73.3,
-    "credit": 9.0,
-    "consistency": 0.9
+    "fielding": 80.2,
+    "morale": 87.4,
+    "rating": 86.8,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 87,
@@ -1471,13 +1815,17 @@
     "squad_name": "Lara's Prime",
     "role": "BAT",
     "batting": {
-      "avg": 46.1,
-      "sr": 92.4
+      "avg": 49.6,
+      "sr": 76.0
     },
     "bowling": null,
-    "rating": 61.4,
+    "fielding": 78.9,
+    "morale": 67.7,
+    "rating": 66.5,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 88,
@@ -1487,13 +1835,17 @@
     "squad_name": "Lara's Prime",
     "role": "BAT",
     "batting": {
-      "avg": 36.4,
-      "sr": 84.3
+      "avg": 42.4,
+      "sr": 75.6
     },
     "bowling": null,
-    "rating": 49.8,
+    "fielding": 59.2,
+    "morale": 61.5,
+    "rating": 57.2,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 89,
@@ -1503,17 +1855,21 @@
     "squad_name": "Lara's Prime",
     "role": "AR",
     "batting": {
-      "avg": 37.4,
-      "sr": 83.9
+      "avg": 34.9,
+      "sr": 68.4
     },
     "bowling": {
-      "avg": 27.4,
-      "econ": 3.8,
-      "sr": 51.9
+      "avg": 29.2,
+      "econ": 5.0,
+      "sr": 53.5
     },
-    "rating": 62.5,
-    "credit": 8.5,
-    "consistency": 0.7
+    "fielding": 71.6,
+    "morale": 60.0,
+    "rating": 56.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 90,
@@ -1523,13 +1879,17 @@
     "squad_name": "Lara's Prime",
     "role": "BAT",
     "batting": {
-      "avg": 32.4,
-      "sr": 79.3
+      "avg": 31.1,
+      "sr": 79.0
     },
     "bowling": null,
-    "rating": 44.1,
-    "credit": 7.5,
-    "consistency": 0.6
+    "fielding": 57.2,
+    "morale": 56.3,
+    "rating": 47.1,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 91,
@@ -1539,13 +1899,17 @@
     "squad_name": "Lara's Prime",
     "role": "WK",
     "batting": {
-      "avg": 29.7,
-      "sr": 68.0
+      "avg": 23.5,
+      "sr": 73.4
     },
     "bowling": null,
-    "rating": 39.4,
+    "fielding": 40.4,
+    "morale": 43.8,
+    "rating": 38.5,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 92,
@@ -1556,13 +1920,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 32.8,
-      "econ": 5.5,
-      "sr": 56.3
+      "avg": 34.4,
+      "econ": 4.6,
+      "sr": 61.7
     },
-    "rating": 29.4,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 44.8,
+    "morale": 57.5,
+    "rating": 34.9,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 93,
@@ -1573,13 +1941,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 27.1,
-      "econ": 5.0,
-      "sr": 52.7
+      "avg": 31.8,
+      "econ": 3.9,
+      "sr": 50.3
     },
-    "rating": 43.8,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 57.3,
+    "morale": 71.4,
+    "rating": 49.3,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 94,
@@ -1590,13 +1962,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 32.0,
+      "avg": 31.8,
       "econ": 5.3,
-      "sr": 58.5
+      "sr": 55.8
     },
-    "rating": 31.5,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 54.9,
+    "morale": 64.0,
+    "rating": 35.0,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 95,
@@ -1606,17 +1982,21 @@
     "squad_name": "T20 World Champions",
     "role": "AR",
     "batting": {
-      "avg": 39.6,
-      "sr": 75.7
+      "avg": 42.5,
+      "sr": 85.0
     },
     "bowling": {
-      "avg": 29.5,
-      "econ": 4.1,
-      "sr": 57.1
+      "avg": 29.6,
+      "econ": 3.9,
+      "sr": 59.8
     },
-    "rating": 58.2,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 67.5,
+    "morale": 57.0,
+    "rating": 66.4,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 8
   },
   {
     "id": 96,
@@ -1626,13 +2006,17 @@
     "squad_name": "T20 World Champions",
     "role": "BAT",
     "batting": {
-      "avg": 54.3,
-      "sr": 85.8
+      "avg": 48.7,
+      "sr": 85.1
     },
     "bowling": null,
-    "rating": 66.8,
+    "fielding": 73.9,
+    "morale": 73.6,
+    "rating": 67.5,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 97,
@@ -1642,13 +2026,17 @@
     "squad_name": "T20 World Champions",
     "role": "BAT",
     "batting": {
-      "avg": 42.2,
-      "sr": 81.4
+      "avg": 35.2,
+      "sr": 87.2
     },
     "bowling": null,
-    "rating": 54.0,
+    "fielding": 72.0,
+    "morale": 71.4,
+    "rating": 54.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 98,
@@ -1658,17 +2046,21 @@
     "squad_name": "T20 World Champions",
     "role": "AR",
     "batting": {
-      "avg": 45.7,
-      "sr": 88.3
+      "avg": 49.4,
+      "sr": 89.7
     },
     "bowling": {
-      "avg": 24.0,
-      "econ": 3.4,
-      "sr": 52.5
+      "avg": 27.8,
+      "econ": 3.3,
+      "sr": 52.1
     },
-    "rating": 74.1,
+    "fielding": 82.1,
+    "morale": 79.1,
+    "rating": 79.5,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 99,
@@ -1678,17 +2070,21 @@
     "squad_name": "T20 World Champions",
     "role": "AR",
     "batting": {
-      "avg": 37.3,
-      "sr": 74.2
+      "avg": 42.0,
+      "sr": 73.4
     },
     "bowling": {
-      "avg": 28.5,
-      "econ": 4.3,
-      "sr": 53.0
+      "avg": 31.1,
+      "econ": 4.8,
+      "sr": 50.9
     },
-    "rating": 57.4,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 64.7,
+    "morale": 63.7,
+    "rating": 60.0,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 8
   },
   {
     "id": 100,
@@ -1698,17 +2094,21 @@
     "squad_name": "T20 World Champions",
     "role": "AR",
     "batting": {
-      "avg": 27.0,
-      "sr": 78.8
+      "avg": 29.3,
+      "sr": 67.6
     },
     "bowling": {
-      "avg": 33.7,
-      "econ": 5.5,
-      "sr": 61.8
+      "avg": 29.2,
+      "econ": 5.4,
+      "sr": 57.0
     },
-    "rating": 39.7,
-    "credit": 7.5,
-    "consistency": 0.6
+    "fielding": 45.4,
+    "morale": 51.6,
+    "rating": 47.7,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 9
   },
   {
     "id": 101,
@@ -1718,13 +2118,17 @@
     "squad_name": "T20 World Champions",
     "role": "BAT",
     "batting": {
-      "avg": 28.6,
-      "sr": 60.0
+      "avg": 32.6,
+      "sr": 74.0
     },
     "bowling": null,
-    "rating": 36.7,
-    "credit": 7.5,
-    "consistency": 0.6
+    "fielding": 57.6,
+    "morale": 48.5,
+    "rating": 47.2,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 102,
@@ -1734,13 +2138,17 @@
     "squad_name": "T20 World Champions",
     "role": "BAT",
     "batting": {
-      "avg": 27.2,
-      "sr": 71.6
+      "avg": 23.0,
+      "sr": 74.4
     },
     "bowling": null,
-    "rating": 38.1,
+    "fielding": 40.2,
+    "morale": 63.7,
+    "rating": 38.3,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 103,
@@ -1751,13 +2159,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 32.3,
-      "econ": 4.9,
-      "sr": 57.4
+      "avg": 33.5,
+      "econ": 5.0,
+      "sr": 63.7
     },
-    "rating": 34.7,
+    "fielding": 56.7,
+    "morale": 57.3,
+    "rating": 33.0,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 104,
@@ -1768,13 +2180,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 35.3,
-      "econ": 5.4,
-      "sr": 56.9
+      "avg": 31.1,
+      "econ": 5.1,
+      "sr": 60.2
     },
-    "rating": 26.4,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 44.9,
+    "morale": 57.3,
+    "rating": 36.0,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 105,
@@ -1784,13 +2200,17 @@
     "squad_name": "T20 World Champions",
     "role": "WK",
     "batting": {
-      "avg": 28.2,
-      "sr": 72.7
+      "avg": 26.0,
+      "sr": 74.1
     },
     "bowling": null,
-    "rating": 39.2,
+    "fielding": 49.4,
+    "morale": 58.6,
+    "rating": 41.3,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 4,
+    "position_max": 7
   },
   {
     "id": 106,
@@ -1800,17 +2220,21 @@
     "squad_name": "Botham's Ashes",
     "role": "AR",
     "batting": {
-      "avg": 53.2,
-      "sr": 90.0
+      "avg": 46.9,
+      "sr": 77.4
     },
     "bowling": {
-      "avg": 26.0,
-      "econ": 3.3,
-      "sr": 46.0
+      "avg": 25.2,
+      "econ": 3.9,
+      "sr": 45.9
     },
-    "rating": 78.0,
+    "fielding": 72.3,
+    "morale": 67.4,
+    "rating": 76.1,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 107,
@@ -1820,13 +2244,17 @@
     "squad_name": "Botham's Ashes",
     "role": "BAT",
     "batting": {
-      "avg": 47.4,
-      "sr": 84.5
+      "avg": 54.8,
+      "sr": 85.5
     },
     "bowling": null,
-    "rating": 60.6,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 76.2,
+    "morale": 79.5,
+    "rating": 73.0,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 108,
@@ -1836,13 +2264,17 @@
     "squad_name": "Botham's Ashes",
     "role": "BAT",
     "batting": {
-      "avg": 34.8,
-      "sr": 76.3
+      "avg": 36.5,
+      "sr": 71.6
     },
     "bowling": null,
-    "rating": 46.6,
+    "fielding": 57.0,
+    "morale": 58.9,
+    "rating": 51.2,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 109,
@@ -1852,13 +2284,17 @@
     "squad_name": "Botham's Ashes",
     "role": "BAT",
     "batting": {
-      "avg": 46.9,
-      "sr": 88.9
+      "avg": 54.7,
+      "sr": 86.1
     },
     "bowling": null,
-    "rating": 61.2,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 77.1,
+    "morale": 70.5,
+    "rating": 73.1,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 110,
@@ -1868,13 +2304,17 @@
     "squad_name": "Botham's Ashes",
     "role": "BAT",
     "batting": {
-      "avg": 36.7,
-      "sr": 81.1
+      "avg": 39.4,
+      "sr": 85.5
     },
     "bowling": null,
-    "rating": 49.3,
+    "fielding": 57.5,
+    "morale": 72.4,
+    "rating": 56.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 111,
@@ -1885,13 +2325,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.5,
-      "econ": 4.7,
-      "sr": 51.1
+      "avg": 27.1,
+      "econ": 3.9,
+      "sr": 59.4
     },
-    "rating": 41.7,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 64.4,
+    "morale": 63.8,
+    "rating": 54.1,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 112,
@@ -1901,13 +2345,17 @@
     "squad_name": "Botham's Ashes",
     "role": "WK",
     "batting": {
-      "avg": 24.1,
-      "sr": 79.2
+      "avg": 22.9,
+      "sr": 72.6
     },
     "bowling": null,
-    "rating": 37.3,
+    "fielding": 58.1,
+    "morale": 50.0,
+    "rating": 39.1,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 113,
@@ -1918,13 +2366,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 29.4,
-      "econ": 4.7,
-      "sr": 64.3
+      "avg": 31.1,
+      "econ": 5.6,
+      "sr": 56.3
     },
-    "rating": 38.6,
+    "fielding": 43.3,
+    "morale": 54.1,
+    "rating": 33.0,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 114,
@@ -1935,13 +2387,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 34.6,
-      "econ": 5.2,
-      "sr": 65.9
+      "avg": 30.6,
+      "econ": 5.0,
+      "sr": 60.0
     },
-    "rating": 26.6,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 53.3,
+    "morale": 59.8,
+    "rating": 38.0,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 115,
@@ -1952,13 +2408,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 35.7,
-      "econ": 5.5,
+      "avg": 31.1,
+      "econ": 5.1,
       "sr": 61.7
     },
-    "rating": 23.7,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 58.9,
+    "morale": 64.8,
+    "rating": 36.2,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 116,
@@ -1969,13 +2429,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 29.0,
-      "econ": 4.8,
-      "sr": 55.5
+      "avg": 27.3,
+      "econ": 4.6,
+      "sr": 51.6
     },
-    "rating": 41.9,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 74.0,
+    "morale": 59.2,
+    "rating": 50.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 117,
@@ -1985,13 +2449,17 @@
     "squad_name": "2005 Ashes Winners",
     "role": "BAT",
     "batting": {
-      "avg": 52.4,
-      "sr": 84.5
+      "avg": 49.5,
+      "sr": 86.9
     },
     "bowling": null,
-    "rating": 64.9,
+    "fielding": 69.3,
+    "morale": 65.1,
+    "rating": 68.2,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 118,
@@ -2001,13 +2469,17 @@
     "squad_name": "2005 Ashes Winners",
     "role": "BAT",
     "batting": {
-      "avg": 36.7,
-      "sr": 80.8
+      "avg": 41.7,
+      "sr": 77.1
     },
     "bowling": null,
-    "rating": 49.2,
+    "fielding": 59.6,
+    "morale": 69.1,
+    "rating": 57.0,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 119,
@@ -2017,13 +2489,17 @@
     "squad_name": "2005 Ashes Winners",
     "role": "BAT",
     "batting": {
-      "avg": 39.7,
-      "sr": 80.5
+      "avg": 40.9,
+      "sr": 81.2
     },
     "bowling": null,
-    "rating": 51.7,
+    "fielding": 73.5,
+    "morale": 70.8,
+    "rating": 58.3,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 120,
@@ -2033,13 +2509,17 @@
     "squad_name": "2005 Ashes Winners",
     "role": "BAT",
     "batting": {
-      "avg": 45.8,
-      "sr": 80.7
+      "avg": 51.5,
+      "sr": 93.2
     },
     "bowling": null,
-    "rating": 58.3,
-    "credit": 8.0,
-    "consistency": 0.8
+    "fielding": 75.2,
+    "morale": 75.9,
+    "rating": 71.9,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 121,
@@ -2049,17 +2529,21 @@
     "squad_name": "2005 Ashes Winners",
     "role": "AR",
     "batting": {
-      "avg": 48.2,
-      "sr": 85.8
+      "avg": 48.1,
+      "sr": 90.0
     },
     "bowling": {
-      "avg": 22.8,
+      "avg": 25.4,
       "econ": 3.3,
-      "sr": 50.9
+      "sr": 45.2
     },
-    "rating": 76.9,
+    "fielding": 69.2,
+    "morale": 68.3,
+    "rating": 81.3,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 122,
@@ -2069,13 +2553,17 @@
     "squad_name": "2005 Ashes Winners",
     "role": "BAT",
     "batting": {
-      "avg": 34.7,
-      "sr": 76.2
+      "avg": 39.5,
+      "sr": 77.9
     },
     "bowling": null,
-    "rating": 46.5,
+    "fielding": 69.0,
+    "morale": 73.9,
+    "rating": 56.0,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 123,
@@ -2085,13 +2573,17 @@
     "squad_name": "2005 Ashes Winners",
     "role": "WK",
     "batting": {
-      "avg": 27.0,
-      "sr": 64.1
+      "avg": 25.9,
+      "sr": 65.0
     },
     "bowling": null,
-    "rating": 36.3,
+    "fielding": 40.9,
+    "morale": 50.8,
+    "rating": 38.5,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 124,
@@ -2102,13 +2594,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 35.3,
-      "econ": 5.1,
-      "sr": 62.7
+      "avg": 33.0,
+      "econ": 5.5,
+      "sr": 66.0
     },
-    "rating": 27.3,
+    "fielding": 61.2,
+    "morale": 60.9,
+    "rating": 29.2,
     "credit": 7.0,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 125,
@@ -2119,13 +2615,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.6,
-      "econ": 4.3,
-      "sr": 50.1
+      "avg": 30.5,
+      "econ": 4.4,
+      "sr": 56.5
     },
-    "rating": 45.1,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 60.4,
+    "morale": 55.8,
+    "rating": 45.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 126,
@@ -2136,13 +2636,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.5,
-      "econ": 4.8,
-      "sr": 59.5
+      "avg": 29.8,
+      "econ": 4.4,
+      "sr": 50.9
     },
-    "rating": 38.5,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 58.6,
+    "morale": 66.7,
+    "rating": 48.0,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 127,
@@ -2153,13 +2657,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 34.2,
-      "econ": 5.1,
-      "sr": 61.6
+      "avg": 35.0,
+      "econ": 4.8,
+      "sr": 62.6
     },
-    "rating": 29.2,
+    "fielding": 47.3,
+    "morale": 56.8,
+    "rating": 32.3,
     "credit": 7.0,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 128,
@@ -2169,13 +2677,17 @@
     "squad_name": "2019 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 36.4,
-      "sr": 76.7
+      "avg": 40.1,
+      "sr": 77.1
     },
     "bowling": null,
-    "rating": 48.0,
+    "fielding": 73.9,
+    "morale": 71.3,
+    "rating": 56.7,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 129,
@@ -2185,13 +2697,17 @@
     "squad_name": "2019 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 37.7,
-      "sr": 81.6
+      "avg": 38.4,
+      "sr": 78.3
     },
     "bowling": null,
-    "rating": 50.3,
+    "fielding": 61.5,
+    "morale": 74.4,
+    "rating": 54.6,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 130,
@@ -2201,13 +2717,17 @@
     "squad_name": "2019 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 46.7,
-      "sr": 84.3
+      "avg": 49.1,
+      "sr": 78.8
     },
     "bowling": null,
-    "rating": 59.9,
+    "fielding": 79.2,
+    "morale": 75.9,
+    "rating": 66.7,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 131,
@@ -2217,13 +2737,17 @@
     "squad_name": "2019 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 63.1,
-      "sr": 85.6
+      "avg": 64.9,
+      "sr": 89.7
     },
     "bowling": null,
-    "rating": 76.2,
-    "credit": 9.0,
-    "consistency": 0.9
+    "fielding": 90.9,
+    "morale": 87.5,
+    "rating": 85.9,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 132,
@@ -2233,17 +2757,21 @@
     "squad_name": "2019 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 50.6,
-      "sr": 75.5
+      "avg": 52.0,
+      "sr": 77.4
     },
     "bowling": {
-      "avg": 25.9,
-      "econ": 3.2,
-      "sr": 48.6
+      "avg": 27.8,
+      "econ": 3.7,
+      "sr": 46.4
     },
-    "rating": 74.7,
+    "fielding": 83.8,
+    "morale": 73.8,
+    "rating": 78.2,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 4,
+    "position_max": 6
   },
   {
     "id": 133,
@@ -2253,13 +2781,17 @@
     "squad_name": "2019 World Cup Winners",
     "role": "WK",
     "batting": {
-      "avg": 48.8,
-      "sr": 79.2
+      "avg": 45.9,
+      "sr": 94.8
     },
     "bowling": null,
-    "rating": 60.5,
+    "fielding": 77.4,
+    "morale": 76.0,
+    "rating": 67.6,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 134,
@@ -2269,17 +2801,21 @@
     "squad_name": "2019 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 42.4,
-      "sr": 75.6
+      "avg": 43.2,
+      "sr": 78.0
     },
     "bowling": {
-      "avg": 30.5,
-      "econ": 4.8,
-      "sr": 52.5
+      "avg": 30.3,
+      "econ": 4.4,
+      "sr": 52.7
     },
-    "rating": 55.9,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 64.2,
+    "morale": 57.3,
+    "rating": 63.6,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 135,
@@ -2290,13 +2826,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 29.1,
-      "econ": 5.0,
-      "sr": 66.0
+      "avg": 32.9,
+      "econ": 4.9,
+      "sr": 65.1
     },
-    "rating": 36.1,
+    "fielding": 61.6,
+    "morale": 46.1,
+    "rating": 34.5,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 136,
@@ -2307,13 +2847,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 25.9,
+      "avg": 23.7,
       "econ": 3.9,
-      "sr": 50.5
+      "sr": 48.1
     },
-    "rating": 56.8,
-    "credit": 8.0,
-    "consistency": 0.8
+    "fielding": 82.9,
+    "morale": 82.3,
+    "rating": 64.8,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 137,
@@ -2324,13 +2868,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 31.7,
-      "econ": 4.0,
-      "sr": 50.2
+      "avg": 27.7,
+      "econ": 4.2,
+      "sr": 55.9
     },
-    "rating": 46.0,
+    "fielding": 65.2,
+    "morale": 71.4,
+    "rating": 51.7,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 138,
@@ -2341,13 +2889,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.8,
-      "econ": 4.6,
-      "sr": 55.6
+      "avg": 29.2,
+      "econ": 4.2,
+      "sr": 55.5
     },
-    "rating": 46.7,
+    "fielding": 64.8,
+    "morale": 58.0,
+    "rating": 49.6,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 139,
@@ -2357,17 +2909,21 @@
     "squad_name": "1992 World Cup Winners",
     "role": "AR",
     "batting": {
-      "avg": 52.0,
-      "sr": 90.3
+      "avg": 46.9,
+      "sr": 88.9
     },
     "bowling": {
-      "avg": 23.0,
-      "econ": 3.7,
-      "sr": 51.5
+      "avg": 25.4,
+      "econ": 3.3,
+      "sr": 51.8
     },
-    "rating": 77.1,
+    "fielding": 75.7,
+    "morale": 71.4,
+    "rating": 79.9,
     "credit": 9.0,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 140,
@@ -2377,13 +2933,17 @@
     "squad_name": "1992 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 53.2,
-      "sr": 94.3
+      "avg": 53.1,
+      "sr": 82.7
     },
     "bowling": null,
-    "rating": 67.9,
+    "fielding": 80.7,
+    "morale": 79.1,
+    "rating": 71.2,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 141,
@@ -2394,13 +2954,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 18.2,
-      "econ": 2.6,
-      "sr": 44.8
+      "avg": 21.0,
+      "econ": 2.3,
+      "sr": 43.0
     },
-    "rating": 83.4,
-    "credit": 9.0,
-    "consistency": 0.9
+    "fielding": 92.0,
+    "morale": 94.6,
+    "rating": 86.7,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 7,
+    "position_max": 9
   },
   {
     "id": 142,
@@ -2411,13 +2975,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 20.4,
-      "econ": 2.9,
-      "sr": 38.8
+      "avg": 20.6,
+      "econ": 2.8,
+      "sr": 42.6
     },
-    "rating": 79.1,
+    "fielding": 92.8,
+    "morale": 92.5,
+    "rating": 83.1,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 143,
@@ -2427,13 +2995,17 @@
     "squad_name": "1992 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 51.3,
-      "sr": 77.0
+      "avg": 46.5,
+      "sr": 84.4
     },
     "bowling": null,
-    "rating": 62.1,
+    "fielding": 75.0,
+    "morale": 78.1,
+    "rating": 65.5,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 144,
@@ -2443,13 +3015,17 @@
     "squad_name": "1992 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 43.4,
-      "sr": 80.0
+      "avg": 41.1,
+      "sr": 85.0
     },
     "bowling": null,
-    "rating": 54.6,
+    "fielding": 61.8,
+    "morale": 68.9,
+    "rating": 58.4,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 145,
@@ -2459,13 +3035,17 @@
     "squad_name": "1992 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 44.8,
-      "sr": 83.7
+      "avg": 37.5,
+      "sr": 82.4
     },
     "bowling": null,
-    "rating": 56.7,
+    "fielding": 72.2,
+    "morale": 62.6,
+    "rating": 55.6,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 146,
@@ -2475,13 +3055,17 @@
     "squad_name": "1992 World Cup Winners",
     "role": "WK",
     "batting": {
-      "avg": 27.1,
-      "sr": 67.4
+      "avg": 22.8,
+      "sr": 72.6
     },
     "bowling": null,
-    "rating": 37.1,
+    "fielding": 59.2,
+    "morale": 40.9,
+    "rating": 39.1,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 147,
@@ -2492,13 +3076,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 28.0,
-      "econ": 4.8,
-      "sr": 58.2
+      "avg": 28.6,
+      "econ": 3.9,
+      "sr": 56.3
     },
-    "rating": 42.6,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 74.9,
+    "morale": 69.9,
+    "rating": 53.2,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 148,
@@ -2509,13 +3097,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 35.7,
-      "econ": 5.2,
-      "sr": 64.1
+      "avg": 35.3,
+      "econ": 4.5,
+      "sr": 63.8
     },
-    "rating": 25.5,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 49.8,
+    "morale": 57.4,
+    "rating": 34.1,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 149,
@@ -2525,13 +3117,17 @@
     "squad_name": "1992 World Cup Winners",
     "role": "BAT",
     "batting": {
-      "avg": 38.8,
-      "sr": 82.7
+      "avg": 39.8,
+      "sr": 79.3
     },
     "bowling": null,
-    "rating": 51.4,
+    "fielding": 62.5,
+    "morale": 57.9,
+    "rating": 56.1,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 150,
@@ -2541,13 +3137,17 @@
     "squad_name": "2009 T20 World Champions",
     "role": "BAT",
     "batting": {
-      "avg": 47.7,
-      "sr": 91.2
+      "avg": 53.7,
+      "sr": 87.4
     },
     "bowling": null,
-    "rating": 62.4,
-    "credit": 8.5,
-    "consistency": 0.8
+    "fielding": 70.9,
+    "morale": 66.6,
+    "rating": 72.1,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 151,
@@ -2557,17 +3157,21 @@
     "squad_name": "2009 T20 World Champions",
     "role": "AR",
     "batting": {
-      "avg": 39.3,
-      "sr": 76.7
+      "avg": 39.1,
+      "sr": 73.1
     },
     "bowling": {
-      "avg": 30.4,
-      "econ": 4.1,
-      "sr": 58.5
+      "avg": 27.5,
+      "econ": 3.8,
+      "sr": 58.0
     },
-    "rating": 57.1,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 73.3,
+    "morale": 57.9,
+    "rating": 66.1,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 152,
@@ -2577,13 +3181,17 @@
     "squad_name": "2009 T20 World Champions",
     "role": "BAT",
     "batting": {
-      "avg": 35.0,
-      "sr": 85.6
+      "avg": 38.9,
+      "sr": 74.9
     },
     "bowling": null,
-    "rating": 48.9,
+    "fielding": 68.6,
+    "morale": 58.2,
+    "rating": 54.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 153,
@@ -2593,13 +3201,17 @@
     "squad_name": "2009 T20 World Champions",
     "role": "WK",
     "batting": {
-      "avg": 27.6,
-      "sr": 72.2
+      "avg": 25.0,
+      "sr": 76.9
     },
     "bowling": null,
-    "rating": 38.6,
+    "fielding": 54.1,
+    "morale": 50.6,
+    "rating": 41.4,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 7
   },
   {
     "id": 154,
@@ -2610,13 +3222,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.2,
-      "econ": 4.8,
-      "sr": 51.8
+      "avg": 27.4,
+      "econ": 4.5,
+      "sr": 55.7
     },
-    "rating": 47.0,
+    "fielding": 62.7,
+    "morale": 64.7,
+    "rating": 49.6,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 155,
@@ -2624,1334 +3240,6 @@
     "country": "Pakistan",
     "era": 2009,
     "squad_name": "2009 T20 World Champions",
-    "role": "AR",
-    "batting": {
-      "avg": 42.8,
-      "sr": 74.8
-    },
-    "bowling": {
-      "avg": 31.3,
-      "econ": 4.6,
-      "sr": 52.8
-    },
-    "rating": 56.3,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 156,
-    "name": "Abdul Razzaaq",
-    "country": "Pakistan",
-    "era": 2009,
-    "squad_name": "2009 T20 World Champions",
-    "role": "AR",
-    "batting": {
-      "avg": 33.4,
-      "sr": 61.7
-    },
-    "bowling": {
-      "avg": 34.0,
-      "econ": 5.0,
-      "sr": 63.3
-    },
-    "rating": 42.4,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 157,
-    "name": "Saeed Ajmall",
-    "country": "Pakistan",
-    "era": 2009,
-    "squad_name": "2009 T20 World Champions",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 25.9,
-      "econ": 3.6,
-      "sr": 51.9
-    },
-    "rating": 59.0,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 158,
-    "name": "Mohammad Aamerr",
-    "country": "Pakistan",
-    "era": 2009,
-    "squad_name": "2009 T20 World Champions",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 27.3,
-      "econ": 4.6,
-      "sr": 53.1
-    },
-    "rating": 46.7,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 159,
-    "name": "Sohail Tanveer",
-    "country": "Pakistan",
-    "era": 2009,
-    "squad_name": "2009 T20 World Champions",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 32.3,
-      "econ": 5.0,
-      "sr": 59.7
-    },
-    "rating": 33.2,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 160,
-    "name": "Fawad Alamm",
-    "country": "Pakistan",
-    "era": 2009,
-    "squad_name": "2009 T20 World Champions",
-    "role": "BAT",
-    "batting": {
-      "avg": 26.0,
-      "sr": 74.1
-    },
-    "bowling": null,
-    "rating": 37.7,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 161,
-    "name": "Babur Azam",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 58.3,
-      "sr": 87.8
-    },
-    "bowling": null,
-    "rating": 72.6,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 162,
-    "name": "Mohammad Rizwaan",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "WK",
-    "batting": {
-      "avg": 46.2,
-      "sr": 85.7
-    },
-    "bowling": null,
-    "rating": 59.9,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 163,
-    "name": "Fakhar Zamaan",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 36.0,
-      "sr": 72.3
-    },
-    "bowling": null,
-    "rating": 46.7,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 164,
-    "name": "Shaheen Afridee",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 26.3,
-      "econ": 4.2,
-      "sr": 49.2
-    },
-    "rating": 54.0,
-    "credit": 8.0,
-    "consistency": 0.8
-  },
-  {
-    "id": 165,
-    "name": "Hasan Alii",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 26.6,
-      "econ": 4.0,
-      "sr": 52.3
-    },
-    "rating": 53.0,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 166,
-    "name": "Shadab Khaan",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "AR",
-    "batting": {
-      "avg": 34.2,
-      "sr": 78.7
-    },
-    "bowling": {
-      "avg": 27.6,
-      "econ": 5.0,
-      "sr": 55.5
-    },
-    "rating": 53.4,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 167,
-    "name": "Imad Wasimm",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "AR",
-    "batting": {
-      "avg": 23.5,
-      "sr": 77.4
-    },
-    "bowling": {
-      "avg": 32.4,
-      "econ": 5.4,
-      "sr": 61.3
-    },
-    "rating": 39.5,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 168,
-    "name": "Haris Raufi",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 28.6,
-      "econ": 4.0,
-      "sr": 50.5
-    },
-    "rating": 50.5,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 169,
-    "name": "Mohammad Hafeeze",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "AR",
-    "batting": {
-      "avg": 27.7,
-      "sr": 76.4
-    },
-    "bowling": {
-      "avg": 31.8,
-      "econ": 4.5,
-      "sr": 61.9
-    },
-    "rating": 46.2,
-    "credit": 8.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 170,
-    "name": "Asif Alii",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 23.8,
-      "sr": 71.3
-    },
-    "bowling": null,
-    "rating": 35.3,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 171,
-    "name": "Naseem Shahh",
-    "country": "Pakistan",
-    "era": 2021,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 32.0,
-      "econ": 3.9,
-      "sr": 57.6
-    },
-    "rating": 44.3,
-    "credit": 7.5,
-    "consistency": 0.7
-  },
-  {
-    "id": 172,
-    "name": "Hansie Cronjee",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "AR",
-    "batting": {
-      "avg": 42.7,
-      "sr": 72.5
-    },
-    "bowling": {
-      "avg": 29.1,
-      "econ": 4.3,
-      "sr": 54.4
-    },
-    "rating": 59.1,
-    "credit": 8.5,
-    "consistency": 0.7
-  },
-  {
-    "id": 173,
-    "name": "Gary Kirstenn",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 54.9,
-      "sr": 81.1
-    },
-    "bowling": null,
-    "rating": 66.2,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 174,
-    "name": "Herschelle Gibbz",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 40.7,
-      "sr": 82.8
-    },
-    "bowling": null,
-    "rating": 53.0,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 175,
-    "name": "Jacques Kallistad",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "AR",
-    "batting": {
-      "avg": 57.7,
-      "sr": 89.9
-    },
-    "bowling": {
-      "avg": 22.0,
-      "econ": 2.4,
-      "sr": 39.7
-    },
-    "rating": 92.0,
-    "credit": 9.5,
-    "consistency": 0.9
-  },
-  {
-    "id": 176,
-    "name": "Jonty Rhodess",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 34.0,
-      "sr": 77.0
-    },
-    "bowling": null,
-    "rating": 46.1,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 177,
-    "name": "Lance Klusenerr",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "AR",
-    "batting": {
-      "avg": 47.9,
-      "sr": 79.6
-    },
-    "bowling": {
-      "avg": 26.2,
-      "econ": 3.8,
-      "sr": 48.5
-    },
-    "rating": 70.6,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 178,
-    "name": "Mark Boucherr",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "WK",
-    "batting": {
-      "avg": 44.2,
-      "sr": 83.8
-    },
-    "bowling": null,
-    "rating": 56.2,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 179,
-    "name": "Allan Donaldd",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 26.0,
-      "econ": 4.1,
-      "sr": 48.3
-    },
-    "rating": 55.6,
-    "credit": 8.0,
-    "consistency": 0.8
-  },
-  {
-    "id": 180,
-    "name": "Shaun Pollockk",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "AR",
-    "batting": {
-      "avg": 51.5,
-      "sr": 93.2
-    },
-    "bowling": {
-      "avg": 27.0,
-      "econ": 3.1,
-      "sr": 45.7
-    },
-    "rating": 77.7,
-    "credit": 9.0,
-    "consistency": 0.8
-  },
-  {
-    "id": 181,
-    "name": "Paul Adamss",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 34.2,
-      "econ": 5.1,
-      "sr": 58.2
-    },
-    "rating": 30.1,
-    "credit": 7.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 182,
-    "name": "Fanie de Villierss",
-    "country": "South Africa",
-    "era": 1998,
-    "squad_name": "Rainbow Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 33.8,
-      "econ": 5.2,
-      "sr": 65.4
-    },
-    "rating": 27.9,
-    "credit": 7.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 183,
-    "name": "AB de Villierz",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 61.4,
-      "sr": 86.9
-    },
-    "bowling": null,
-    "rating": 75.1,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 184,
-    "name": "Hashim Amlaa",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 49.3,
-      "sr": 81.4
-    },
-    "bowling": null,
-    "rating": 61.5,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 185,
-    "name": "Quinton de Kok",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "WK",
-    "batting": {
-      "avg": 45.9,
-      "sr": 94.2
-    },
-    "bowling": null,
-    "rating": 61.6,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 186,
-    "name": "Faf du Plessy",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 50.8,
-      "sr": 94.0
-    },
-    "bowling": null,
-    "rating": 65.8,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 187,
-    "name": "David Millerr",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 41.4,
-      "sr": 73.4
-    },
-    "bowling": null,
-    "rating": 51.4,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 188,
-    "name": "JP Duminyy",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "AR",
-    "batting": {
-      "avg": 42.3,
-      "sr": 77.4
-    },
-    "bowling": {
-      "avg": 29.9,
-      "econ": 4.9,
-      "sr": 51.8
-    },
-    "rating": 56.3,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 189,
-    "name": "Dale Steyne",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 21.8,
-      "econ": 2.7,
-      "sr": 38.9
-    },
-    "rating": 78.6,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 190,
-    "name": "Morne Morkell",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 24.0,
-      "econ": 3.8,
-      "sr": 52.6
-    },
-    "rating": 60.0,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 191,
-    "name": "Imran Tahirr",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 30.2,
-      "econ": 4.1,
-      "sr": 59.5
-    },
-    "rating": 44.8,
-    "credit": 7.5,
-    "consistency": 0.7
-  },
-  {
-    "id": 192,
-    "name": "Vernon Philanderr",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 25.3,
-      "econ": 3.5,
-      "sr": 47.1
-    },
-    "rating": 62.1,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 193,
-    "name": "Kyle Abbott",
-    "country": "South Africa",
-    "era": 2015,
-    "squad_name": "AB's Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 35.8,
-      "econ": 4.9,
-      "sr": 60.7
-    },
-    "rating": 28.7,
-    "credit": 7.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 194,
-    "name": "Temba Bavumaa",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 41.2,
-      "sr": 78.9
-    },
-    "bowling": null,
-    "rating": 52.5,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 195,
-    "name": "Quinton de Kokk",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "WK",
-    "batting": {
-      "avg": 46.9,
-      "sr": 82.2
-    },
-    "bowling": null,
-    "rating": 59.6,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 196,
-    "name": "Aiden Markraam",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 51.3,
-      "sr": 90.2
-    },
-    "bowling": null,
-    "rating": 65.3,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 197,
-    "name": "Rassie van der Dussenn",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 50.5,
-      "sr": 93.6
-    },
-    "bowling": null,
-    "rating": 65.4,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 198,
-    "name": "Heinrich Klaasenn",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 52.0,
-      "sr": 77.4
-    },
-    "bowling": null,
-    "rating": 62.8,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 199,
-    "name": "David Millerz",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 40.7,
-      "sr": 72.8
-    },
-    "bowling": null,
-    "rating": 50.7,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 200,
-    "name": "Marco Jansenn",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "AR",
-    "batting": {
-      "avg": 40.1,
-      "sr": 79.0
-    },
-    "bowling": {
-      "avg": 26.6,
-      "econ": 5.0,
-      "sr": 59.1
-    },
-    "rating": 56.6,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 201,
-    "name": "Kagiso Rabadaa",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 18.7,
-      "econ": 3.0,
-      "sr": 43.0
-    },
-    "rating": 79.6,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 202,
-    "name": "Lungi Ngidii",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 25.1,
-      "econ": 3.3,
-      "sr": 52.3
-    },
-    "rating": 62.7,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 203,
-    "name": "Keshav Maharaaj",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 27.5,
-      "econ": 4.5,
-      "sr": 53.8
-    },
-    "rating": 47.0,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 204,
-    "name": "Tabraiz Shamsii",
-    "country": "South Africa",
-    "era": 2023,
-    "squad_name": "Modern Era",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 29.0,
-      "econ": 4.9,
-      "sr": 58.6
-    },
-    "rating": 40.2,
-    "credit": 7.5,
-    "consistency": 0.7
-  },
-  {
-    "id": 205,
-    "name": "Arjuna Ranatungga",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "AR",
-    "batting": {
-      "avg": 42.7,
-      "sr": 76.3
-    },
-    "bowling": {
-      "avg": 31.6,
-      "econ": 4.4,
-      "sr": 58.2
-    },
-    "rating": 56.3,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 206,
-    "name": "Sanath Jayasuryah",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "AR",
-    "batting": {
-      "avg": 48.0,
-      "sr": 86.7
-    },
-    "bowling": {
-      "avg": 28.0,
-      "econ": 3.6,
-      "sr": 45.5
-    },
-    "rating": 71.5,
-    "credit": 9.0,
-    "consistency": 0.8
-  },
-  {
-    "id": 207,
-    "name": "Romesh Kaluwitharanaa",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "WK",
-    "batting": {
-      "avg": 37.8,
-      "sr": 79.0
-    },
-    "bowling": null,
-    "rating": 49.7,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 208,
-    "name": "Aravinda de Silvaa",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BAT",
-    "batting": {
-      "avg": 49.6,
-      "sr": 81.4
-    },
-    "bowling": null,
-    "rating": 61.7,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 209,
-    "name": "Asanka Gurusinhaa",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BAT",
-    "batting": {
-      "avg": 41.7,
-      "sr": 79.4
-    },
-    "bowling": null,
-    "rating": 53.1,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 210,
-    "name": "Roshan Mahanamaa",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BAT",
-    "batting": {
-      "avg": 31.3,
-      "sr": 60.9
-    },
-    "bowling": null,
-    "rating": 39.1,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 211,
-    "name": "Hashan Tillakaratnee",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BAT",
-    "batting": {
-      "avg": 41.8,
-      "sr": 84.2
-    },
-    "bowling": null,
-    "rating": 54.3,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 212,
-    "name": "Muttiah Muralidaran",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 22.0,
-      "econ": 3.0,
-      "sr": 47.8
-    },
-    "rating": 73.1,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 213,
-    "name": "Chaminda Vaass",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 22.2,
-      "econ": 3.6,
-      "sr": 49.9
-    },
-    "rating": 65.2,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 214,
-    "name": "Upul Chandanaa",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 35.1,
-      "econ": 4.9,
-      "sr": 60.8
-    },
-    "rating": 29.7,
-    "credit": 7.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 215,
-    "name": "Sajeewa de Silvaa",
-    "country": "Sri Lanka",
-    "era": 1996,
-    "squad_name": "1996 World Cup Winners",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 34.1,
-      "econ": 4.9,
-      "sr": 62.2
-    },
-    "rating": 30.8,
-    "credit": 7.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 216,
-    "name": "Kumar Sangakarra",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "WK",
-    "batting": {
-      "avg": 61.1,
-      "sr": 107.3
-    },
-    "bowling": null,
-    "rating": 79.8,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 217,
-    "name": "Mahela Jayawardana",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BAT",
-    "batting": {
-      "avg": 51.9,
-      "sr": 88.0
-    },
-    "bowling": null,
-    "rating": 65.3,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 218,
-    "name": "Tillakaratne Dilshann",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BAT",
-    "batting": {
-      "avg": 53.5,
-      "sr": 92.2
-    },
-    "bowling": null,
-    "rating": 67.6,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 219,
-    "name": "Upul Tharangaa",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BAT",
-    "batting": {
-      "avg": 37.5,
-      "sr": 82.4
-    },
-    "bowling": null,
-    "rating": 50.3,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 220,
-    "name": "Thisara Pereraa",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "AR",
-    "batting": {
-      "avg": 43.6,
-      "sr": 68.7
-    },
-    "bowling": {
-      "avg": 26.4,
-      "econ": 4.6,
-      "sr": 59.2
-    },
-    "rating": 59.1,
-    "credit": 8.5,
-    "consistency": 0.7
-  },
-  {
-    "id": 221,
-    "name": "Angelo Mathewss",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "AR",
-    "batting": {
-      "avg": 52.5,
-      "sr": 83.7
-    },
-    "bowling": {
-      "avg": 22.6,
-      "econ": 3.8,
-      "sr": 52.7
-    },
-    "rating": 76.1,
-    "credit": 9.0,
-    "consistency": 0.8
-  },
-  {
-    "id": 222,
-    "name": "Lasith Malingaa",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 26.2,
-      "econ": 4.1,
-      "sr": 44.5
-    },
-    "rating": 56.4,
-    "credit": 8.0,
-    "consistency": 0.8
-  },
-  {
-    "id": 223,
-    "name": "Muttiah Muralidaran",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 19.8,
-      "econ": 2.6,
-      "sr": 39.5
-    },
-    "rating": 82.5,
-    "credit": 9.0,
-    "consistency": 0.9
-  },
-  {
-    "id": 224,
-    "name": "Rangana Heratth",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 29.4,
-      "econ": 4.8,
-      "sr": 51.7
-    },
-    "rating": 42.3,
-    "credit": 7.5,
-    "consistency": 0.7
-  },
-  {
-    "id": 225,
-    "name": "Nuwan Kulasekaraa",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 35.1,
-      "econ": 5.1,
-      "sr": 57.6
-    },
-    "rating": 28.9,
-    "credit": 7.0,
-    "consistency": 0.6
-  },
-  {
-    "id": 226,
-    "name": "Suraj Randivv",
-    "country": "Sri Lanka",
-    "era": 2011,
-    "squad_name": "2011 World Cup Finalists",
-    "role": "BOWL",
-    "batting": null,
-    "bowling": {
-      "avg": 30.0,
-      "econ": 5.0,
-      "sr": 57.8
-    },
-    "rating": 37.0,
-    "credit": 7.5,
-    "consistency": 0.6
-  },
-  {
-    "id": 227,
-    "name": "Dasun Shanakaa",
-    "country": "Sri Lanka",
-    "era": 2022,
-    "squad_name": "Modern Era",
-    "role": "AR",
-    "batting": {
-      "avg": 34.1,
-      "sr": 84.1
-    },
-    "bowling": {
-      "avg": 31.4,
-      "econ": 4.6,
-      "sr": 51.6
-    },
-    "rating": 53.3,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 228,
-    "name": "Kusal Mendiss",
-    "country": "Sri Lanka",
-    "era": 2022,
-    "squad_name": "Modern Era",
-    "role": "WK",
-    "batting": {
-      "avg": 37.8,
-      "sr": 79.8
-    },
-    "bowling": null,
-    "rating": 49.9,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 229,
-    "name": "Pathum Nissankaa",
-    "country": "Sri Lanka",
-    "era": 2022,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 38.7,
-      "sr": 73.0
-    },
-    "bowling": null,
-    "rating": 49.1,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 230,
-    "name": "Charith Asalankaa",
-    "country": "Sri Lanka",
-    "era": 2022,
-    "squad_name": "Modern Era",
-    "role": "BAT",
-    "batting": {
-      "avg": 36.2,
-      "sr": 75.7
-    },
-    "bowling": null,
-    "rating": 47.6,
-    "credit": 8.0,
-    "consistency": 0.7
-  },
-  {
-    "id": 231,
-    "name": "Wanindu Hasarangaa",
-    "country": "Sri Lanka",
-    "era": 2022,
-    "squad_name": "Modern Era",
-    "role": "AR",
-    "batting": {
-      "avg": 47.4,
-      "sr": 86.4
-    },
-    "bowling": {
-      "avg": 25.4,
-      "econ": 4.2,
-      "sr": 47.0
-    },
-    "rating": 70.2,
-    "credit": 8.5,
-    "consistency": 0.8
-  },
-  {
-    "id": 232,
-    "name": "Dhananjaya de Silvaa",
-    "country": "Sri Lanka",
-    "era": 2022,
-    "squad_name": "Modern Era",
     "role": "AR",
     "batting": {
       "avg": 41.2,
@@ -3962,9 +3250,1649 @@
       "econ": 4.6,
       "sr": 57.4
     },
-    "rating": 56.2,
+    "fielding": 60.9,
+    "morale": 74.6,
+    "rating": 60.7,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
+  },
+  {
+    "id": 156,
+    "name": "Abdul Razzaaq",
+    "country": "Pakistan",
+    "era": 2009,
+    "squad_name": "2009 T20 World Champions",
+    "role": "AR",
+    "batting": {
+      "avg": 32.8,
+      "sr": 65.7
+    },
+    "bowling": {
+      "avg": 34.6,
+      "econ": 5.1,
+      "sr": 58.9
+    },
+    "fielding": 53.3,
+    "morale": 52.4,
+    "rating": 46.2,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 8
+  },
+  {
+    "id": 157,
+    "name": "Saeed Ajmall",
+    "country": "Pakistan",
+    "era": 2009,
+    "squad_name": "2009 T20 World Champions",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 26.3,
+      "econ": 3.8,
+      "sr": 52.4
+    },
+    "fielding": 78.6,
+    "morale": 78.6,
+    "rating": 60.3,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 158,
+    "name": "Mohammad Aamerr",
+    "country": "Pakistan",
+    "era": 2009,
+    "squad_name": "2009 T20 World Champions",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 27.9,
+      "econ": 4.3,
+      "sr": 55.8
+    },
+    "fielding": 73.1,
+    "morale": 67.9,
+    "rating": 50.9,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 159,
+    "name": "Sohail Tanveer",
+    "country": "Pakistan",
+    "era": 2009,
+    "squad_name": "2009 T20 World Champions",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 34.2,
+      "econ": 4.6,
+      "sr": 56.5
+    },
+    "fielding": 42.0,
+    "morale": 47.4,
+    "rating": 36.5,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 8,
+    "position_max": 10
+  },
+  {
+    "id": 160,
+    "name": "Fawad Alamm",
+    "country": "Pakistan",
+    "era": 2009,
+    "squad_name": "2009 T20 World Champions",
+    "role": "BAT",
+    "batting": {
+      "avg": 33.0,
+      "sr": 76.6
+    },
+    "bowling": null,
+    "fielding": 61.4,
+    "morale": 53.3,
+    "rating": 48.4,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 4,
+    "position_max": 6
+  },
+  {
+    "id": 161,
+    "name": "Babur Azam",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 65.5,
+      "sr": 102.2
+    },
+    "bowling": null,
+    "fielding": 92.0,
+    "morale": 84.6,
+    "rating": 89.1,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 162,
+    "name": "Mohammad Rizwaan",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "WK",
+    "batting": {
+      "avg": 46.4,
+      "sr": 94.3
+    },
+    "bowling": null,
+    "fielding": 70.0,
+    "morale": 84.3,
+    "rating": 67.4,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 3
+  },
+  {
+    "id": 163,
+    "name": "Fakhar Zamaan",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 44.6,
+      "sr": 84.1
+    },
+    "bowling": null,
+    "fielding": 69.5,
+    "morale": 74.6,
+    "rating": 61.7,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 164,
+    "name": "Shaheen Afridee",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 25.2,
+      "econ": 3.5,
+      "sr": 50.7
+    },
+    "fielding": 81.4,
+    "morale": 65.3,
+    "rating": 65.1,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 165,
+    "name": "Hasan Alii",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 31.6,
+      "econ": 3.9,
+      "sr": 52.3
+    },
+    "fielding": 66.7,
+    "morale": 71.4,
+    "rating": 49.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 166,
+    "name": "Shadab Khaan",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 44.1,
+      "sr": 72.4
+    },
+    "bowling": {
+      "avg": 26.4,
+      "econ": 4.8,
+      "sr": 59.1
+    },
+    "fielding": 72.7,
+    "morale": 66.2,
+    "rating": 64.3,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 8
+  },
+  {
+    "id": 167,
+    "name": "Imad Wasimm",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 33.4,
+      "sr": 66.1
+    },
+    "bowling": {
+      "avg": 32.4,
+      "econ": 4.5,
+      "sr": 64.8
+    },
+    "fielding": 49.0,
+    "morale": 43.5,
+    "rating": 50.1,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 8
+  },
+  {
+    "id": 168,
+    "name": "Haris Raufi",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 30.5,
+      "econ": 4.9,
+      "sr": 54.2
+    },
+    "fielding": 64.1,
+    "morale": 68.4,
+    "rating": 42.1,
+    "credit": 7.5,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 169,
+    "name": "Mohammad Hafeeze",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 23.2,
+      "sr": 69.8
+    },
+    "bowling": {
+      "avg": 31.9,
+      "econ": 5.5,
+      "sr": 55.4
+    },
+    "fielding": 43.4,
+    "morale": 50.4,
+    "rating": 42.4,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 4
+  },
+  {
+    "id": 170,
+    "name": "Asif Alii",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 32.3,
+      "sr": 62.0
+    },
+    "bowling": null,
+    "fielding": 49.8,
+    "morale": 63.8,
+    "rating": 43.7,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 7
+  },
+  {
+    "id": 171,
+    "name": "Naseem Shahh",
+    "country": "Pakistan",
+    "era": 2021,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 28.2,
+      "econ": 4.3,
+      "sr": 51.9
+    },
+    "fielding": 65.9,
+    "morale": 74.6,
+    "rating": 51.2,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 172,
+    "name": "Hansie Cronjee",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "AR",
+    "batting": {
+      "avg": 41.3,
+      "sr": 80.8
+    },
+    "bowling": {
+      "avg": 29.6,
+      "econ": 3.8,
+      "sr": 57.9
+    },
+    "fielding": 72.0,
+    "morale": 64.1,
+    "rating": 66.3,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
+  },
+  {
+    "id": 173,
+    "name": "Gary Kirstenn",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 45.7,
+      "sr": 90.3
+    },
+    "bowling": null,
+    "fielding": 70.1,
+    "morale": 76.3,
+    "rating": 65.8,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 174,
+    "name": "Herschelle Gibbz",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 37.6,
+      "sr": 71.0
+    },
+    "bowling": null,
+    "fielding": 59.3,
+    "morale": 72.4,
+    "rating": 52.1,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 175,
+    "name": "Jacques Kallistad",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "AR",
+    "batting": {
+      "avg": 56.9,
+      "sr": 88.0
+    },
+    "bowling": {
+      "avg": 19.5,
+      "econ": 2.5,
+      "sr": 44.6
+    },
+    "fielding": 78.0,
+    "morale": 92.2,
+    "rating": 98.3,
+    "credit": 10.0,
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 176,
+    "name": "Jonty Rhodess",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 36.6,
+      "sr": 74.5
+    },
+    "bowling": null,
+    "fielding": 55.3,
+    "morale": 70.8,
+    "rating": 51.8,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
+  },
+  {
+    "id": 177,
+    "name": "Lance Klusenerr",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "AR",
+    "batting": {
+      "avg": 50.3,
+      "sr": 89.9
+    },
+    "bowling": {
+      "avg": 24.9,
+      "econ": 3.9,
+      "sr": 49.1
+    },
+    "fielding": 68.9,
+    "morale": 79.8,
+    "rating": 79.1,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 6,
+    "position_max": 8
+  },
+  {
+    "id": 178,
+    "name": "Mark Boucherr",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "WK",
+    "batting": {
+      "avg": 34.5,
+      "sr": 83.7
+    },
+    "bowling": null,
+    "fielding": 65.1,
+    "morale": 73.9,
+    "rating": 52.9,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 8
+  },
+  {
+    "id": 179,
+    "name": "Allan Donaldd",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 27.8,
+      "econ": 3.1,
+      "sr": 48.8
+    },
+    "fielding": 76.9,
+    "morale": 74.2,
+    "rating": 64.9,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 180,
+    "name": "Shaun Pollockk",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "AR",
+    "batting": {
+      "avg": 54.1,
+      "sr": 76.5
+    },
+    "bowling": {
+      "avg": 22.5,
+      "econ": 3.7,
+      "sr": 44.7
+    },
+    "fielding": 79.7,
+    "morale": 74.8,
+    "rating": 83.9,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 6,
+    "position_max": 9
+  },
+  {
+    "id": 181,
+    "name": "Paul Adamss",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 31.3,
+      "econ": 5.6,
+      "sr": 60.8
+    },
+    "fielding": 53.9,
+    "morale": 53.7,
+    "rating": 31.9,
+    "credit": 7.0,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 182,
+    "name": "Fanie de Villierss",
+    "country": "South Africa",
+    "era": 1998,
+    "squad_name": "Rainbow Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 33.9,
+      "econ": 5.4,
+      "sr": 62.2
+    },
+    "fielding": 53.3,
+    "morale": 42.5,
+    "rating": 29.4,
+    "credit": 7.0,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 183,
+    "name": "AB de Villierz",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 60.9,
+      "sr": 90.3
+    },
+    "bowling": null,
+    "fielding": 90.3,
+    "morale": 79.3,
+    "rating": 82.5,
+    "credit": 9.0,
+    "consistency": 0.9,
+    "position_min": 3,
+    "position_max": 5
+  },
+  {
+    "id": 184,
+    "name": "Hashim Amlaa",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 46.0,
+      "sr": 83.5
+    },
+    "bowling": null,
+    "fielding": 75.7,
+    "morale": 73.3,
+    "rating": 64.9,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 185,
+    "name": "Quinton de Kok",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "WK",
+    "batting": {
+      "avg": 54.2,
+      "sr": 76.3
+    },
+    "bowling": null,
+    "fielding": 74.4,
+    "morale": 68.1,
+    "rating": 70.1,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 3
+  },
+  {
+    "id": 186,
+    "name": "Faf du Plessy",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 52.4,
+      "sr": 91.2
+    },
+    "bowling": null,
+    "fielding": 69.6,
+    "morale": 66.9,
+    "rating": 71.8,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 187,
+    "name": "David Millerr",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 37.6,
+      "sr": 70.4
+    },
+    "bowling": null,
+    "fielding": 66.7,
+    "morale": 66.2,
+    "rating": 52.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
+  },
+  {
+    "id": 188,
+    "name": "JP Duminyy",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "AR",
+    "batting": {
+      "avg": 43.5,
+      "sr": 82.4
+    },
+    "bowling": {
+      "avg": 31.8,
+      "econ": 4.5,
+      "sr": 53.5
+    },
+    "fielding": 68.3,
+    "morale": 70.0,
+    "rating": 62.7,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 7
+  },
+  {
+    "id": 189,
+    "name": "Dale Steyne",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 19.3,
+      "econ": 2.4,
+      "sr": 46.5
+    },
+    "fielding": 81.6,
+    "morale": 88.1,
+    "rating": 86.9,
+    "credit": 9.5,
+    "consistency": 0.9,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 190,
+    "name": "Morne Morkell",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 26.8,
+      "econ": 4.0,
+      "sr": 53.7
+    },
+    "fielding": 81.0,
+    "morale": 76.5,
+    "rating": 57.5,
+    "credit": 8.0,
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 191,
+    "name": "Imran Tahirr",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 26.2,
+      "econ": 4.9,
+      "sr": 58.3
+    },
+    "fielding": 67.3,
+    "morale": 67.9,
+    "rating": 47.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 192,
+    "name": "Vernon Philanderr",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 23.9,
+      "econ": 3.4,
+      "sr": 44.1
+    },
+    "fielding": 71.1,
+    "morale": 79.1,
+    "rating": 69.3,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 8,
+    "position_max": 10
+  },
+  {
+    "id": 193,
+    "name": "Kyle Abbott",
+    "country": "South Africa",
+    "era": 2015,
+    "squad_name": "AB's Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 30.0,
+      "econ": 5.2,
+      "sr": 55.3
+    },
+    "fielding": 52.5,
+    "morale": 50.0,
+    "rating": 38.5,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 194,
+    "name": "Temba Bavumaa",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 37.7,
+      "sr": 75.4
+    },
+    "bowling": null,
+    "fielding": 59.3,
+    "morale": 63.4,
+    "rating": 53.2,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 195,
+    "name": "Quinton de Kokk",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "WK",
+    "batting": {
+      "avg": 45.8,
+      "sr": 76.1
+    },
+    "bowling": null,
+    "fielding": 81.2,
+    "morale": 76.4,
+    "rating": 63.4,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 196,
+    "name": "Aiden Markraam",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 47.7,
+      "sr": 88.2
+    },
+    "bowling": null,
+    "fielding": 78.5,
+    "morale": 78.5,
+    "rating": 67.7,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 3
+  },
+  {
+    "id": 197,
+    "name": "Rassie van der Dussenn",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 52.5,
+      "sr": 77.3
+    },
+    "bowling": null,
+    "fielding": 75.5,
+    "morale": 70.5,
+    "rating": 69.0,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
+  },
+  {
+    "id": 198,
+    "name": "Heinrich Klaasenn",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 49.9,
+      "sr": 88.3
+    },
+    "bowling": null,
+    "fielding": 72.8,
+    "morale": 78.6,
+    "rating": 69.2,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 4,
+    "position_max": 7
+  },
+  {
+    "id": 199,
+    "name": "David Millerz",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 34.1,
+      "sr": 74.0
+    },
+    "bowling": null,
+    "fielding": 62.9,
+    "morale": 67.0,
+    "rating": 50.2,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 7
+  },
+  {
+    "id": 200,
+    "name": "Marco Jansenn",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 37.6,
+      "sr": 68.2
+    },
+    "bowling": {
+      "avg": 30.5,
+      "econ": 4.0,
+      "sr": 53.8
+    },
+    "fielding": 57.7,
+    "morale": 60.1,
+    "rating": 60.6,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 9
+  },
+  {
+    "id": 201,
+    "name": "Kagiso Rabadaa",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 22.8,
+      "econ": 2.4,
+      "sr": 46.6
+    },
+    "fielding": 86.5,
+    "morale": 91.7,
+    "rating": 81.7,
+    "credit": 9.0,
+    "consistency": 0.9,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 202,
+    "name": "Lungi Ngidii",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 27.2,
+      "econ": 3.7,
+      "sr": 49.7
+    },
+    "fielding": 68.3,
+    "morale": 83.4,
+    "rating": 60.0,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 203,
+    "name": "Keshav Maharaaj",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 26.1,
+      "econ": 4.2,
+      "sr": 58.0
+    },
+    "fielding": 63.4,
+    "morale": 57.3,
+    "rating": 53.4,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 204,
+    "name": "Tabraiz Shamsii",
+    "country": "South Africa",
+    "era": 2023,
+    "squad_name": "Modern Era",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 26.5,
+      "econ": 4.8,
+      "sr": 52.4
+    },
+    "fielding": 71.6,
+    "morale": 73.4,
+    "rating": 49.7,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 205,
+    "name": "Arjuna Ranatungga",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "AR",
+    "batting": {
+      "avg": 37.4,
+      "sr": 74.8
+    },
+    "bowling": {
+      "avg": 28.0,
+      "econ": 4.0,
+      "sr": 55.1
+    },
+    "fielding": 65.5,
+    "morale": 62.9,
+    "rating": 64.0,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 206,
+    "name": "Sanath Jayasuryah",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "AR",
+    "batting": {
+      "avg": 48.5,
+      "sr": 89.5
+    },
+    "bowling": {
+      "avg": 26.9,
+      "econ": 4.0,
+      "sr": 46.4
+    },
+    "fielding": 76.7,
+    "morale": 83.1,
+    "rating": 76.8,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 207,
+    "name": "Romesh Kaluwitharanaa",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "WK",
+    "batting": {
+      "avg": 42.4,
+      "sr": 81.1
+    },
+    "bowling": null,
+    "fielding": 58.9,
+    "morale": 67.0,
+    "rating": 58.4,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 3
+  },
+  {
+    "id": 208,
+    "name": "Aravinda de Silvaa",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BAT",
+    "batting": {
+      "avg": 52.5,
+      "sr": 90.2
+    },
+    "bowling": null,
+    "fielding": 81.1,
+    "morale": 74.9,
+    "rating": 72.5,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 209,
+    "name": "Asanka Gurusinhaa",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BAT",
+    "batting": {
+      "avg": 41.0,
+      "sr": 80.5
+    },
+    "bowling": null,
+    "fielding": 73.5,
+    "morale": 66.3,
+    "rating": 58.2,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 3
+  },
+  {
+    "id": 210,
+    "name": "Roshan Mahanamaa",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BAT",
+    "batting": {
+      "avg": 22.8,
+      "sr": 68.8
+    },
+    "bowling": null,
+    "fielding": 53.8,
+    "morale": 43.8,
+    "rating": 37.8,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 3
+  },
+  {
+    "id": 211,
+    "name": "Hashan Tillakaratnee",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BAT",
+    "batting": {
+      "avg": 39.6,
+      "sr": 74.2
+    },
+    "bowling": null,
+    "fielding": 60.5,
+    "morale": 56.1,
+    "rating": 54.6,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 6
+  },
+  {
+    "id": 212,
+    "name": "Muttiah Muralidaran",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 18.5,
+      "econ": 3.1,
+      "sr": 46.6
+    },
+    "fielding": 79.0,
+    "morale": 91.6,
+    "rating": 81.9,
+    "credit": 9.0,
+    "consistency": 0.9,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 213,
+    "name": "Chaminda Vaass",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 25.3,
+      "econ": 4.0,
+      "sr": 53.0
+    },
+    "fielding": 76.6,
+    "morale": 74.3,
+    "rating": 59.8,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 8,
+    "position_max": 10
+  },
+  {
+    "id": 214,
+    "name": "Upul Chandanaa",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 31.3,
+      "econ": 5.0,
+      "sr": 56.7
+    },
+    "fielding": 57.8,
+    "morale": 56.3,
+    "rating": 38.1,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 215,
+    "name": "Sajeewa de Silvaa",
+    "country": "Sri Lanka",
+    "era": 1996,
+    "squad_name": "1996 World Cup Winners",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 31.4,
+      "econ": 5.3,
+      "sr": 60.6
+    },
+    "fielding": 42.3,
+    "morale": 62.5,
+    "rating": 33.7,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 216,
+    "name": "Kumar Sangakarra",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "WK",
+    "batting": {
+      "avg": 60.7,
+      "sr": 97.0
+    },
+    "bowling": null,
+    "fielding": 82.2,
+    "morale": 83.8,
+    "rating": 83.3,
+    "credit": 9.0,
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
+  },
+  {
+    "id": 217,
+    "name": "Mahela Jayawardana",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BAT",
+    "batting": {
+      "avg": 49.1,
+      "sr": 81.8
+    },
+    "bowling": null,
+    "fielding": 74.3,
+    "morale": 70.7,
+    "rating": 67.1,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 3,
+    "position_max": 5
+  },
+  {
+    "id": 218,
+    "name": "Tillakaratne Dilshann",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BAT",
+    "batting": {
+      "avg": 45.7,
+      "sr": 76.9
+    },
+    "bowling": null,
+    "fielding": 81.4,
+    "morale": 77.9,
+    "rating": 63.5,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 219,
+    "name": "Upul Tharangaa",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BAT",
+    "batting": {
+      "avg": 41.2,
+      "sr": 86.1
+    },
+    "bowling": null,
+    "fielding": 60.7,
+    "morale": 69.5,
+    "rating": 58.7,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 220,
+    "name": "Thisara Pereraa",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "AR",
+    "batting": {
+      "avg": 35.6,
+      "sr": 75.0
+    },
+    "bowling": {
+      "avg": 31.8,
+      "econ": 4.6,
+      "sr": 53.9
+    },
+    "fielding": 61.7,
+    "morale": 66.7,
+    "rating": 56.6,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 6,
+    "position_max": 9
+  },
+  {
+    "id": 221,
+    "name": "Angelo Mathewss",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "AR",
+    "batting": {
+      "avg": 48.8,
+      "sr": 90.8
+    },
+    "bowling": {
+      "avg": 26.9,
+      "econ": 3.8,
+      "sr": 52.3
+    },
+    "fielding": 83.9,
+    "morale": 71.2,
+    "rating": 77.7,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 4,
+    "position_max": 7
+  },
+  {
+    "id": 222,
+    "name": "Lasith Malingaa",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 25.9,
+      "econ": 3.5,
+      "sr": 47.6
+    },
+    "fielding": 79.7,
+    "morale": 75.5,
+    "rating": 64.9,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 223,
+    "name": "Muttiah Muralidaran",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 23.7,
+      "econ": 2.7,
+      "sr": 40.3
+    },
+    "fielding": 81.1,
+    "morale": 79.3,
+    "rating": 79.2,
+    "credit": 9.0,
+    "consistency": 0.9,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 224,
+    "name": "Rangana Heratth",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 26.6,
+      "econ": 4.7,
+      "sr": 58.4
+    },
+    "fielding": 56.5,
+    "morale": 71.9,
+    "rating": 48.0,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
+  },
+  {
+    "id": 225,
+    "name": "Nuwan Kulasekaraa",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 34.4,
+      "econ": 4.6,
+      "sr": 59.1
+    },
+    "fielding": 40.8,
+    "morale": 48.4,
+    "rating": 35.4,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 8,
+    "position_max": 10
+  },
+  {
+    "id": 226,
+    "name": "Suraj Randivv",
+    "country": "Sri Lanka",
+    "era": 2011,
+    "squad_name": "2011 World Cup Finalists",
+    "role": "BOWL",
+    "batting": null,
+    "bowling": {
+      "avg": 34.7,
+      "econ": 4.6,
+      "sr": 59.8
+    },
+    "fielding": 58.3,
+    "morale": 59.3,
+    "rating": 35.6,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
+  },
+  {
+    "id": 227,
+    "name": "Dasun Shanakaa",
+    "country": "Sri Lanka",
+    "era": 2022,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 38.9,
+      "sr": 73.7
+    },
+    "bowling": {
+      "avg": 30.5,
+      "econ": 4.3,
+      "sr": 55.3
+    },
+    "fielding": 68.5,
+    "morale": 59.8,
+    "rating": 61.0,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 7
+  },
+  {
+    "id": 228,
+    "name": "Kusal Mendiss",
+    "country": "Sri Lanka",
+    "era": 2022,
+    "squad_name": "Modern Era",
+    "role": "WK",
+    "batting": {
+      "avg": 43.2,
+      "sr": 75.4
+    },
+    "bowling": null,
+    "fielding": 71.2,
+    "morale": 64.4,
+    "rating": 58.7,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 4
+  },
+  {
+    "id": 229,
+    "name": "Pathum Nissankaa",
+    "country": "Sri Lanka",
+    "era": 2022,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 37.1,
+      "sr": 75.6
+    },
+    "bowling": null,
+    "fielding": 74.7,
+    "morale": 64.2,
+    "rating": 53.9,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
+  },
+  {
+    "id": 230,
+    "name": "Charith Asalankaa",
+    "country": "Sri Lanka",
+    "era": 2022,
+    "squad_name": "Modern Era",
+    "role": "BAT",
+    "batting": {
+      "avg": 42.8,
+      "sr": 70.8
+    },
+    "bowling": null,
+    "fielding": 74.3,
+    "morale": 71.3,
+    "rating": 57.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
+  },
+  {
+    "id": 231,
+    "name": "Wanindu Hasarangaa",
+    "country": "Sri Lanka",
+    "era": 2022,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 50.5,
+      "sr": 77.1
+    },
+    "bowling": {
+      "avg": 27.1,
+      "econ": 4.0,
+      "sr": 46.9
+    },
+    "fielding": 78.9,
+    "morale": 82.5,
+    "rating": 76.0,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 6,
+    "position_max": 9
+  },
+  {
+    "id": 232,
+    "name": "Dhananjaya de Silvaa",
+    "country": "Sri Lanka",
+    "era": 2022,
+    "squad_name": "Modern Era",
+    "role": "AR",
+    "batting": {
+      "avg": 35.6,
+      "sr": 76.7
+    },
+    "bowling": {
+      "avg": 31.7,
+      "econ": 4.1,
+      "sr": 54.5
+    },
+    "fielding": 60.5,
+    "morale": 73.1,
+    "rating": 59.3,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 233,
@@ -3975,13 +4903,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 29.6,
-      "econ": 4.4,
-      "sr": 59.0
+      "avg": 29.0,
+      "econ": 4.1,
+      "sr": 59.9
     },
-    "rating": 43.3,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 55.5,
+    "morale": 56.1,
+    "rating": 49.0,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 234,
@@ -3992,13 +4924,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.8,
-      "econ": 4.5,
-      "sr": 53.5
+      "avg": 31.0,
+      "econ": 4.6,
+      "sr": 57.9
     },
-    "rating": 42.2,
+    "fielding": 55.6,
+    "morale": 73.6,
+    "rating": 42.5,
     "credit": 7.5,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 235,
@@ -4009,13 +4945,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 33.3,
-      "econ": 5.2,
-      "sr": 62.9
+      "avg": 33.9,
+      "econ": 4.6,
+      "sr": 62.8
     },
-    "rating": 29.3,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 46.3,
+    "morale": 60.7,
+    "rating": 35.4,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 236,
@@ -4026,13 +4966,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 34.9,
-      "econ": 5.2,
-      "sr": 64.9
+      "avg": 30.8,
+      "econ": 5.4,
+      "sr": 61.0
     },
-    "rating": 26.5,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 40.1,
+    "morale": 42.0,
+    "rating": 33.6,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 237,
@@ -4042,13 +4986,17 @@
     "squad_name": "Modern Era",
     "role": "BAT",
     "batting": {
-      "avg": 25.7,
-      "sr": 68.8
+      "avg": 25.5,
+      "sr": 66.0
     },
     "bowling": null,
-    "rating": 36.3,
+    "fielding": 51.6,
+    "morale": 42.8,
+    "rating": 39.2,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 4,
+    "position_max": 7
   },
   {
     "id": 238,
@@ -4058,13 +5006,17 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "BAT",
     "batting": {
-      "avg": 52.3,
-      "sr": 76.8
+      "avg": 49.6,
+      "sr": 77.2
     },
     "bowling": null,
-    "rating": 63.0,
+    "fielding": 75.1,
+    "morale": 80.9,
+    "rating": 66.5,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 239,
@@ -4074,13 +5026,17 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "BAT",
     "batting": {
-      "avg": 42.2,
-      "sr": 71.5
+      "avg": 39.7,
+      "sr": 72.8
     },
     "bowling": null,
-    "rating": 51.7,
+    "fielding": 66.9,
+    "morale": 55.3,
+    "rating": 54.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 240,
@@ -4090,13 +5046,17 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "BAT",
     "batting": {
-      "avg": 39.9,
-      "sr": 87.4
+      "avg": 36.6,
+      "sr": 76.3
     },
     "bowling": null,
-    "rating": 53.4,
+    "fielding": 63.6,
+    "morale": 67.3,
+    "rating": 52.8,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 241,
@@ -4106,13 +5066,17 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "BAT",
     "batting": {
-      "avg": 33.0,
-      "sr": 76.6
+      "avg": 22.8,
+      "sr": 70.5
     },
     "bowling": null,
-    "rating": 44.0,
+    "fielding": 41.9,
+    "morale": 64.4,
+    "rating": 37.3,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 242,
@@ -4122,13 +5086,17 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "BAT",
     "batting": {
-      "avg": 31.9,
-      "sr": 69.6
+      "avg": 26.7,
+      "sr": 69.4
     },
     "bowling": null,
-    "rating": 41.5,
+    "fielding": 61.7,
+    "morale": 53.9,
+    "rating": 41.7,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 3
   },
   {
     "id": 243,
@@ -4138,17 +5106,21 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "AR",
     "batting": {
-      "avg": 31.0,
-      "sr": 66.8
+      "avg": 22.2,
+      "sr": 75.8
     },
     "bowling": {
-      "avg": 29.8,
-      "econ": 5.6,
-      "sr": 56.5
+      "avg": 31.4,
+      "econ": 5.3,
+      "sr": 61.9
     },
-    "rating": 43.8,
+    "fielding": 61.6,
+    "morale": 46.3,
+    "rating": 44.4,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 8
   },
   {
     "id": 244,
@@ -4158,13 +5130,17 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "WK",
     "batting": {
-      "avg": 32.3,
-      "sr": 74.5
+      "avg": 22.5,
+      "sr": 70.9
     },
     "bowling": null,
-    "rating": 42.9,
+    "fielding": 56.2,
+    "morale": 48.3,
+    "rating": 38.2,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 9
   },
   {
     "id": 245,
@@ -4175,13 +5151,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 35.8,
-      "econ": 5.4,
-      "sr": 59.0
+      "avg": 32.3,
+      "econ": 5.2,
+      "sr": 61.9
     },
-    "rating": 25.1,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 43.9,
+    "morale": 59.5,
+    "rating": 33.0,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 246,
@@ -4192,13 +5172,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.1,
-      "econ": 4.4,
-      "sr": 54.5
+      "avg": 28.7,
+      "econ": 4.2,
+      "sr": 50.4
     },
-    "rating": 49.8,
+    "fielding": 56.3,
+    "morale": 70.5,
+    "rating": 51.3,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 247,
@@ -4209,13 +5193,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 33.7,
-      "econ": 5.1,
-      "sr": 64.0
+      "avg": 32.6,
+      "econ": 5.6,
+      "sr": 61.0
     },
-    "rating": 29.2,
+    "fielding": 40.9,
+    "morale": 63.3,
+    "rating": 29.4,
     "credit": 7.0,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 248,
@@ -4225,17 +5213,21 @@
     "squad_name": "1992 World Cup Semifinalists",
     "role": "AR",
     "batting": {
-      "avg": 23.3,
-      "sr": 64.7
+      "avg": 26.3,
+      "sr": 75.6
     },
     "bowling": {
-      "avg": 29.2,
-      "econ": 5.5,
-      "sr": 61.2
+      "avg": 35.1,
+      "econ": 4.8,
+      "sr": 56.4
     },
-    "rating": 40.0,
-    "credit": 7.5,
-    "consistency": 0.6
+    "fielding": 56.6,
+    "morale": 44.8,
+    "rating": 46.1,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 1,
+    "position_max": 4
   },
   {
     "id": 249,
@@ -4245,13 +5237,17 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "WK",
     "batting": {
-      "avg": 47.2,
-      "sr": 76.3
+      "avg": 53.9,
+      "sr": 82.7
     },
     "bowling": null,
-    "rating": 58.5,
-    "credit": 8.0,
-    "consistency": 0.8
+    "fielding": 83.1,
+    "morale": 79.9,
+    "rating": 72.0,
+    "credit": 9.0,
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 250,
@@ -4261,13 +5257,17 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "BAT",
     "batting": {
-      "avg": 44.0,
-      "sr": 74.0
+      "avg": 44.2,
+      "sr": 78.4
     },
     "bowling": null,
-    "rating": 53.7,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 64.9,
+    "morale": 65.0,
+    "rating": 59.7,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 251,
@@ -4277,13 +5277,17 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "BAT",
     "batting": {
-      "avg": 46.4,
-      "sr": 93.9
+      "avg": 51.0,
+      "sr": 91.4
     },
     "bowling": null,
-    "rating": 62.0,
+    "fielding": 80.4,
+    "morale": 66.6,
+    "rating": 71.4,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 252,
@@ -4293,13 +5297,17 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "BAT",
     "batting": {
-      "avg": 39.4,
-      "sr": 69.9
+      "avg": 41.3,
+      "sr": 74.1
     },
     "bowling": null,
-    "rating": 49.0,
+    "fielding": 61.4,
+    "morale": 56.6,
+    "rating": 56.1,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 5
   },
   {
     "id": 253,
@@ -4309,17 +5317,21 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "AR",
     "batting": {
-      "avg": 35.5,
-      "sr": 77.1
+      "avg": 37.9,
+      "sr": 68.8
     },
     "bowling": {
-      "avg": 30.0,
-      "econ": 4.7,
-      "sr": 59.5
+      "avg": 31.2,
+      "econ": 4.2,
+      "sr": 60.0
     },
-    "rating": 52.5,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 63.5,
+    "morale": 68.8,
+    "rating": 58.6,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 4,
+    "position_max": 7
   },
   {
     "id": 254,
@@ -4329,17 +5341,21 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "AR",
     "batting": {
-      "avg": 42.2,
-      "sr": 71.1
+      "avg": 34.8,
+      "sr": 80.8
     },
     "bowling": {
-      "avg": 28.5,
-      "econ": 3.9,
-      "sr": 54.9
+      "avg": 28.2,
+      "econ": 4.8,
+      "sr": 56.8
     },
-    "rating": 61.1,
+    "fielding": 74.6,
+    "morale": 74.0,
+    "rating": 59.7,
     "credit": 8.5,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 8
   },
   {
     "id": 255,
@@ -4349,13 +5365,17 @@
     "squad_name": "2015 World Cup Finalists",
     "role": "WK",
     "batting": {
-      "avg": 33.4,
+      "avg": 31.4,
       "sr": 60.7
     },
     "bowling": null,
-    "rating": 40.7,
+    "fielding": 43.1,
+    "morale": 55.2,
+    "rating": 42.2,
     "credit": 7.5,
-    "consistency": 0.6
+    "consistency": 0.6,
+    "position_min": 6,
+    "position_max": 8
   },
   {
     "id": 256,
@@ -4366,13 +5386,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 28.7,
-      "econ": 4.9,
-      "sr": 58.6
+      "avg": 28.3,
+      "econ": 4.5,
+      "sr": 56.1
     },
-    "rating": 40.6,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 70.6,
+    "morale": 62.3,
+    "rating": 48.5,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 257,
@@ -4383,13 +5407,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.1,
+      "avg": 26.6,
       "econ": 3.7,
-      "sr": 53.8
+      "sr": 49.3
     },
-    "rating": 57.3,
-    "credit": 8.0,
-    "consistency": 0.8
+    "fielding": 84.1,
+    "morale": 72.4,
+    "rating": 61.8,
+    "credit": 8.5,
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 258,
@@ -4400,13 +5428,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 24.4,
-      "econ": 3.2,
-      "sr": 45.2
+      "avg": 22.7,
+      "econ": 3.9,
+      "sr": 49.0
     },
-    "rating": 66.6,
+    "fielding": 79.0,
+    "morale": 70.0,
+    "rating": 65.9,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 259,
@@ -4417,13 +5449,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 32.2,
-      "econ": 5.2,
-      "sr": 62.1
+      "avg": 30.8,
+      "econ": 4.9,
+      "sr": 66.0
     },
-    "rating": 31.1,
-    "credit": 7.0,
-    "consistency": 0.6
+    "fielding": 52.4,
+    "morale": 46.5,
+    "rating": 36.8,
+    "credit": 7.5,
+    "consistency": 0.6,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 260,
@@ -4433,13 +5469,17 @@
     "squad_name": "WTC Champions",
     "role": "BAT",
     "batting": {
-      "avg": 55.3,
-      "sr": 103.1
+      "avg": 56.6,
+      "sr": 104.6
     },
     "bowling": null,
-    "rating": 73.7,
+    "fielding": 93.6,
+    "morale": 84.8,
+    "rating": 82.5,
     "credit": 9.0,
-    "consistency": 0.9
+    "consistency": 0.9,
+    "position_min": 2,
+    "position_max": 4
   },
   {
     "id": 261,
@@ -4449,13 +5489,17 @@
     "squad_name": "WTC Champions",
     "role": "WK",
     "batting": {
-      "avg": 35.4,
-      "sr": 79.3
+      "avg": 35.0,
+      "sr": 81.6
     },
     "bowling": null,
-    "rating": 47.8,
+    "fielding": 73.0,
+    "morale": 63.9,
+    "rating": 53.4,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 262,
@@ -4465,13 +5509,17 @@
     "squad_name": "WTC Champions",
     "role": "BAT",
     "batting": {
-      "avg": 52.7,
-      "sr": 79.1
+      "avg": 45.6,
+      "sr": 85.8
     },
     "bowling": null,
-    "rating": 63.8,
+    "fielding": 73.4,
+    "morale": 71.9,
+    "rating": 64.9,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 1,
+    "position_max": 2
   },
   {
     "id": 263,
@@ -4481,13 +5529,17 @@
     "squad_name": "WTC Champions",
     "role": "BAT",
     "batting": {
-      "avg": 43.6,
-      "sr": 74.6
+      "avg": 44.2,
+      "sr": 80.8
     },
     "bowling": null,
-    "rating": 53.5,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 72.0,
+    "morale": 69.2,
+    "rating": 60.8,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 264,
@@ -4497,13 +5549,17 @@
     "squad_name": "WTC Champions",
     "role": "BAT",
     "batting": {
-      "avg": 43.9,
-      "sr": 68.1
+      "avg": 36.2,
+      "sr": 70.8
     },
     "bowling": null,
-    "rating": 52.3,
+    "fielding": 65.2,
+    "morale": 57.4,
+    "rating": 51.3,
     "credit": 8.0,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 3,
+    "position_max": 6
   },
   {
     "id": 265,
@@ -4513,17 +5569,21 @@
     "squad_name": "WTC Champions",
     "role": "AR",
     "batting": {
-      "avg": 35.6,
-      "sr": 70.6
+      "avg": 38.1,
+      "sr": 84.1
     },
     "bowling": {
-      "avg": 27.5,
-      "econ": 4.0,
-      "sr": 56.6
+      "avg": 29.3,
+      "econ": 4.5,
+      "sr": 50.9
     },
-    "rating": 57.8,
-    "credit": 8.0,
-    "consistency": 0.7
+    "fielding": 55.5,
+    "morale": 66.1,
+    "rating": 61.9,
+    "credit": 8.5,
+    "consistency": 0.7,
+    "position_min": 5,
+    "position_max": 8
   },
   {
     "id": 266,
@@ -4533,17 +5593,21 @@
     "squad_name": "WTC Champions",
     "role": "AR",
     "batting": {
-      "avg": 22.2,
-      "sr": 75.8
+      "avg": 28.3,
+      "sr": 75.4
     },
     "bowling": {
-      "avg": 30.7,
-      "econ": 4.8,
-      "sr": 56.9
+      "avg": 34.8,
+      "econ": 4.5,
+      "sr": 65.7
     },
-    "rating": 43.8,
-    "credit": 7.5,
-    "consistency": 0.6
+    "fielding": 62.0,
+    "morale": 58.0,
+    "rating": 47.6,
+    "credit": 8.0,
+    "consistency": 0.6,
+    "position_min": 5,
+    "position_max": 8
   },
   {
     "id": 267,
@@ -4554,13 +5618,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 30.5,
-      "econ": 4.4,
-      "sr": 57.5
+      "avg": 28.1,
+      "econ": 4.9,
+      "sr": 57.8
     },
-    "rating": 42.4,
+    "fielding": 64.0,
+    "morale": 68.6,
+    "rating": 44.7,
     "credit": 7.5,
-    "consistency": 0.7
+    "consistency": 0.7,
+    "position_min": 8,
+    "position_max": 10
   },
   {
     "id": 268,
@@ -4571,13 +5639,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 26.7,
-      "econ": 3.6,
-      "sr": 45.1
+      "avg": 24.6,
+      "econ": 4.1,
+      "sr": 44.6
     },
-    "rating": 59.7,
+    "fielding": 71.1,
+    "morale": 84.3,
+    "rating": 62.1,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 9,
+    "position_max": 11
   },
   {
     "id": 269,
@@ -4588,13 +5660,17 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 27.7,
-      "econ": 3.1,
-      "sr": 51.8
+      "avg": 23.9,
+      "econ": 3.9,
+      "sr": 47.5
     },
-    "rating": 60.6,
+    "fielding": 70.6,
+    "morale": 68.3,
+    "rating": 64.1,
     "credit": 8.5,
-    "consistency": 0.8
+    "consistency": 0.8,
+    "position_min": 10,
+    "position_max": 11
   },
   {
     "id": 270,
@@ -4605,12 +5681,16 @@
     "role": "BOWL",
     "batting": null,
     "bowling": {
-      "avg": 29.1,
-      "econ": 4.3,
-      "sr": 59.6
+      "avg": 27.5,
+      "econ": 4.6,
+      "sr": 55.5
     },
-    "rating": 44.7,
-    "credit": 7.5,
-    "consistency": 0.7
+    "fielding": 72.9,
+    "morale": 71.9,
+    "rating": 49.1,
+    "credit": 8.0,
+    "consistency": 0.7,
+    "position_min": 8,
+    "position_max": 10
   }
 ]

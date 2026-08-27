@@ -12,7 +12,7 @@ export default function Team() {
   const [user, setUser] = useState<User | null>(null)
   const [rounds, setRounds] = useState(5)
   const [results, setResults] = useState<MatchResult[] | null>(null)
-  const [liveScore, setLiveScore] = useState({ team: 0, opponent: 0 })
+  const [liveScore, setLiveScore] = useState({ team: 0, opponent: 0, teamW: 0, oppW: 0, teamOv: 0, oppOv: 0 })
   const [simulating, setSimulating] = useState(false)
   const [expanded, setExpanded] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -30,18 +30,25 @@ export default function Team() {
     setSimulating(true)
     setError(null)
     setResults(null)
-    setLiveScore({ team: 0, opponent: 0 })
+    setLiveScore({ team: 0, opponent: 0, teamW: 0, oppW: 0, teamOv: 0, oppOv: 0 })
     try {
       const res = await api.simulate(draft.id, rounds)
       setUser((u) => (u ? { ...u, ...res.totals } : u))
       // reveal matches one at a time so the scoreboard reads as a live feed
       for (let i = 0; i < res.results.length; i++) {
         const r = res.results[i]
-        setLiveScore({ team: r.team_score, opponent: r.opponent_score })
+        setLiveScore({
+          team: r.team_score,
+          opponent: r.opponent_score,
+          teamW: r.team_wickets,
+          oppW: r.opponent_wickets,
+          teamOv: r.team_overs,
+          oppOv: r.opponent_overs,
+        })
         setResults((prev) => [...(prev ?? []), r])
         if (i < res.results.length - 1) {
           await new Promise((resolve) => setTimeout(resolve, 1100))
-          setLiveScore({ team: 0, opponent: 0 })
+          setLiveScore({ team: 0, opponent: 0, teamW: 0, oppW: 0, teamOv: 0, oppOv: 0 })
           await new Promise((resolve) => setTimeout(resolve, 250))
         }
       }
@@ -70,9 +77,9 @@ export default function Team() {
       <section className="team-summary">
         <h2>{draft.name}</h2>
         <div className="team-list">
-          {draft.players.map((p) => (
+          {draft.players.map((p, i) => (
             <div key={p.id} className="team-row">
-              <span className={`role-tag role-${p.role}`}>{p.role}</span>
+              <span className={`role-tag role-${p.role}`}>#{i + 1}</span>
               <span className="p-name">
                 {p.name} {draft.captain_id === p.id && <span className="captain-star">★</span>}
               </span>
@@ -109,11 +116,17 @@ export default function Team() {
           <div className="scoreboard-side">
             <div className="scoreboard-label">Your XI</div>
             <FlipScore value={liveScore.team} />
+            <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
+              {liveScore.teamW} wkt · {liveScore.teamOv.toFixed(1)} ov
+            </div>
           </div>
           <div className="scoreboard-vs">vs</div>
           <div className="scoreboard-side">
             <div className="scoreboard-label">Opponent</div>
             <FlipScore value={liveScore.opponent} />
+            <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
+              {liveScore.oppW} wkt · {liveScore.oppOv.toFixed(1)} ov
+            </div>
           </div>
         </div>
 
@@ -150,7 +163,7 @@ export default function Team() {
                       {r.result === 'W' ? 'Won' : 'Lost'}
                     </span>
                     <span>
-                      {r.team_score.toFixed(0)} — {r.opponent_score.toFixed(0)} vs {r.opponent_name}
+                      {r.team_score.toFixed(0)}/{r.team_wickets} ({r.team_overs.toFixed(1)}) — {r.opponent_score.toFixed(0)}/{r.opponent_wickets} ({r.opponent_overs.toFixed(1)}) vs {r.opponent_name}
                     </span>
                     <span className="chevron">{expanded === i ? '▲' : '▼'}</span>
                   </div>
@@ -164,7 +177,7 @@ export default function Team() {
                               {p.name} {p.captain && '★'}
                             </span>
                             <span className="muted">
-                              {p.runs}r {p.wickets ? `/ ${p.wickets}w` : ''}
+                              {p.runs}({p.balls}) {p.wickets ? `· ${p.wickets}/${p.runs_conceded} (${p.overs?.toFixed(1)}ov)` : ''}
                             </span>
                             <span>{p.points.toFixed(0)} pts</span>
                           </div>
@@ -178,7 +191,7 @@ export default function Team() {
                               {p.name} {p.captain && '★'}
                             </span>
                             <span className="muted">
-                              {p.runs}r {p.wickets ? `/ ${p.wickets}w` : ''}
+                              {p.runs}({p.balls}) {p.wickets ? `· ${p.wickets}/${p.runs_conceded} (${p.overs?.toFixed(1)}ov)` : ''}
                             </span>
                             <span>{p.points.toFixed(0)} pts</span>
                           </div>

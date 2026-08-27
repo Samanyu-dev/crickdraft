@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { api } from '../api'
 import { useUser } from '../UserContext'
+import { isValidOrder, tryAugment } from '../battingOrder'
 import type { Player, Role, Squad } from '../types'
 
 const ROLE_RULES: Record<Role, [number, number]> = {
@@ -27,7 +28,11 @@ function totalCredits(picks: Player[]) {
   return picks.reduce((sum, p) => sum + p.credit, 0)
 }
 
-function eligibility(picks: Player[], candidate: Player): { ok: boolean; reason?: string } {
+function eligibility(
+  picks: Player[],
+  positionAssignment: (Player | null)[],
+  candidate: Player,
+): { ok: boolean; reason?: string } {
   const counts = tally(picks)
   const [, max] = ROLE_RULES[candidate.role]
   if (counts[candidate.role] >= max) return { ok: false, reason: `${candidate.role} slots full` }
@@ -43,6 +48,13 @@ function eligibility(picks: Player[], candidate: Player): { ok: boolean; reason?
   }
   if (totalNeeded === remainingAfterThis && neededByRole[candidate.role] === 0) {
     return { ok: false, reason: 'Must fill required roles first' }
+  }
+  // Would this pick still leave a valid batting-order arrangement for
+  // everyone (including players already picked)? Checked via an online
+  // bipartite matching rather than only at the very end, so the draft can
+  // never paint itself into a corner with too many same-range batters.
+  if (!tryAugment(positionAssignment, candidate)) {
+    return { ok: false, reason: `No batting slot left open for #${candidate.position_min}-${candidate.position_max}` }
   }
   return { ok: true }
 }
@@ -68,16 +80,19 @@ export default function Draft() {
   const navigate = useNavigate()
 
   const [picks, setPicks] = useState<Player[]>([])
+  const [positionAssignment, setPositionAssignment] = useState<(Player | null)[]>(Array(SQUAD_SIZE).fill(null))
   const [captainId, setCaptainId] = useState<number | null>(null)
   const [currentSquad, setCurrentSquad] = useState<Squad | null>(null)
   const [seenSquadKeys, setSeenSquadKeys] = useState<string[]>([])
   const [rerollsLeft, setRerollsLeft] = useState(TOTAL_REROLLS)
-  const [phase, setPhase] = useState<'rolling' | 'picking' | 'captain'>('rolling')
+  const [phase, setPhase] = useState<'rolling' | 'picking' | 'captain' | 'order'>('rolling')
+  const [order, setOrder] = useState<(Player | null)[]>([])
+  const [orderError, setOrderError] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const startedRef = useRef(false)
 
-  async function performRoll(picksSnapshot: Player[], seenSnapshot: string[]) {
+  async function performRoll(picksSnapshot: Player[], seenSnapshot: string[], positionSnapshot: (Player | null)[]) {
     setPhase('rolling')
     setError(null)
     let seen = [...seenSnapshot]
@@ -85,7 +100,7 @@ export default function Draft() {
       for (let i = 0; i < MAX_ROLL_ATTEMPTS; i++) {
         const squad = await api.rollSquad(seen)
         seen = [...seen, squad.key]
-        const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, p).ok)
+        const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, positionSnapshot, p).ok)
         if (hasEligible || i === MAX_ROLL_ATTEMPTS - 1) {
           setSeenSquadKeys(seen)
           setCurrentSquad(squad)
@@ -102,38 +117,66 @@ export default function Draft() {
   useEffect(() => {
     if (startedRef.current) return
     startedRef.current = true
-    performRoll([], [])
+    performRoll([], [], Array(SQUAD_SIZE).fill(null))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handlePick(player: Player) {
-    const check = eligibility(picks, player)
+    const check = eligibility(picks, positionAssignment, player)
     if (!check.ok) return
+    const augmented = tryAugment(positionAssignment, player)
+    if (!augmented) return
     const newPicks = [...picks, player]
     setPicks(newPicks)
+    setPositionAssignment(augmented)
     setCurrentSquad(null)
     if (newPicks.length === SQUAD_SIZE) {
+      setOrder(augmented)
+      setOrderError(null)
       setPhase('captain')
     } else {
-      performRoll(newPicks, seenSquadKeys)
+      performRoll(newPicks, seenSquadKeys, augmented)
     }
   }
 
   function handleReroll() {
     if (rerollsLeft <= 0 || phase !== 'picking') return
     setRerollsLeft((n) => n - 1)
-    performRoll(picks, seenSquadKeys)
+    performRoll(picks, seenSquadKeys, positionAssignment)
+  }
+
+  function goToOrder() {
+    setPhase('order')
+  }
+
+  function handlePositionChange(playerId: number, newPos: number) {
+    setOrder((prev) => {
+      const arr = [...prev]
+      const fromIdx = arr.findIndex((p) => p?.id === playerId)
+      const toIdx = newPos - 1
+      if (fromIdx === -1 || fromIdx === toIdx) return prev
+      const player = arr[fromIdx]!
+      const occupant = arr[toIdx]
+      if (occupant && !(occupant.position_min <= fromIdx + 1 && fromIdx + 1 <= occupant.position_max)) {
+        setOrderError(`Can't move there — ${occupant.name} can only bat positions ${occupant.position_min}-${occupant.position_max}.`)
+        return prev
+      }
+      setOrderError(null)
+      arr[toIdx] = player
+      arr[fromIdx] = occupant
+      return arr
+    })
   }
 
   async function handleSubmit() {
-    if (!username || captainId === null) return
+    if (!username || captainId === null || !isValidOrder(order)) return
     setSubmitting(true)
     setError(null)
     try {
       await api.submitDraft({
         username,
         name: `${username}'s XI`,
-        player_ids: picks.map((p) => p.id),
+        player_ids: order.map((p) => p!.id),
         captain_id: captainId,
       })
       navigate('/team')
@@ -171,9 +214,66 @@ export default function Draft() {
           ))}
         </div>
         {error && <p className="error">{error}</p>}
-        <button className="btn-primary" disabled={captainId === null || submitting} onClick={handleSubmit}>
-          {submitting ? 'Sealing the XI…' : 'Begin simulation'}
+        <button className="btn-primary" disabled={captainId === null} onClick={goToOrder}>
+          Continue to batting order
         </button>
+      </div>
+    )
+  }
+
+  if (phase === 'order') {
+    return (
+      <div className="squad-panel" style={{ maxWidth: 640, margin: '0 auto' }}>
+        <h2>Set your batting order</h2>
+        <p className="muted" style={{ fontSize: '0.85rem' }}>
+          Every player has a real batting-position range — openers can't bat at 9, tailenders can't open.
+          We've suggested a valid order; swap anyone who needs it.
+        </p>
+        <div className="captain-list">
+          {order.map((p, i) => {
+            if (!p) return null
+            const options = []
+            for (let pos = p.position_min; pos <= p.position_max; pos++) options.push(pos)
+            return (
+              <div className="captain-row" key={p.id}>
+                <span className="ledger" style={{ color: 'var(--brass)', fontSize: '0.85rem' }}>#{i + 1}</span>
+                <span className="p-name" style={{ fontFamily: 'Fraunces, serif' }}>
+                  {p.name} {captainId === p.id && <span className="captain-star">★</span>}
+                  <span className="muted ledger" style={{ fontSize: '0.72rem' }}>
+                    {' '}
+                    · eligible {p.position_min}-{p.position_max}
+                  </span>
+                </span>
+                <select value={i + 1} onChange={(e) => handlePositionChange(p.id, Number(e.target.value))}>
+                  {options.map((pos) => (
+                    <option key={pos} value={pos}>
+                      Bat at #{pos}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )
+          })}
+        </div>
+        {orderError && <p className="error">{orderError}</p>}
+        {error && <p className="error">{error}</p>}
+        <div style={{ display: 'flex', gap: '0.6rem' }}>
+          <button className="btn-ghost" onClick={() => setPhase('captain')}>
+            Back
+          </button>
+          <button
+            className="btn-ghost"
+            onClick={() => {
+              setOrder(positionAssignment)
+              setOrderError(null)
+            }}
+          >
+            Reset order
+          </button>
+          <button className="btn-primary" disabled={!isValidOrder(order) || submitting} onClick={handleSubmit}>
+            {submitting ? 'Sealing the XI…' : 'Begin simulation'}
+          </button>
+        </div>
       </div>
     )
   }
@@ -220,7 +320,7 @@ export default function Draft() {
               </div>
               <motion.div className="plaque-rows" variants={rowContainerVariants} initial="initial" animate="animate">
                 {currentSquad.players.map((p) => {
-                  const check = eligibility(picks, p)
+                  const check = eligibility(picks, positionAssignment, p)
                   return (
                     <motion.button
                       key={p.id}
@@ -237,6 +337,7 @@ export default function Draft() {
                           {p.batting ? `Bat ${p.batting.avg.toFixed(0)} avg` : ''}
                           {p.batting && p.bowling ? ' · ' : ''}
                           {p.bowling ? `Bowl ${p.bowling.avg.toFixed(0)} avg` : ''}
+                          {' · '}Field {p.fielding.toFixed(0)} · Morale {p.morale.toFixed(0)} · #{p.position_min}-{p.position_max}
                         </span>
                         {!check.ok && check.reason && <span className="disabled-reason">{check.reason}</span>}
                       </span>

@@ -37,7 +37,7 @@ def run_simulation(payload: SimulateRequest, session: Session = Depends(get_sess
         )
         session.add(run)
 
-        user.total_points += match["team_score"]
+        user.total_points += match["fantasy_points"]
         user.matches_played += 1
         if match["result"] == "W":
             user.wins += 1
