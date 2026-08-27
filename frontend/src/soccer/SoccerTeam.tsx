@@ -6,9 +6,10 @@ import { soccerApi } from './api'
 import FlipScore from '../components/FlipScore'
 import RankBadge from '../components/RankBadge'
 import { getRank } from '../rankTiers'
-import type { SoccerDraftDetail, SoccerHistoryEntry, SoccerMatchEvent, SoccerMatchResult, SoccerUser } from './types'
+import type { SoccerDraftDetail, SoccerHistoryEntry, SoccerMatchEvent, SoccerMatchResult, SoccerRole, SoccerUser } from './types'
 
 const MATCH_DURATION_MS = 9500
+const ROLE_ORDER: SoccerRole[] = ['GK', 'DEF', 'MID', 'FWD']
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -130,17 +131,19 @@ export default function SoccerTeam() {
         </div>
         <h2>{draft.name}</h2>
         <div className="team-list">
-          {draft.players.map((p) => (
-            <div key={p.id} className="team-row">
-              <span className={`role-tag role-${p.role}`}>{p.role}</span>
-              <span className="p-name">
-                {p.name} {draft.captain_id === p.id && <span className="captain-star">★</span>}
-              </span>
-              <span className="muted ledger" style={{ fontSize: '0.75rem' }}>
-                {p.country} · {p.era}
-              </span>
-            </div>
-          ))}
+          {[...draft.players]
+            .sort((a, b) => ROLE_ORDER.indexOf(a.role) - ROLE_ORDER.indexOf(b.role))
+            .map((p, i) => (
+              <div key={p.id} className="team-row">
+                <span className={`role-tag role-${p.role}`}>#{i + 1} {p.role}</span>
+                <span className="p-name">
+                  {p.name} {draft.captain_id === p.id && <span className="captain-star">★</span>}
+                </span>
+                <span className="muted ledger" style={{ fontSize: '0.75rem' }}>
+                  {p.country} · {p.era}
+                </span>
+              </div>
+            ))}
         </div>
         <Link to={`/soccer/draft?tournament=${tournament}`} className="link-btn">
           Draft a new XI

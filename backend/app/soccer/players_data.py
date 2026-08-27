@@ -32,7 +32,7 @@ ROLE_RULES = {
     "FWD": (1, 3),
 }
 SQUAD_SIZE = 11
-CREDIT_CAP = 100.0
+CREDIT_CAP = 110.0
 
 
 def squads_for_tournament(tournament: dict) -> Dict[str, dict]:

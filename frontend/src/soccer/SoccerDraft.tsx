@@ -13,7 +13,7 @@ const ROLE_RULES: Record<SoccerRole, [number, number]> = {
 }
 const ROLES: SoccerRole[] = ['GK', 'DEF', 'MID', 'FWD']
 const SQUAD_SIZE = 11
-const CREDIT_CAP = 100
+const CREDIT_CAP = 110
 const TOTAL_REROLLS = 2
 const MAX_ROLL_ATTEMPTS = 24
 const RECENT_WINDOW = 3
@@ -287,15 +287,18 @@ export default function SoccerDraft() {
           })}
         </ul>
         <div className="squad-slots">
-          {Array.from({ length: SQUAD_SIZE }).map((_, i) => {
-            const p = picks[i]
-            return (
-              <div key={i} className={`slot-row ${p ? 'filled' : 'empty'}`}>
-                <span className="slot-num">{i + 1}</span>
-                <span className="slot-name">{p ? p.name : '—'}</span>
-              </div>
-            )
-          })}
+          {(() => {
+            const bySlot = [...picks].sort((a, b) => ROLES.indexOf(a.role) - ROLES.indexOf(b.role))
+            return Array.from({ length: SQUAD_SIZE }).map((_, i) => {
+              const p = bySlot[i]
+              return (
+                <div key={i} className={`slot-row ${p ? 'filled' : 'empty'}`}>
+                  <span className="slot-num">{i + 1}</span>
+                  <span className="slot-name">{p ? p.name : '—'}</span>
+                </div>
+              )
+            })
+          })()}
         </div>
       </aside>
     </div>

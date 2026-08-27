@@ -398,15 +398,18 @@ export default function Draft() {
           })}
         </ul>
         <div className="squad-slots">
-          {Array.from({ length: SQUAD_SIZE }).map((_, i) => {
-            const p = picks[i]
-            return (
-              <div key={i} className={`slot-row ${p ? 'filled' : 'empty'}`}>
-                <span className="slot-num">{i + 1}</span>
-                <span className="slot-name">{p ? p.name : '—'}</span>
-              </div>
-            )
-          })}
+          {(() => {
+            const bySlot = [...picks].sort((a, b) => a.position_min - b.position_min)
+            return Array.from({ length: SQUAD_SIZE }).map((_, i) => {
+              const p = bySlot[i]
+              return (
+                <div key={i} className={`slot-row ${p ? 'filled' : 'empty'}`}>
+                  <span className="slot-num">{i + 1}</span>
+                  <span className="slot-name">{p ? p.name : '—'}</span>
+                </div>
+              )
+            })
+          })()}
         </div>
       </aside>
     </div>
