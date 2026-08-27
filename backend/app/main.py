@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database import init_db
 from .routers import players, users, drafts, simulate, leaderboard, draft, tournaments, matches, soccer
 
-app = FastAPI(title="CrickDraft API")
+app = FastAPI(title="DraftWars API")
 
 app.add_middleware(
     CORSMiddleware,

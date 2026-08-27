@@ -1,4 +1,4 @@
-# CrickDraft
+# DraftWars
 
 Draft an all-time XI from cricket's greatest eras, simulate matches, and climb a global leaderboard.
 

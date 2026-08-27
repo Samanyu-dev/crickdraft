@@ -45,7 +45,7 @@ function Shell() {
     <div className="shell">
       <header className="topbar">
         <div className="brand">
-          <span className="brand-mark">{sport === 'soccer' ? '⚽' : '🏏'}</span> CrickDraft
+          <span className="brand-mark">{sport === 'soccer' ? '⚽' : '🏏'}</span> DraftWars
         </div>
         <nav>
           <NavLink to="/sports" className={({ isActive }) => (isActive ? 'active' : '')}>
