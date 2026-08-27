@@ -61,6 +61,7 @@ export interface SoccerPlayerPerformance {
   name: string
   role: SoccerRole
   goals: number
+  assists: number
   points: number
   captain: boolean
 }

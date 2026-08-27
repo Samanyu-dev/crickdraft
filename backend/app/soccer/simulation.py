@@ -47,6 +47,20 @@ def _pick_scorer(team: List[dict]) -> dict:
     return random.choices(candidates, weights=weights, k=1)[0]
 
 
+def _pick_assister(team: List[dict], scorer_id: int) -> Optional[dict]:
+    # Not every goal has a credited assist - solo runs, penalties, etc.
+    if random.random() < 0.3:
+        return None
+    candidates = [p for p in team if p["id"] != scorer_id]
+    if not candidates:
+        return None
+    weights = [
+        (p["passing"] * 1.6 if p["role"] == "MID" else p["passing"] * 1.0 if p["role"] == "FWD" else p["passing"] * 0.6) + 1
+        for p in candidates
+    ]
+    return random.choices(candidates, weights=weights, k=1)[0]
+
+
 def team_elo_rating(squad: List[dict]) -> float:
     avg_rating = sum(p["rating"] for p in squad) / len(squad)
     return round(1200 + (avg_rating - 65.0) * 22, 1)
@@ -101,6 +115,7 @@ def _simulate_match_score(home: List[dict], away: List[dict]):
 
     score = {"home": 0, "away": 0}
     scorers = {"home": [], "away": []}
+    assisters = {"home": [], "away": []}
     timeline: List[dict] = []
 
     for phase in range(PHASES):
@@ -124,10 +139,13 @@ def _simulate_match_score(home: List[dict], away: List[dict]):
         roll = random.random()
         if roll < goal_prob:
             scorer = _pick_scorer(team)
+            assister = _pick_assister(team, scorer["id"])
             score[attacking] += 1
             scorers[attacking].append(scorer["id"])
+            if assister:
+                assisters[attacking].append(assister["id"])
             event = "goal"
-            event_detail = scorer["name"]
+            event_detail = f"{scorer['name']} (assist: {assister['name']})" if assister else scorer["name"]
         elif roll < chance_prob:
             event = "chance"
             event_detail = None
@@ -141,17 +159,38 @@ def _simulate_match_score(home: List[dict], away: List[dict]):
             "score_team": score["home"], "score_opponent": score["away"],
         })
 
-    return score["home"], score["away"], scorers["home"], scorers["away"], timeline
+    return score["home"], score["away"], scorers["home"], scorers["away"], assisters["home"], assisters["away"], timeline
 
 
-def fantasy_points(team: List[dict], scorer_ids: List[dict], goals_conceded: int, captain_id: int) -> dict:
-    points = {p["id"]: 0.0 for p in team}
+def fantasy_points(
+    team: List[dict], scorer_ids: List[dict], assister_ids: List[dict], goals_conceded: int, captain_id: int
+) -> dict:
+    """Every player who takes the pitch earns something, not just goalscorers -
+    a match rating built from attacking/passing/defending contribution (each
+    player's own stats, since the engine doesn't simulate individual
+    shots/tackles/passes) plus the headline attacking and team-result bonuses."""
+    points = {p["id"]: 2.0 for p in team}  # appearance points - everyone plays 90 minutes here
     for sid in scorer_ids:
         points[sid] = points.get(sid, 0.0) + 20.0
-    if goals_conceded == 0:
-        for p in team:
-            if p["role"] in ("GK", "DEF"):
-                points[p["id"]] = points.get(p["id"], 0.0) + 10.0
+    for aid in assister_ids:
+        points[aid] = points.get(aid, 0.0) + 10.0
+
+    for p in team:
+        pid = p["id"]
+        if p["role"] in ("GK", "DEF"):
+            points[pid] += round(p["defense"] / 100.0 * 4.0, 1)
+            if goals_conceded == 0:
+                points[pid] += 10.0
+            else:
+                points[pid] -= min(6.0, goals_conceded * 2.0)
+        elif p["role"] == "MID":
+            points[pid] += round(p["passing"] / 100.0 * 3.0, 1)
+            points[pid] += round(p["defense"] / 100.0 * 1.5, 1)
+            if goals_conceded == 0:
+                points[pid] += 4.0
+        else:  # FWD
+            points[pid] += round(p["attack"] / 100.0 * 4.0, 1)
+
     if captain_id in points:
         points[captain_id] *= 2
     return points
@@ -167,25 +206,30 @@ def simulate_match(
 ):
     ai_captain = opponent_captain_id or max(opponent_squad, key=lambda p: p["rating"])["id"]
 
-    team_goals, opp_goals, team_scorer_ids, opp_scorer_ids, timeline = _simulate_match_score(user_squad, opponent_squad)
+    team_goals, opp_goals, team_scorer_ids, opp_scorer_ids, team_assister_ids, opp_assister_ids, timeline = (
+        _simulate_match_score(user_squad, opponent_squad)
+    )
 
-    team_points = fantasy_points(user_squad, team_scorer_ids, opp_goals, captain_id)
-    opp_points = fantasy_points(opponent_squad, opp_scorer_ids, team_goals, ai_captain)
+    team_points = fantasy_points(user_squad, team_scorer_ids, team_assister_ids, opp_goals, captain_id)
+    opp_points = fantasy_points(opponent_squad, opp_scorer_ids, opp_assister_ids, team_goals, ai_captain)
 
     if team_goals != opp_goals:
         result = "W" if team_goals > opp_goals else "L"
     else:
         result = "D"
 
-    def scorecard(team, points_map, scorer_ids, captain):
-        counts = {}
+    def scorecard(team, points_map, scorer_ids, assister_ids, captain):
+        goal_counts, assist_counts = {}, {}
         for sid in scorer_ids:
-            counts[sid] = counts.get(sid, 0) + 1
+            goal_counts[sid] = goal_counts.get(sid, 0) + 1
+        for aid in assister_ids:
+            assist_counts[aid] = assist_counts.get(aid, 0) + 1
         rows = []
         for p in team:
             rows.append({
                 "id": p["id"], "name": p["name"], "role": p["role"],
-                "goals": counts.get(p["id"], 0),
+                "goals": goal_counts.get(p["id"], 0),
+                "assists": assist_counts.get(p["id"], 0),
                 "points": round(points_map.get(p["id"], 0.0), 1),
                 "captain": p["id"] == captain,
             })
@@ -199,8 +243,8 @@ def simulate_match(
         "opponent_goals": opp_goals,
         "timeline": timeline,
         "scorecard": {
-            "team": scorecard(user_squad, team_points, team_scorer_ids, captain_id),
-            "opponent": scorecard(opponent_squad, opp_points, opp_scorer_ids, ai_captain),
+            "team": scorecard(user_squad, team_points, team_scorer_ids, team_assister_ids, captain_id),
+            "opponent": scorecard(opponent_squad, opp_points, opp_scorer_ids, opp_assister_ids, ai_captain),
         },
         "fantasy_points": round(sum(team_points.values()), 1),
     }

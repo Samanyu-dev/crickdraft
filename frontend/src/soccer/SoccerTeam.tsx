@@ -277,7 +277,10 @@ export default function SoccerTeam() {
                             <span>
                               {p.name} {p.captain && '★'}
                             </span>
-                            <span className="muted">{p.goals} goal{p.goals !== 1 ? 's' : ''}</span>
+                            <span className="muted">
+                              {p.goals} goal{p.goals !== 1 ? 's' : ''}
+                              {(p.assists ?? 0) > 0 && `, ${p.assists} assist${p.assists !== 1 ? 's' : ''}`}
+                            </span>
                             <span>{p.points.toFixed(0)} pts</span>
                           </div>
                         ))}
@@ -291,7 +294,10 @@ export default function SoccerTeam() {
                             <span>
                               {p.name} {p.captain && '★'}
                             </span>
-                            <span className="muted">{p.goals} goal{p.goals !== 1 ? 's' : ''}</span>
+                            <span className="muted">
+                              {p.goals} goal{p.goals !== 1 ? 's' : ''}
+                              {(p.assists ?? 0) > 0 && `, ${p.assists} assist${p.assists !== 1 ? 's' : ''}`}
+                            </span>
                             <span>{p.points.toFixed(0)} pts</span>
                           </div>
                         ))}
