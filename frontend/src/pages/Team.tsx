@@ -1,15 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useUser } from '../UserContext'
 import { api } from '../api'
 import FlipScore from '../components/FlipScore'
 import RankBadge from '../components/RankBadge'
 import { getRank } from '../rankTiers'
-import type { DraftDetail, MatchResult, OverEvent, User } from '../types'
-
-const INNINGS_DURATION_MS = 4400
-const BREAK_MS = 1300
+import type { DraftDetail, InningsResult, MatchResult, OverEvent, User } from '../types'
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -24,12 +21,21 @@ function eventFor(over: OverEvent): { text: string; kind: 'wicket' | 'six' | 'fo
 
 type Side = { score: number; wickets: number; over: number }
 const ZERO_SIDE: Side = { score: 0, wickets: 0, over: 0 }
+const sideKey = (s: 'team' | 'opponent'): 'team' | 'opp' => (s === 'team' ? 'team' : 'opp')
+
+const RESULT_LABEL: Record<string, string> = { W: 'Match Won', L: 'Match Lost', D: 'Match Drawn' }
+const RESULT_SHORT: Record<string, string> = { W: 'Won', L: 'Lost', D: 'Drawn' }
+const RESULT_CLASS: Record<string, string> = { W: 'win', L: 'loss', D: 'draw' }
 
 export default function Team() {
-  const { username } = useUser()
+  const { username, tournament: currentTournament } = useUser()
+  const [searchParams] = useSearchParams()
+  const tournament = searchParams.get('tournament') || currentTournament
+
   const [draft, setDraft] = useState<DraftDetail | null | undefined>(undefined)
   const [user, setUser] = useState<User | null>(null)
   const [live, setLive] = useState<{ team: Side; opp: Side }>({ team: ZERO_SIDE, opp: ZERO_SIDE })
+  const [priorScore, setPriorScore] = useState<{ team: number | null; opp: number | null }>({ team: null, opp: null })
   const [activeSide, setActiveSide] = useState<'team' | 'opp' | null>(null)
   const [banner, setBanner] = useState<{ text: string; kind: string } | null>(null)
   const [shake, setShake] = useState(0)
@@ -54,20 +60,22 @@ export default function Team() {
 
   function refresh() {
     if (!username) return
-    api.getDraft(username).then(setDraft)
-    api.getUser(username).then(setUser)
+    api.getDraft(username, tournament).then(setDraft)
+    api.getUser(username, tournament).then(setUser)
   }
 
-  useEffect(refresh, [username])
+  useEffect(refresh, [username, tournament])
 
-  async function playTimeline(timeline: OverEvent[], side: 'team' | 'opp', durationMs: number) {
-    setActiveSide(side)
-    const stepDelay = durationMs / Math.max(1, timeline.length)
-    for (const over of timeline) {
+  async function playInnings(innings: InningsResult, durationMs: number) {
+    const key = sideKey(innings.side)
+    setLive((prev) => ({ ...prev, [key]: ZERO_SIDE }))
+    setActiveSide(key)
+    const stepDelay = durationMs / Math.max(1, innings.timeline.length)
+    for (const over of innings.timeline) {
       const ev = eventFor(over)
       setBanner(ev)
       if (ev?.kind === 'wicket') setShake((n) => n + 1)
-      setLive((prev) => ({ ...prev, [side]: { score: over.score, wickets: over.wickets, over: over.over } }))
+      setLive((prev) => ({ ...prev, [key]: { score: over.score, wickets: over.wickets, over: over.over } }))
       await sleep(stepDelay)
     }
     setBanner(null)
@@ -79,16 +87,27 @@ export default function Team() {
     setError(null)
     setLastMatch(null)
     setLive({ team: ZERO_SIDE, opp: ZERO_SIDE })
+    setPriorScore({ team: null, opp: null })
     setBreakText(null)
     try {
       const match = await api.simulate(draft.id)
-      await playTimeline(match.team_timeline, 'team', INNINGS_DURATION_MS)
-      setActiveSide(null)
-      setBreakText(`Innings break — target ${match.team_score + 1}`)
-      await sleep(BREAK_MS)
-      setBreakText(null)
-      await playTimeline(match.opponent_timeline, 'opp', INNINGS_DURATION_MS)
-      setActiveSide(null)
+      const totalDuration = match.innings.length <= 2 ? 8800 : 15600
+      const perInnings = totalDuration / match.innings.length
+
+      for (let idx = 0; idx < match.innings.length; idx++) {
+        const innings = match.innings[idx]
+        await playInnings(innings, perInnings)
+        setActiveSide(null)
+        const key = sideKey(innings.side)
+        const label = innings.side === 'team' ? 'Your XI' : match.opponent_name
+        const summary = `${innings.wickets >= 10 ? 'all out' : `${innings.wickets} wkt`} for ${innings.score}`
+        if (idx < match.innings.length - 1) {
+          setPriorScore((prev) => ({ ...prev, [key]: innings.score }))
+          setBreakText(`${label} ${summary} (${innings.overs.toFixed(1)} ov)`)
+          await sleep(1400)
+          setBreakText(null)
+        }
+      }
       setLastMatch(match)
       setHistory((prev) => [match, ...prev])
       setUser((u) =>
@@ -113,8 +132,8 @@ export default function Team() {
   if (draft === null) {
     return (
       <div className="empty-state">
-        <p>You haven't drafted an XI yet.</p>
-        <Link className="btn-primary" to="/draft">
+        <p>You haven't drafted an XI for this tournament yet.</p>
+        <Link className="btn-primary" to={`/draft?tournament=${tournament}`}>
           Start the draft
         </Link>
       </div>
@@ -129,6 +148,9 @@ export default function Team() {
   return (
     <div className="team-layout">
       <section className="team-summary">
+        <div className="pick-label" style={{ marginBottom: '0.5rem' }}>
+          {tournament.replace(/-/g, ' ')}
+        </div>
         <h2>{draft.name}</h2>
         <div className="team-list">
           {draft.players.map((p, i) => (
@@ -143,7 +165,7 @@ export default function Team() {
             </div>
           ))}
         </div>
-        <Link to="/draft" className="link-btn">
+        <Link to={`/draft?tournament=${tournament}`} className="link-btn">
           Draft a new XI
         </Link>
       </section>
@@ -162,8 +184,9 @@ export default function Team() {
             <div>
               <strong>
                 {user.wins}-{user.losses}
+                {user.draws > 0 ? `-${user.draws}` : ''}
               </strong>
-              <span>W-L · {user.matches_played} played</span>
+              <span>W-L{user.draws > 0 ? '-D' : ''} · {user.matches_played} played</span>
             </div>
             <div>
               <strong>{user.matches_remaining_today}/20</strong>
@@ -180,6 +203,7 @@ export default function Team() {
               <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
                 {live.team.wickets} wkt · ov {live.team.over}
               </div>
+              {priorScore.team !== null && <div className="ledger muted prior-innings">1st inns: {priorScore.team}</div>}
             </div>
             <div className="scoreboard-vs">vs</div>
             <div className={`scoreboard-side ${activeSide === 'opp' ? 'active' : ''}`}>
@@ -188,6 +212,7 @@ export default function Team() {
               <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
                 {live.opp.wickets} wkt · ov {live.opp.over}
               </div>
+              {priorScore.opp !== null && <div className="ledger muted prior-innings">1st inns: {priorScore.opp}</div>}
             </div>
           </div>
           <AnimatePresence>
@@ -235,14 +260,8 @@ export default function Team() {
 
         <AnimatePresence>
           {lastMatch && (
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="result-reveal"
-            >
-              <span className={`stamp ${lastMatch.result === 'W' ? 'win' : 'loss'}`}>
-                {lastMatch.result === 'W' ? 'Match Won' : 'Match Lost'}
-              </span>
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="result-reveal">
+              <span className={`stamp ${RESULT_CLASS[lastMatch.result]}`}>{RESULT_LABEL[lastMatch.result]}</span>
               <span className="elo-change">
                 {lastMatch.elo_before.toFixed(0)} → {lastMatch.elo_after.toFixed(0)}
                 <b className={lastMatch.elo_delta >= 0 ? 'up' : 'down'}>
@@ -268,11 +287,9 @@ export default function Team() {
                   className="result-card"
                 >
                   <div className="result-head" onClick={() => setExpanded(expanded === i ? null : i)}>
-                    <span className={`stamp ${r.result === 'W' ? 'win' : 'loss'}`}>
-                      {r.result === 'W' ? 'Won' : 'Lost'}
-                    </span>
+                    <span className={`stamp ${RESULT_CLASS[r.result]}`}>{RESULT_SHORT[r.result]}</span>
                     <span>
-                      {r.team_score.toFixed(0)}/{r.team_wickets} ({r.team_overs.toFixed(1)}) — {r.opponent_score.toFixed(0)}/{r.opponent_wickets} ({r.opponent_overs.toFixed(1)}) vs {r.opponent_name}
+                      {r.team_total} — {r.opponent_total} vs {r.opponent_name}
                     </span>
                     <span className={`ledger elo-pill ${r.elo_delta >= 0 ? 'up' : 'down'}`}>
                       {r.elo_delta >= 0 ? '+' : ''}

@@ -1,4 +1,4 @@
-import type { Player, DraftDetail, User, MatchResult, LeaderboardEntry, Squad } from './types'
+import type { Player, DraftDetail, User, MatchResult, LeaderboardEntry, Squad, Tournament } from './types'
 
 async function req<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`/api${path}`, {
@@ -20,15 +20,24 @@ export const api = {
     return req<Player[]>(`/players${suffix}`)
   },
   getMeta: () => req<{ countries: string[]; roles: string[]; eras: number[]; count: number }>('/players/meta'),
-  rollSquad: (excludeKeys: string[]) => {
-    const qs = excludeKeys.length ? `?exclude=${encodeURIComponent(excludeKeys.join(','))}` : ''
-    return req<Squad>(`/draft/roll${qs}`)
+  getTournaments: () => req<Tournament[]>('/tournaments'),
+  rollSquad: (tournament: string, excludeKeys: string[]) => {
+    const params = new URLSearchParams({ tournament })
+    if (excludeKeys.length) params.set('exclude', excludeKeys.join(','))
+    return req<Squad>(`/draft/roll?${params.toString()}`)
   },
   createUser: (username: string) => req<User>('/users', { method: 'POST', body: JSON.stringify({ username }) }),
-  getUser: (username: string) => req<User>(`/users/${username}`),
-  submitDraft: (payload: { username: string; name: string; player_ids: number[]; captain_id: number | null }) =>
-    req<{ id: number }>('/drafts', { method: 'POST', body: JSON.stringify(payload) }),
-  getDraft: (username: string) => req<DraftDetail | null>(`/drafts/${username}`),
+  getUser: (username: string, tournament?: string) =>
+    req<User>(`/users/${username}${tournament ? `?tournament=${tournament}` : ''}`),
+  submitDraft: (payload: {
+    username: string
+    name: string
+    player_ids: number[]
+    captain_id: number | null
+    tournament: string
+  }) => req<{ id: number }>('/drafts', { method: 'POST', body: JSON.stringify(payload) }),
+  getDraft: (username: string, tournament: string) =>
+    req<DraftDetail | null>(`/drafts/${username}?tournament=${tournament}`),
   simulate: (draft_id: number) => req<MatchResult>('/simulate', { method: 'POST', body: JSON.stringify({ draft_id }) }),
-  getLeaderboard: () => req<LeaderboardEntry[]>('/leaderboard'),
+  getLeaderboard: (tournament: string) => req<LeaderboardEntry[]>(`/leaderboard?tournament=${tournament}`),
 }

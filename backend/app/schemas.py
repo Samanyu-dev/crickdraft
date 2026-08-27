@@ -11,11 +11,13 @@ class DraftCreate(BaseModel):
     name: str = "My XI"
     player_ids: List[int]
     captain_id: Optional[int] = None
+    tournament: str = "showdown-league"
 
 
 class DraftOut(BaseModel):
     id: int
     user_id: int
+    tournament: str
     name: str
     player_ids: List[int]
     captain_id: Optional[int]
@@ -31,4 +33,5 @@ class LeaderboardEntry(BaseModel):
     matches_played: int
     wins: int
     losses: int
+    draws: int
     win_pct: float

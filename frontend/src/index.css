@@ -971,6 +971,15 @@ main {
   color: var(--stamp-loss);
 }
 
+.stamp.draw {
+  color: var(--brass);
+}
+
+.prior-innings {
+  font-size: 0.7rem !important;
+  opacity: 0.7;
+}
+
 .chevron {
   margin-left: auto;
   color: var(--cream-dim);
@@ -1099,4 +1108,99 @@ main {
   .board-row .rank-badge {
     display: none;
   }
+}
+
+/* ---------- Tournament lobby ---------- */
+.tournament-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tournament-card {
+  text-align: left;
+  background: linear-gradient(180deg, var(--wood-panel), var(--wood));
+  border: 1px solid var(--wood-hairline);
+  border-radius: 10px;
+  padding: 1.3rem;
+  color: var(--cream);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.tournament-card:hover {
+  border-color: var(--brass);
+  transform: translateY(-2px);
+}
+
+.tournament-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.tournament-card p {
+  color: var(--cream-dim);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+  min-height: 2.4em;
+}
+
+.tournament-format {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  margin-bottom: 0.7rem;
+}
+
+.tournament-format.format-T20 {
+  background: rgba(45, 212, 191, 0.2);
+  color: var(--brass-bright);
+}
+
+.tournament-format.format-ODI {
+  background: rgba(255, 138, 76, 0.2);
+  color: #ffb98a;
+}
+
+.tournament-format.format-TEST {
+  background: rgba(255, 85, 119, 0.2);
+  color: #ff9db0;
+}
+
+.tournament-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--brass-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tournament-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.4rem;
+}
+
+.tournament-tab {
+  background: var(--wood-panel);
+  border: 1px solid var(--wood-hairline);
+  color: var(--cream-dim);
+  border-radius: 999px;
+  padding: 0.4em 1em;
+  font-size: 0.82rem;
+  font-family: 'Space Mono', monospace;
+}
+
+.tournament-tab.active {
+  border-color: var(--brass);
+  color: var(--brass-bright);
+  background: rgba(45, 212, 191, 0.1);
 }

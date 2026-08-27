@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .database import init_db
-from .routers import players, users, drafts, simulate, leaderboard, draft
+from .routers import players, users, drafts, simulate, leaderboard, draft, tournaments
 
 app = FastAPI(title="CrickDraft API")
 
@@ -25,6 +25,7 @@ def health():
     return {"status": "ok"}
 
 
+app.include_router(tournaments.router)
 app.include_router(draft.router)
 app.include_router(players.router)
 app.include_router(users.router)

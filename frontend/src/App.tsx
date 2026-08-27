@@ -1,6 +1,7 @@
 import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
 import { UserProvider, useUser } from './UserContext'
 import Home from './pages/Home'
+import Lobby from './pages/Lobby'
 import Draft from './pages/Draft'
 import Team from './pages/Team'
 import Leaderboard from './pages/Leaderboard'
@@ -12,7 +13,7 @@ function RequireUser({ children }: { children: React.ReactNode }) {
 }
 
 function Shell() {
-  const { username, setUsername } = useUser()
+  const { username, setUsername, tournament } = useUser()
   return (
     <div className="shell">
       <header className="topbar">
@@ -20,13 +21,19 @@ function Shell() {
           <span className="brand-mark">🏏</span> CrickDraft
         </div>
         <nav>
-          <NavLink to="/draft" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/lobby" className={({ isActive }) => (isActive ? 'active' : '')}>
+            Tournaments
+          </NavLink>
+          <NavLink to={`/draft?tournament=${tournament}`} className={({ isActive }) => (isActive ? 'active' : '')}>
             Draft
           </NavLink>
-          <NavLink to="/team" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to={`/team?tournament=${tournament}`} className={({ isActive }) => (isActive ? 'active' : '')}>
             My XI
           </NavLink>
-          <NavLink to="/leaderboard" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink
+            to={`/leaderboard?tournament=${tournament}`}
+            className={({ isActive }) => (isActive ? 'active' : '')}
+          >
             Leaderboard
           </NavLink>
         </nav>
@@ -44,6 +51,14 @@ function Shell() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route
+            path="/lobby"
+            element={
+              <RequireUser>
+                <Lobby />
+              </RequireUser>
+            }
+          />
           <Route
             path="/draft"
             element={

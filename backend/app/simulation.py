@@ -5,9 +5,6 @@ from .players_data import PLAYERS
 from .model.features import build_features, batter_skill, bowler_skill, clip
 from .model.ball_model import sample_outcome
 
-TOTAL_OVERS = 20
-MAX_OVERS_PER_BOWLER = max(1, TOTAL_OVERS // 5)
-
 
 def assign_batting_order(players: List[dict]) -> List[dict]:
     """Assign 11 players into positions 1-11 respecting each player's
@@ -47,19 +44,20 @@ def assign_batting_order(players: List[dict]) -> List[dict]:
     return order
 
 
-def build_ai_opponent(exclude_ids: List[int], target_elo: float = 1200.0) -> List[dict]:
+def build_ai_opponent(exclude_ids: List[int], target_elo: float = 1200.0, pool: Optional[List[dict]] = None) -> List[dict]:
     """Builds a random XI whose average player rating is centered on
     whatever team strength `target_elo` implies - used when there's no
     real opponent to matchmake against, so the fallback still scales with
     the challenger's own rank instead of always fielding a stacked XI."""
     target_avg = 68.0 + (target_elo - 1200.0) / 25.0
 
-    pool = [p for p in PLAYERS if p["id"] not in exclude_ids]
+    source = pool if pool is not None else PLAYERS
+    candidates_pool = [p for p in source if p["id"] not in exclude_ids]
     squad: List[dict] = []
     used = set()
 
     def take(role: str, count: int):
-        candidates = [p for p in pool if p["role"] == role and p["id"] not in used]
+        candidates = [p for p in candidates_pool if p["role"] == role and p["id"] not in used]
         if not candidates:
             return
         candidates.sort(key=lambda p: abs(p["rating"] - target_avg))
@@ -76,7 +74,7 @@ def build_ai_opponent(exclude_ids: List[int], target_elo: float = 1200.0) -> Lis
     take("AR", remaining)
 
     if len(squad) < 11:
-        leftovers = [p for p in pool if p["id"] not in used]
+        leftovers = [p for p in candidates_pool if p["id"] not in used]
         random.shuffle(leftovers)
         for p in leftovers:
             if len(squad) >= 11:
@@ -145,7 +143,8 @@ def fantasy_points_bowling(wickets: int, overs: float, runs_conceded: int) -> fl
     return pts
 
 
-def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target=None):
+def simulate_innings(batting_order: List[dict], bowling_team: List[dict], total_overs: int, target=None):
+    max_overs_per_bowler = max(1, total_overs // 5)
     stats = {
         p["id"]: {"id": p["id"], "name": p["name"], "role": p["role"], "runs": 0, "balls": 0,
                    "fours": 0, "sixes": 0, "out": False, "how_out": "not out"}
@@ -174,11 +173,11 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
         for _ in range(n):
             candidate = bowlers[rotation_idx % n]
             rotation_idx += 1
-            if overs_bowled[candidate["id"]] < MAX_OVERS_PER_BOWLER:
+            if overs_bowled[candidate["id"]] < max_overs_per_bowler:
                 return candidate
         return min(bowlers, key=lambda p: overs_bowled[p["id"]])
 
-    for over in range(TOTAL_OVERS):
+    for over in range(total_overs):
         if wickets_down >= 10 or chase_won:
             break
         bowler = pick_bowler()
@@ -188,7 +187,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
             if wickets_down >= 10:
                 break
             striker = batting_order[striker_idx]
-            balls_remaining = (TOTAL_OVERS - over) * 6 - ball
+            balls_remaining = (total_overs - over) * 6 - ball
             if target is not None:
                 required = target - score
                 required_rate = (required / max(1, balls_remaining)) * 6
@@ -196,7 +195,7 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
             else:
                 pressure = 0.0
 
-            x = build_features(striker, bowler, fielding_avg, wickets_down, over, TOTAL_OVERS, pressure)
+            x = build_features(striker, bowler, fielding_avg, wickets_down, over, total_overs, pressure)
             outcome = sample_outcome(x)
 
             s = stats[striker["id"]]
@@ -255,16 +254,53 @@ def simulate_innings(batting_order: List[dict], bowling_team: List[dict], target
     }
 
 
-def _merge_points(batting_innings, bowling_innings):
-    """Combine a side's batting (from the innings it batted) with its bowling
-    (from the innings it bowled) into per-player fantasy points - relevant
-    for all-rounders who show up in both."""
+def _merge_points(batting_innings_list, bowling_innings_list):
+    """Combine a side's batting (across all innings it batted) with its
+    bowling (across all innings it bowled) into per-player fantasy points -
+    relevant for all-rounders, and for Test where a player bats/bowls twice."""
     merged = {}
-    for s in batting_innings["batting"]:
-        merged[s["id"]] = merged.get(s["id"], 0.0) + fantasy_points_batting(s["runs"], s["balls"])
-    for b in bowling_innings["bowling"]:
-        merged[b["id"]] = merged.get(b["id"], 0.0) + fantasy_points_bowling(b["wickets"], b["balls"] / 6.0, b["runs_conceded"])
+    for innings in batting_innings_list:
+        for s in innings["batting"]:
+            merged[s["id"]] = merged.get(s["id"], 0.0) + fantasy_points_batting(s["runs"], s["balls"])
+    for innings in bowling_innings_list:
+        for b in innings["bowling"]:
+            merged[b["id"]] = merged.get(b["id"], 0.0) + fantasy_points_bowling(b["wickets"], b["balls"] / 6.0, b["runs_conceded"])
     return merged
+
+
+def _aggregate_scorecard(batting_innings_list, bowling_innings_list, points_map, captain_id, other_captain_id):
+    rows_by_id = {}
+    order = []
+    for innings in batting_innings_list:
+        for s in innings["batting"]:
+            if s["id"] not in rows_by_id:
+                rows_by_id[s["id"]] = {
+                    "id": s["id"], "name": s["name"], "role": s["role"],
+                    "runs": 0, "balls": 0, "wickets": 0, "how_out": "not out",
+                    "captain": s["id"] == captain_id or s["id"] == other_captain_id,
+                }
+                order.append(s["id"])
+            row = rows_by_id[s["id"]]
+            row["runs"] += s["runs"]
+            row["balls"] += s["balls"]
+            row["how_out"] = s["how_out"] if s["out"] else row["how_out"]
+    bowl_totals = {}
+    for innings in bowling_innings_list:
+        for b in innings["bowling"]:
+            t = bowl_totals.setdefault(b["id"], {"wickets": 0, "balls": 0, "runs_conceded": 0})
+            t["wickets"] += b["wickets"]
+            t["balls"] += b["balls"]
+            t["runs_conceded"] += b["runs_conceded"]
+    for pid, t in bowl_totals.items():
+        if pid not in rows_by_id:
+            # a bowler who didn't bat this side of the ledger yet (rare) - still show their figures
+            continue
+        rows_by_id[pid]["wickets"] = t["wickets"]
+        rows_by_id[pid]["overs"] = round(t["balls"] / 6.0, 1)
+        rows_by_id[pid]["runs_conceded"] = t["runs_conceded"]
+    for pid in rows_by_id:
+        rows_by_id[pid]["points"] = round(points_map.get(pid, 0.0), 1)
+    return [rows_by_id[pid] for pid in order]
 
 
 def simulate_match(
@@ -274,61 +310,72 @@ def simulate_match(
     opponent_name: str,
     opponent_rating: float,
     opponent_captain_id: Optional[int] = None,
+    overs: int = 20,
+    innings_per_side: int = 1,
 ):
-    first = simulate_innings(user_batting_order, opponent_order, target=None)
-    second = simulate_innings(opponent_order, user_batting_order, target=first["score"] + 1)
+    ai_captain = opponent_captain_id or max(opponent_order, key=lambda p: p["rating"])["id"]
+    innings_public: List[dict] = []
 
-    # team bats in `first` and bowls in `second`; opponent is the mirror
-    team_points = _merge_points(first, second)
-    opp_points = _merge_points(second, first)
+    def public(innings, side, seq):
+        return {
+            "side": side, "seq": seq, "score": innings["score"], "wickets": innings["wickets"],
+            "overs": innings["overs"], "timeline": innings["timeline"],
+        }
 
+    if innings_per_side == 1:
+        first = simulate_innings(user_batting_order, opponent_order, overs, target=None)
+        second = simulate_innings(opponent_order, user_batting_order, overs, target=first["score"] + 1)
+        innings_public = [public(first, "team", 1), public(second, "opponent", 2)]
+
+        team_batting, team_bowling = [first], [second]
+        opp_batting, opp_bowling = [second], [first]
+
+        team_total, opp_total = first["score"], second["score"]
+        if team_total != opp_total:
+            result = "W" if team_total > opp_total else "L"
+        else:
+            result = "W" if first["wickets"] <= second["wickets"] else "L"
+
+    else:  # Test: two innings a side
+        a1 = simulate_innings(user_batting_order, opponent_order, overs, target=None)
+        b1 = simulate_innings(opponent_order, user_batting_order, overs, target=None)
+        a2 = simulate_innings(user_batting_order, opponent_order, overs, target=None)
+        target = a1["score"] + a2["score"] - b1["score"] + 1
+        b2 = simulate_innings(opponent_order, user_batting_order, overs, target=target)
+        innings_public = [
+            public(a1, "team", 1), public(b1, "opponent", 2),
+            public(a2, "team", 3), public(b2, "opponent", 4),
+        ]
+
+        team_batting, team_bowling = [a1, a2], [b1, b2]
+        opp_batting, opp_bowling = [b1, b2], [a1, a2]
+
+        team_total = a1["score"] + a2["score"]
+        opp_total = b1["score"] + b2["score"]
+        if b2["score"] >= target:
+            result = "L"
+        elif b2["wickets"] >= 10:
+            result = "W"
+        else:
+            result = "D"  # overs ran out with the chase unresolved
+
+    team_points = _merge_points(team_batting, team_bowling)
+    opp_points = _merge_points(opp_batting, opp_bowling)
     if captain_id in team_points:
         team_points[captain_id] *= 2
-    ai_captain = opponent_captain_id or max(opponent_order, key=lambda p: p["rating"])["id"]
     if ai_captain in opp_points:
         opp_points[ai_captain] *= 2
-
-    team_score, opp_score = first["score"], second["score"]
-    if team_score != opp_score:
-        result = "W" if team_score > opp_score else "L"
-    else:
-        # scores level: fewer wickets lost carries the tiebreak, like a Super Over proxy
-        result = "W" if first["wickets"] <= second["wickets"] else "L"
-
-    def scorecard_rows(batting_innings, bowling_innings, points_map):
-        rows = []
-        for s in batting_innings["batting"]:
-            rows.append({
-                "id": s["id"], "name": s["name"], "role": s["role"],
-                "runs": s["runs"], "wickets": 0,
-                "balls": s["balls"], "how_out": s["how_out"],
-                "points": round(points_map.get(s["id"], 0.0), 1),
-                "captain": s["id"] == captain_id or s["id"] == ai_captain,
-            })
-        bowl_by_id = {b["id"]: b for b in bowling_innings["bowling"]}
-        for row in rows:
-            b = bowl_by_id.get(row["id"])
-            if b:
-                row["wickets"] = b["wickets"]
-                row["overs"] = round(b["balls"] / 6.0, 1)
-                row["runs_conceded"] = b["runs_conceded"]
-        return rows
 
     return {
         "opponent_name": opponent_name,
         "opponent_rating": opponent_rating,
-        "team_score": float(team_score),
-        "opponent_score": float(opp_score),
-        "team_wickets": first["wickets"],
-        "opponent_wickets": second["wickets"],
-        "team_overs": first["overs"],
-        "opponent_overs": second["overs"],
-        "team_timeline": first["timeline"],
-        "opponent_timeline": second["timeline"],
         "result": result,
+        "team_total": team_total,
+        "opponent_total": opp_total,
+        "innings": innings_public,
         "scorecard": {
-            "team": scorecard_rows(first, second, team_points),
-            "opponent": scorecard_rows(second, first, opp_points),
+            "team": _aggregate_scorecard(team_batting, team_bowling, team_points, captain_id, ai_captain),
+            "opponent": _aggregate_scorecard(opp_batting, opp_bowling, opp_points, captain_id, ai_captain),
         },
         "fantasy_points": round(sum(team_points.values()), 1),
     }

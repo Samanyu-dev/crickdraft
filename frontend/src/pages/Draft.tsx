@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { api } from '../api'
 import { useUser } from '../UserContext'
@@ -33,6 +33,7 @@ function eligibility(
   positionAssignment: (Player | null)[],
   candidate: Player,
 ): { ok: boolean; reason?: string } {
+  if (picks.some((p) => p.id === candidate.id)) return { ok: false, reason: 'Already in your XI' }
   const counts = tally(picks)
   const [, max] = ROLE_RULES[candidate.role]
   if (counts[candidate.role] >= max) return { ok: false, reason: `${candidate.role} slots full` }
@@ -76,14 +77,21 @@ const rowVariants: Variants = {
 }
 
 export default function Draft() {
-  const { username } = useUser()
+  const { username, tournament: currentTournament, setTournament } = useUser()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const tournament = searchParams.get('tournament') || currentTournament
+
+  useEffect(() => {
+    if (tournament !== currentTournament) setTournament(tournament)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tournament])
 
   const [picks, setPicks] = useState<Player[]>([])
   const [positionAssignment, setPositionAssignment] = useState<(Player | null)[]>(Array(SQUAD_SIZE).fill(null))
   const [captainId, setCaptainId] = useState<number | null>(null)
   const [currentSquad, setCurrentSquad] = useState<Squad | null>(null)
-  const [seenSquadKeys, setSeenSquadKeys] = useState<string[]>([])
+  const [lastSquadKey, setLastSquadKey] = useState<string | null>(null)
   const [rerollsLeft, setRerollsLeft] = useState(TOTAL_REROLLS)
   const [phase, setPhase] = useState<'rolling' | 'picking' | 'captain' | 'order'>('rolling')
   const [order, setOrder] = useState<(Player | null)[]>([])
@@ -92,17 +100,21 @@ export default function Draft() {
   const [submitting, setSubmitting] = useState(false)
   const startedRef = useRef(false)
 
-  async function performRoll(picksSnapshot: Player[], seenSnapshot: string[], positionSnapshot: (Player | null)[]) {
+  async function performRoll(picksSnapshot: Player[], excludeKey: string | null, positionSnapshot: (Player | null)[]) {
     setPhase('rolling')
     setError(null)
-    let seen = [...seenSnapshot]
+    // Only exclude the squad just shown, not every squad seen this draft -
+    // small tournament pools (e.g. 10 squads) would otherwise run out
+    // after a couple of rerolls. A local (non-persisted) exclude list
+    // still avoids retrying the same dead-end squad within one search.
+    const tried: string[] = excludeKey ? [excludeKey] : []
     try {
       for (let i = 0; i < MAX_ROLL_ATTEMPTS; i++) {
-        const squad = await api.rollSquad(seen)
-        seen = [...seen, squad.key]
+        const squad = await api.rollSquad(tournament, tried)
+        tried.push(squad.key)
         const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, positionSnapshot, p).ok)
         if (hasEligible || i === MAX_ROLL_ATTEMPTS - 1) {
-          setSeenSquadKeys(seen)
+          setLastSquadKey(squad.key)
           setCurrentSquad(squad)
           setPhase('picking')
           return
@@ -117,7 +129,7 @@ export default function Draft() {
   useEffect(() => {
     if (startedRef.current) return
     startedRef.current = true
-    performRoll([], [], Array(SQUAD_SIZE).fill(null))
+    performRoll([], null, Array(SQUAD_SIZE).fill(null))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -135,14 +147,14 @@ export default function Draft() {
       setOrderError(null)
       setPhase('captain')
     } else {
-      performRoll(newPicks, seenSquadKeys, augmented)
+      performRoll(newPicks, lastSquadKey, augmented)
     }
   }
 
   function handleReroll() {
     if (rerollsLeft <= 0 || phase !== 'picking') return
     setRerollsLeft((n) => n - 1)
-    performRoll(picks, seenSquadKeys, positionAssignment)
+    performRoll(picks, lastSquadKey, positionAssignment)
   }
 
   function goToOrder() {
@@ -178,6 +190,7 @@ export default function Draft() {
         name: `${username}'s XI`,
         player_ids: order.map((p) => p!.id),
         captain_id: captainId,
+        tournament,
       })
       navigate('/team')
     } catch (err) {
@@ -282,7 +295,9 @@ export default function Draft() {
     <div className="draft-shell">
       <div>
         <div className="draft-head">
-          <span className="pick-label">Pick {picks.length + 1} of {SQUAD_SIZE}</span>
+          <span className="pick-label">
+            {tournament.replace(/-/g, ' ')} · Pick {picks.length + 1} of {SQUAD_SIZE}
+          </span>
           <div className="reroll-tokens">
             Rerolls
             {Array.from({ length: TOTAL_REROLLS }).map((_, i) => (
