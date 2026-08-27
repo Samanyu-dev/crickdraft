@@ -13,6 +13,8 @@ class User(SQLModel, table=True):
     matches_played: int = 0
     wins: int = 0
     losses: int = 0
+    matches_today: int = 0
+    last_match_date: Optional[str] = None  # ISO date (IST) of last simulated match
 
 
 class Draft(SQLModel, table=True):

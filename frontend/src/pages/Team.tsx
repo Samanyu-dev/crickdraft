@@ -91,7 +91,16 @@ export default function Team() {
       setActiveSide(null)
       setLastMatch(match)
       setHistory((prev) => [match, ...prev])
-      setUser((u) => (u ? { ...u, ...match.totals } : u))
+      setUser((u) =>
+        u
+          ? {
+              ...u,
+              ...match.totals,
+              matches_today: match.matches_today,
+              matches_remaining_today: match.matches_remaining_today,
+            }
+          : u,
+      )
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Simulation failed')
     } finally {
@@ -156,6 +165,10 @@ export default function Team() {
               </strong>
               <span>W-L · {user.matches_played} played</span>
             </div>
+            <div>
+              <strong>{user.matches_remaining_today}/20</strong>
+              <span>matches left today</span>
+            </div>
           </div>
         )}
 
@@ -204,8 +217,19 @@ export default function Team() {
           </AnimatePresence>
         </div>
 
-        <button className="btn-primary" onClick={handlePlay} disabled={playing} style={{ width: '100%' }}>
-          {playing ? 'Match in progress…' : history.length === 0 ? 'Play a match' : 'Play another match'}
+        <button
+          className="btn-primary"
+          onClick={handlePlay}
+          disabled={playing || (user?.matches_remaining_today ?? 1) <= 0}
+          style={{ width: '100%' }}
+        >
+          {playing
+            ? 'Match in progress…'
+            : (user?.matches_remaining_today ?? 1) <= 0
+              ? 'No matches left today'
+              : history.length === 0
+                ? 'Play a match'
+                : 'Play another match'}
         </button>
         {error && <p className="error">{error}</p>}
 

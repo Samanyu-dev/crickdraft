@@ -6,15 +6,6 @@ class UserCreate(BaseModel):
     username: str = Field(min_length=3, max_length=20, pattern=r"^[A-Za-z0-9_]+$")
 
 
-class UserOut(BaseModel):
-    id: int
-    username: str
-    elo_rating: float
-    matches_played: int
-    wins: int
-    losses: int
-
-
 class DraftCreate(BaseModel):
     username: str
     name: str = "My XI"

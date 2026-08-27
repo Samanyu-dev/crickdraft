@@ -1,5 +1,5 @@
 import random
-from typing import List
+from typing import List, Optional
 
 from .players_data import PLAYERS
 from .model.features import build_features, batter_skill, bowler_skill, clip
@@ -47,8 +47,12 @@ def assign_batting_order(players: List[dict]) -> List[dict]:
     return order
 
 
-def build_ai_opponent(exclude_ids: List[int]) -> List[dict]:
-    from .players_data import ROLE_RULES
+def build_ai_opponent(exclude_ids: List[int], target_elo: float = 1200.0) -> List[dict]:
+    """Builds a random XI whose average player rating is centered on
+    whatever team strength `target_elo` implies - used when there's no
+    real opponent to matchmake against, so the fallback still scales with
+    the challenger's own rank instead of always fielding a stacked XI."""
+    target_avg = 68.0 + (target_elo - 1200.0) / 25.0
 
     pool = [p for p in PLAYERS if p["id"] not in exclude_ids]
     squad: List[dict] = []
@@ -58,8 +62,8 @@ def build_ai_opponent(exclude_ids: List[int]) -> List[dict]:
         candidates = [p for p in pool if p["role"] == role and p["id"] not in used]
         if not candidates:
             return
-        candidates.sort(key=lambda p: p["rating"], reverse=True)
-        window = candidates[: max(count * 3, len(candidates) // 2)]
+        candidates.sort(key=lambda p: abs(p["rating"] - target_avg))
+        window = candidates[: max(count * 3, 6)]
         random.shuffle(window)
         for p in window[:count]:
             squad.append(p)
@@ -263,11 +267,14 @@ def _merge_points(batting_innings, bowling_innings):
     return merged
 
 
-def simulate_match(user_batting_order: List[dict], captain_id: int):
-    opponent_pool = build_ai_opponent([p["id"] for p in user_batting_order])
-    opponent_order = assign_batting_order(opponent_pool)
-    opponent_name = name_opponent(opponent_pool)
-
+def simulate_match(
+    user_batting_order: List[dict],
+    captain_id: int,
+    opponent_order: List[dict],
+    opponent_name: str,
+    opponent_rating: float,
+    opponent_captain_id: Optional[int] = None,
+):
     first = simulate_innings(user_batting_order, opponent_order, target=None)
     second = simulate_innings(opponent_order, user_batting_order, target=first["score"] + 1)
 
@@ -277,7 +284,7 @@ def simulate_match(user_batting_order: List[dict], captain_id: int):
 
     if captain_id in team_points:
         team_points[captain_id] *= 2
-    ai_captain = max(opponent_order, key=lambda p: p["rating"])["id"]
+    ai_captain = opponent_captain_id or max(opponent_order, key=lambda p: p["rating"])["id"]
     if ai_captain in opp_points:
         opp_points[ai_captain] *= 2
 
@@ -309,7 +316,7 @@ def simulate_match(user_batting_order: List[dict], captain_id: int):
 
     return {
         "opponent_name": opponent_name,
-        "opponent_rating": team_elo_rating(opponent_order),
+        "opponent_rating": opponent_rating,
         "team_score": float(team_score),
         "opponent_score": float(opp_score),
         "team_wickets": first["wickets"],

@@ -41,6 +41,8 @@ export interface User {
   matches_played: number
   wins: number
   losses: number
+  matches_today: number
+  matches_remaining_today: number
 }
 
 export interface PlayerPerformance {
@@ -83,6 +85,8 @@ export interface MatchResult {
   elo_after: number
   elo_delta: number
   totals: { elo_rating: number; matches_played: number; wins: number; losses: number }
+  matches_today: number
+  matches_remaining_today: number
 }
 
 export interface LeaderboardEntry {
