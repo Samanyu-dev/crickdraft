@@ -29,6 +29,7 @@ export const soccerApi = {
     if (excludeKeys.length) params.set('exclude', excludeKeys.join(','))
     return req<SoccerSquad>(`/draft/roll?${params.toString()}`)
   },
+  getSquadPool: (tournament: string) => req<SoccerSquad[]>(`/draft/squads?tournament=${tournament}`),
   createUser: (username: string) => req<SoccerUser>('/users', { method: 'POST', body: JSON.stringify({ username }) }),
   getUser: (username: string, tournament?: string) =>
     req<SoccerUser>(`/users/${username}${tournament ? `?tournament=${tournament}` : ''}`),

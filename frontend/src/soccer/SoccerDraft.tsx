@@ -87,22 +87,43 @@ export default function SoccerDraft() {
   const [submitting, setSubmitting] = useState(false)
   const startedRef = useRef(false)
 
+  // Fetched once per tournament and cached, so rolling/rerolling happens
+  // entirely in memory instead of round-tripping to the server on every
+  // attempt - a constrained squad pool could otherwise need many sequential
+  // retries (each a real network call) to find a squad with an eligible
+  // pick, which is slow.
+  const poolRef = useRef<{ tournament: string; squads: SoccerSquad[] } | null>(null)
+
+  async function ensurePool(): Promise<SoccerSquad[]> {
+    if (poolRef.current && poolRef.current.tournament === tournament) return poolRef.current.squads
+    const squads = await soccerApi.getSquadPool(tournament)
+    poolRef.current = { tournament, squads }
+    return squads
+  }
+
+  function pickFromPool(pool: SoccerSquad[], picksSnapshot: SoccerPlayer[], excludeKey: string | null): SoccerSquad {
+    let tried: string[] = excludeKey ? [excludeKey] : []
+    let squad = pool[Math.floor(Math.random() * pool.length)]
+    for (let i = 0; i < MAX_ROLL_ATTEMPTS; i++) {
+      const candidates = pool.filter((s) => !tried.includes(s.key))
+      const source = candidates.length ? candidates : pool
+      squad = source[Math.floor(Math.random() * source.length)]
+      tried = [...tried, squad.key].slice(-RECENT_WINDOW)
+      const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, p).ok)
+      if (hasEligible || i === MAX_ROLL_ATTEMPTS - 1) return squad
+    }
+    return squad
+  }
+
   async function performRoll(picksSnapshot: SoccerPlayer[], excludeKey: string | null) {
     setPhase('rolling')
     setError(null)
-    let tried: string[] = excludeKey ? [excludeKey] : []
     try {
-      for (let i = 0; i < MAX_ROLL_ATTEMPTS; i++) {
-        const squad = await soccerApi.rollSquad(tournament, tried)
-        tried = [...tried, squad.key].slice(-RECENT_WINDOW)
-        const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, p).ok)
-        if (hasEligible || i === MAX_ROLL_ATTEMPTS - 1) {
-          setLastSquadKey(squad.key)
-          setCurrentSquad(squad)
-          setPhase('picking')
-          return
-        }
-      }
+      const pool = await ensurePool()
+      const squad = pickFromPool(pool, picksSnapshot, excludeKey)
+      setLastSquadKey(squad.key)
+      setCurrentSquad(squad)
+      setPhase('picking')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not roll a squad')
       setPhase('picking')

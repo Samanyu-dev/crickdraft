@@ -26,6 +26,11 @@ export const api = {
     if (excludeKeys.length) params.set('exclude', excludeKeys.join(','))
     return req<Squad>(`/draft/roll?${params.toString()}`)
   },
+  // Full squad+player data for the whole tournament pool, fetched once so
+  // rolling/rerolling can happen entirely in memory (no per-attempt
+  // round-trip - a constrained squad pool could otherwise need many
+  // sequential retries to find a squad with an eligible pick).
+  getSquadPool: (tournament: string) => req<Squad[]>(`/draft/squads?tournament=${tournament}`),
   createUser: (username: string) => req<User>('/users', { method: 'POST', body: JSON.stringify({ username }) }),
   getUser: (username: string, tournament?: string) =>
     req<User>(`/users/${username}${tournament ? `?tournament=${tournament}` : ''}`),

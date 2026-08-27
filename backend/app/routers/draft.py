@@ -27,8 +27,10 @@ def roll_squad(tournament: Optional[str] = None, exclude: Optional[str] = None):
 
 @router.get("/squads")
 def list_squads(tournament: Optional[str] = None):
+    """Full squad+player data for every squad in the tournament pool, fetched
+    once up front so the client can roll/reroll entirely in memory instead of
+    round-tripping to /roll on every attempt - a tournament with a smaller,
+    more constrained squad pool could otherwise need many sequential retries
+    to find a squad with an eligible pick, each one a real network call."""
     pool = squads_for_tournament(get_tournament(tournament))
-    return [
-        {"key": s["key"], "country": s["country"], "era": s["era"], "squad_name": s["squad_name"]}
-        for s in pool.values()
-    ]
+    return list(pool.values())

@@ -92,6 +92,15 @@ def roll_squad(tournament: Optional[str] = None, exclude: Optional[str] = None):
     return random.choice(candidates)
 
 
+@router.get("/draft/squads")
+def list_squads(tournament: Optional[str] = None):
+    """Full squad+player data for every squad in the tournament pool, fetched
+    once up front so the client can roll/reroll entirely in memory instead of
+    round-tripping to /draft/roll on every attempt."""
+    pool = squads_for_tournament(get_tournament(tournament))
+    return list(pool.values())
+
+
 @router.post("/users")
 def create_or_get_user(payload: UserCreate, session: Session = Depends(get_session)):
     user = _get_or_create_user(session, payload.username)
