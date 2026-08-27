@@ -1,38 +1,34 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import { api } from '../api'
+import { soccerApi } from './api'
 import { useUser } from '../UserContext'
-import { isValidOrder, tryAugment } from '../battingOrder'
-import type { Player, Role, Squad } from '../types'
+import type { SoccerPlayer, SoccerRole, SoccerSquad } from './types'
 
-const ROLE_RULES: Record<Role, [number, number]> = {
-  WK: [1, 2],
-  BAT: [3, 6],
-  BOWL: [3, 6],
-  AR: [0, 4],
+const ROLE_RULES: Record<SoccerRole, [number, number]> = {
+  GK: [1, 1],
+  DEF: [3, 5],
+  MID: [3, 5],
+  FWD: [1, 3],
 }
-const ROLES: Role[] = ['WK', 'BAT', 'BOWL', 'AR']
+const ROLES: SoccerRole[] = ['GK', 'DEF', 'MID', 'FWD']
 const SQUAD_SIZE = 11
 const CREDIT_CAP = 100
 const TOTAL_REROLLS = 2
 const MAX_ROLL_ATTEMPTS = 24
+const RECENT_WINDOW = 3
 
-function tally(picks: Player[]) {
-  const counts: Record<Role, number> = { WK: 0, BAT: 0, BOWL: 0, AR: 0 }
+function tally(picks: SoccerPlayer[]) {
+  const counts: Record<SoccerRole, number> = { GK: 0, DEF: 0, MID: 0, FWD: 0 }
   picks.forEach((p) => counts[p.role]++)
   return counts
 }
 
-function totalCredits(picks: Player[]) {
+function totalCredits(picks: SoccerPlayer[]) {
   return picks.reduce((sum, p) => sum + p.credit, 0)
 }
 
-function eligibility(
-  picks: Player[],
-  positionAssignment: (Player | null)[],
-  candidate: Player,
-): { ok: boolean; reason?: string } {
+function eligibility(picks: SoccerPlayer[], candidate: SoccerPlayer): { ok: boolean; reason?: string } {
   if (picks.some((p) => p.id === candidate.id)) return { ok: false, reason: 'Already in your XI' }
   const counts = tally(picks)
   const [, max] = ROLE_RULES[candidate.role]
@@ -41,7 +37,7 @@ function eligibility(
 
   const remainingAfterThis = SQUAD_SIZE - picks.length
   let totalNeeded = 0
-  const neededByRole: Record<Role, number> = { WK: 0, BAT: 0, BOWL: 0, AR: 0 }
+  const neededByRole: Record<SoccerRole, number> = { GK: 0, DEF: 0, MID: 0, FWD: 0 }
   for (const r of ROLES) {
     const need = Math.max(0, ROLE_RULES[r][0] - counts[r])
     neededByRole[r] = need
@@ -49,13 +45,6 @@ function eligibility(
   }
   if (totalNeeded === remainingAfterThis && neededByRole[candidate.role] === 0) {
     return { ok: false, reason: 'Must fill required roles first' }
-  }
-  // Would this pick still leave a valid batting-order arrangement for
-  // everyone (including players already picked)? Checked via an online
-  // bipartite matching rather than only at the very end, so the draft can
-  // never paint itself into a corner with too many same-range batters.
-  if (!tryAugment(positionAssignment, candidate)) {
-    return { ok: false, reason: `No batting slot left open for #${candidate.position_min}-${candidate.position_max}` }
   }
   return { ok: true }
 }
@@ -65,20 +54,18 @@ const plaqueVariants: Variants = {
   animate: { opacity: 1, rotateX: 0, y: 0, scale: 1, transition: { duration: 0.4, ease: 'easeOut' } },
   exit: { opacity: 0, rotateX: 10, y: 14, scale: 0.97, transition: { duration: 0.22 } },
 }
-
 const rowContainerVariants: Variants = {
   initial: {},
   animate: { transition: { staggerChildren: 0.045, delayChildren: 0.15 } },
 }
-
 const rowVariants: Variants = {
   initial: { opacity: 0, y: 10 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.25 } },
 }
 
-export default function Draft() {
+export default function SoccerDraft() {
   const { username, tournament: currentTournament, setTournament, setSport } = useUser()
-  useEffect(() => setSport('cricket'), [setSport])
+  useEffect(() => setSport('soccer'), [setSport])
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const tournament = searchParams.get('tournament') || currentTournament
@@ -88,35 +75,25 @@ export default function Draft() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tournament])
 
-  const [picks, setPicks] = useState<Player[]>([])
-  const [positionAssignment, setPositionAssignment] = useState<(Player | null)[]>(Array(SQUAD_SIZE).fill(null))
+  const [picks, setPicks] = useState<SoccerPlayer[]>([])
   const [captainId, setCaptainId] = useState<number | null>(null)
-  const [currentSquad, setCurrentSquad] = useState<Squad | null>(null)
+  const [currentSquad, setCurrentSquad] = useState<SoccerSquad | null>(null)
   const [lastSquadKey, setLastSquadKey] = useState<string | null>(null)
   const [rerollsLeft, setRerollsLeft] = useState(TOTAL_REROLLS)
-  const [phase, setPhase] = useState<'rolling' | 'picking' | 'captain' | 'order'>('rolling')
-  const [order, setOrder] = useState<(Player | null)[]>([])
-  const [orderError, setOrderError] = useState<string | null>(null)
+  const [phase, setPhase] = useState<'rolling' | 'picking' | 'captain'>('rolling')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const startedRef = useRef(false)
 
-  async function performRoll(picksSnapshot: Player[], excludeKey: string | null, positionSnapshot: (Player | null)[]) {
+  async function performRoll(picksSnapshot: SoccerPlayer[], excludeKey: string | null) {
     setPhase('rolling')
     setError(null)
-    // Only exclude a small sliding window of recently-shown squads, not
-    // every squad seen this search - small tournament pools (e.g. 8-10
-    // squads) would otherwise have the exclude list grow to cover the
-    // entire pool within MAX_ROLL_ATTEMPTS tries, leaving nothing left to
-    // roll. Squads are allowed to repeat within a draft by design; this
-    // just avoids showing the exact same one twice in a row.
-    const RECENT_WINDOW = 3
     let tried: string[] = excludeKey ? [excludeKey] : []
     try {
       for (let i = 0; i < MAX_ROLL_ATTEMPTS; i++) {
-        const squad = await api.rollSquad(tournament, tried)
+        const squad = await soccerApi.rollSquad(tournament, tried)
         tried = [...tried, squad.key].slice(-RECENT_WINDOW)
-        const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, positionSnapshot, p).ok)
+        const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, p).ok)
         if (hasEligible || i === MAX_ROLL_ATTEMPTS - 1) {
           setLastSquadKey(squad.key)
           setCurrentSquad(squad)
@@ -133,70 +110,42 @@ export default function Draft() {
   useEffect(() => {
     if (startedRef.current) return
     startedRef.current = true
-    performRoll([], null, Array(SQUAD_SIZE).fill(null))
+    performRoll([], null)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  function handlePick(player: Player) {
-    const check = eligibility(picks, positionAssignment, player)
+  function handlePick(player: SoccerPlayer) {
+    const check = eligibility(picks, player)
     if (!check.ok) return
-    const augmented = tryAugment(positionAssignment, player)
-    if (!augmented) return
     const newPicks = [...picks, player]
     setPicks(newPicks)
-    setPositionAssignment(augmented)
     setCurrentSquad(null)
     if (newPicks.length === SQUAD_SIZE) {
-      setOrder(augmented)
-      setOrderError(null)
       setPhase('captain')
     } else {
-      performRoll(newPicks, lastSquadKey, augmented)
+      performRoll(newPicks, lastSquadKey)
     }
   }
 
   function handleReroll() {
     if (rerollsLeft <= 0 || phase !== 'picking') return
     setRerollsLeft((n) => n - 1)
-    performRoll(picks, lastSquadKey, positionAssignment)
-  }
-
-  function goToOrder() {
-    setPhase('order')
-  }
-
-  function handlePositionChange(playerId: number, newPos: number) {
-    setOrder((prev) => {
-      const arr = [...prev]
-      const fromIdx = arr.findIndex((p) => p?.id === playerId)
-      const toIdx = newPos - 1
-      if (fromIdx === -1 || fromIdx === toIdx) return prev
-      const player = arr[fromIdx]!
-      const occupant = arr[toIdx]
-      if (occupant && !(occupant.position_min <= fromIdx + 1 && fromIdx + 1 <= occupant.position_max)) {
-        setOrderError(`Can't move there — ${occupant.name} can only bat positions ${occupant.position_min}-${occupant.position_max}.`)
-        return prev
-      }
-      setOrderError(null)
-      arr[toIdx] = player
-      arr[fromIdx] = occupant
-      return arr
-    })
+    performRoll(picks, lastSquadKey)
   }
 
   async function handleSubmit() {
-    if (!username || captainId === null || !isValidOrder(order)) return
+    if (!username || captainId === null) return
     setSubmitting(true)
     setError(null)
     try {
-      await api.submitDraft({
+      await soccerApi.submitDraft({
         username,
         name: `${username}'s XI`,
-        player_ids: order.map((p) => p!.id),
+        player_ids: picks.map((p) => p.id),
         captain_id: captainId,
         tournament,
       })
-      navigate('/team')
+      navigate('/soccer/team')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not save draft')
     } finally {
@@ -231,66 +180,9 @@ export default function Draft() {
           ))}
         </div>
         {error && <p className="error">{error}</p>}
-        <button className="btn-primary" disabled={captainId === null} onClick={goToOrder}>
-          Continue to batting order
+        <button className="btn-primary" disabled={captainId === null || submitting} onClick={handleSubmit}>
+          {submitting ? 'Sealing the XI…' : 'Begin simulation'}
         </button>
-      </div>
-    )
-  }
-
-  if (phase === 'order') {
-    return (
-      <div className="squad-panel" style={{ maxWidth: 640, margin: '0 auto' }}>
-        <h2>Set your batting order</h2>
-        <p className="muted" style={{ fontSize: '0.85rem' }}>
-          Every player has a real batting-position range — openers can't bat at 9, tailenders can't open.
-          We've suggested a valid order; swap anyone who needs it.
-        </p>
-        <div className="captain-list">
-          {order.map((p, i) => {
-            if (!p) return null
-            const options = []
-            for (let pos = p.position_min; pos <= p.position_max; pos++) options.push(pos)
-            return (
-              <div className="captain-row" key={p.id}>
-                <span className="ledger" style={{ color: 'var(--brass)', fontSize: '0.85rem' }}>#{i + 1}</span>
-                <span className="p-name">
-                  {p.name} {captainId === p.id && <span className="captain-star">★</span>}
-                  <span className="muted ledger" style={{ fontSize: '0.72rem' }}>
-                    {' '}
-                    · eligible {p.position_min}-{p.position_max}
-                  </span>
-                </span>
-                <select value={i + 1} onChange={(e) => handlePositionChange(p.id, Number(e.target.value))}>
-                  {options.map((pos) => (
-                    <option key={pos} value={pos}>
-                      Bat at #{pos}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )
-          })}
-        </div>
-        {orderError && <p className="error">{orderError}</p>}
-        {error && <p className="error">{error}</p>}
-        <div style={{ display: 'flex', gap: '0.6rem' }}>
-          <button className="btn-ghost" onClick={() => setPhase('captain')}>
-            Back
-          </button>
-          <button
-            className="btn-ghost"
-            onClick={() => {
-              setOrder(positionAssignment)
-              setOrderError(null)
-            }}
-          >
-            Reset order
-          </button>
-          <button className="btn-primary" disabled={!isValidOrder(order) || submitting} onClick={handleSubmit}>
-            {submitting ? 'Sealing the XI…' : 'Begin simulation'}
-          </button>
-        </div>
       </div>
     )
   }
@@ -339,7 +231,7 @@ export default function Draft() {
               </div>
               <motion.div className="plaque-rows" variants={rowContainerVariants} initial="initial" animate="animate">
                 {currentSquad.players.map((p) => {
-                  const check = eligibility(picks, positionAssignment, p)
+                  const check = eligibility(picks, p)
                   return (
                     <motion.button
                       key={p.id}
@@ -353,10 +245,7 @@ export default function Draft() {
                       <span>
                         <span className="p-name">{p.name}</span>
                         <span className="p-stat">
-                          {p.batting ? `Bat ${p.batting.avg.toFixed(0)} avg` : ''}
-                          {p.batting && p.bowling ? ' · ' : ''}
-                          {p.bowling ? `Bowl ${p.bowling.avg.toFixed(0)} avg` : ''}
-                          {' · '}Field {p.fielding.toFixed(0)} · Morale {p.morale.toFixed(0)} · #{p.position_min}-{p.position_max}
+                          ATK {p.attack.toFixed(0)} · DEF {p.defense.toFixed(0)} · PAS {p.passing.toFixed(0)} · PAC {p.pace.toFixed(0)}
                         </span>
                         {!check.ok && check.reason && <span className="disabled-reason">{check.reason}</span>}
                       </span>

@@ -11,7 +11,7 @@ export default function Home() {
   const navigate = useNavigate()
 
   if (username) {
-    navigate('/lobby', { replace: true })
+    navigate('/sports', { replace: true })
     return null
   }
 
@@ -27,7 +27,7 @@ export default function Home() {
     try {
       await api.createUser(name)
       setUsername(name)
-      navigate('/lobby')
+      navigate('/sports')
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong')
     } finally {

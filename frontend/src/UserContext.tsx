@@ -2,12 +2,17 @@ import { createContext, useContext, useState, useCallback, type ReactNode } from
 
 const STORAGE_KEY = 'crickdraft_username'
 const TOURNAMENT_KEY = 'crickdraft_tournament'
+const SPORT_KEY = 'crickdraft_sport'
+
+export type Sport = 'cricket' | 'soccer'
 
 interface UserContextValue {
   username: string | null
   setUsername: (name: string | null) => void
   tournament: string
   setTournament: (slug: string) => void
+  sport: Sport
+  setSport: (sport: Sport) => void
 }
 
 const UserContext = createContext<UserContextValue>({
@@ -15,12 +20,17 @@ const UserContext = createContext<UserContextValue>({
   setUsername: () => {},
   tournament: 'showdown-league',
   setTournament: () => {},
+  sport: 'cricket',
+  setSport: () => {},
 })
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [username, setUsernameState] = useState<string | null>(() => localStorage.getItem(STORAGE_KEY))
   const [tournament, setTournamentState] = useState<string>(
     () => localStorage.getItem(TOURNAMENT_KEY) || 'showdown-league',
+  )
+  const [sport, setSportState] = useState<Sport>(
+    () => (localStorage.getItem(SPORT_KEY) as Sport) || 'cricket',
   )
 
   const setUsername = useCallback((name: string | null) => {
@@ -34,8 +44,13 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setTournamentState(slug)
   }, [])
 
+  const setSport = useCallback((s: Sport) => {
+    localStorage.setItem(SPORT_KEY, s)
+    setSportState(s)
+  }, [])
+
   return (
-    <UserContext.Provider value={{ username, setUsername, tournament, setTournament }}>
+    <UserContext.Provider value={{ username, setUsername, tournament, setTournament, sport, setSport }}>
       {children}
     </UserContext.Provider>
   )

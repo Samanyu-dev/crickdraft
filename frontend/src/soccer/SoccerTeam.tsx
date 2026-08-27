@@ -2,47 +2,35 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useUser } from '../UserContext'
-import { api } from '../api'
+import { soccerApi } from './api'
 import FlipScore from '../components/FlipScore'
 import RankBadge from '../components/RankBadge'
 import { getRank } from '../rankTiers'
-import type { DraftDetail, HistoryEntry, InningsResult, MatchResult, OverEvent, User } from '../types'
+import type { SoccerDraftDetail, SoccerHistoryEntry, SoccerMatchEvent, SoccerMatchResult, SoccerUser } from './types'
+
+const MATCH_DURATION_MS = 9500
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-function eventFor(over: OverEvent): { text: string; kind: 'wicket' | 'six' | 'four' } | null {
-  if (over.balls.includes('W')) return { text: 'WICKET!', kind: 'wicket' }
-  if (over.balls.includes('6')) return { text: 'SIX!', kind: 'six' }
-  if (over.balls.includes('4')) return { text: 'FOUR!', kind: 'four' }
-  return null
-}
-
-type Side = { score: number; wickets: number; over: number }
-const ZERO_SIDE: Side = { score: 0, wickets: 0, over: 0 }
-const sideKey = (s: 'team' | 'opponent'): 'team' | 'opp' => (s === 'team' ? 'team' : 'opp')
-
 const RESULT_LABEL: Record<string, string> = { W: 'Match Won', L: 'Match Lost', D: 'Match Drawn' }
 const RESULT_SHORT: Record<string, string> = { W: 'Won', L: 'Lost', D: 'Drawn' }
 const RESULT_CLASS: Record<string, string> = { W: 'win', L: 'loss', D: 'draw' }
 
-export default function Team() {
+export default function SoccerTeam() {
   const { username, tournament: currentTournament, setSport } = useUser()
-  useEffect(() => setSport('cricket'), [setSport])
+  useEffect(() => setSport('soccer'), [setSport])
   const [searchParams] = useSearchParams()
   const tournament = searchParams.get('tournament') || currentTournament
 
-  const [draft, setDraft] = useState<DraftDetail | null | undefined>(undefined)
-  const [user, setUser] = useState<User | null>(null)
-  const [live, setLive] = useState<{ team: Side; opp: Side }>({ team: ZERO_SIDE, opp: ZERO_SIDE })
-  const [priorScore, setPriorScore] = useState<{ team: number | null; opp: number | null }>({ team: null, opp: null })
-  const [activeSide, setActiveSide] = useState<'team' | 'opp' | null>(null)
+  const [draft, setDraft] = useState<SoccerDraftDetail | null | undefined>(undefined)
+  const [user, setUser] = useState<SoccerUser | null>(null)
+  const [live, setLive] = useState({ team: 0, opponent: 0, minute: 0 })
   const [banner, setBanner] = useState<{ text: string; kind: string } | null>(null)
   const [shake, setShake] = useState(0)
-  const [breakText, setBreakText] = useState<string | null>(null)
-  const [lastMatch, setLastMatch] = useState<MatchResult | null>(null)
-  const [history, setHistory] = useState<HistoryEntry[]>([])
+  const [lastMatch, setLastMatch] = useState<SoccerMatchResult | null>(null)
+  const [history, setHistory] = useState<SoccerHistoryEntry[]>([])
   const [playing, setPlaying] = useState(false)
   const [expanded, setExpanded] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -61,23 +49,25 @@ export default function Team() {
 
   function refresh() {
     if (!username) return
-    api.getDraft(username, tournament).then(setDraft)
-    api.getUser(username, tournament).then(setUser)
-    api.getMatchHistory(username, tournament).then(setHistory)
+    soccerApi.getDraft(username, tournament).then(setDraft)
+    soccerApi.getUser(username, tournament).then(setUser)
+    soccerApi.getMatchHistory(username, tournament).then(setHistory)
   }
 
   useEffect(refresh, [username, tournament])
 
-  async function playInnings(innings: InningsResult, durationMs: number) {
-    const key = sideKey(innings.side)
-    setLive((prev) => ({ ...prev, [key]: ZERO_SIDE }))
-    setActiveSide(key)
-    const stepDelay = durationMs / Math.max(1, innings.timeline.length)
-    for (const over of innings.timeline) {
-      const ev = eventFor(over)
-      setBanner(ev)
-      if (ev?.kind === 'wicket') setShake((n) => n + 1)
-      setLive((prev) => ({ ...prev, [key]: { score: over.score, wickets: over.wickets, over: over.over } }))
+  async function playTimeline(timeline: SoccerMatchEvent[]) {
+    const stepDelay = MATCH_DURATION_MS / Math.max(1, timeline.length)
+    for (const e of timeline) {
+      if (e.event === 'goal') {
+        setBanner({ text: `GOAL! ${e.scorer}`, kind: e.side === 'team' ? 'six' : 'wicket' })
+        setShake((n) => n + 1)
+      } else if (e.event === 'chance') {
+        setBanner({ text: 'Close chance!', kind: 'four' })
+      } else {
+        setBanner(null)
+      }
+      setLive({ team: e.score_team, opponent: e.score_opponent, minute: e.minute })
       await sleep(stepDelay)
     }
     setBanner(null)
@@ -88,38 +78,23 @@ export default function Team() {
     setPlaying(true)
     setError(null)
     setLastMatch(null)
-    setLive({ team: ZERO_SIDE, opp: ZERO_SIDE })
-    setPriorScore({ team: null, opp: null })
-    setBreakText(null)
+    setLive({ team: 0, opponent: 0, minute: 0 })
     try {
-      const match = await api.simulate(draft.id)
-      const totalDuration = match.innings.length <= 2 ? 8800 : 15600
-      const perInnings = totalDuration / match.innings.length
-
-      for (let idx = 0; idx < match.innings.length; idx++) {
-        const innings = match.innings[idx]
-        await playInnings(innings, perInnings)
-        setActiveSide(null)
-        const key = sideKey(innings.side)
-        const label = innings.side === 'team' ? 'Your XI' : match.opponent_name
-        const summary = `${innings.wickets >= 10 ? 'all out' : `${innings.wickets} wkt`} for ${innings.score}`
-        if (idx < match.innings.length - 1) {
-          setPriorScore((prev) => ({ ...prev, [key]: innings.score }))
-          setBreakText(`${label} ${summary} (${innings.overs.toFixed(1)} ov)`)
-          await sleep(1400)
-          setBreakText(null)
-        }
-      }
+      const match = await soccerApi.simulate(draft.id)
+      await playTimeline(match.timeline)
       setLastMatch(match)
-      setHistory((prev) => [match, ...prev])
+      setHistory((prev) => [
+        {
+          opponent_name: match.opponent_name, opponent_rating: match.opponent_rating, result: match.result,
+          team_goals: match.team_goals, opponent_goals: match.opponent_goals,
+          elo_before: match.elo_before, elo_after: match.elo_after, elo_delta: match.elo_delta,
+          scorecard: match.scorecard,
+        },
+        ...prev,
+      ])
       setUser((u) =>
         u
-          ? {
-              ...u,
-              ...match.totals,
-              matches_today: match.matches_today,
-              matches_remaining_today: match.matches_remaining_today,
-            }
+          ? { ...u, ...match.totals, matches_today: match.matches_today, matches_remaining_today: match.matches_remaining_today }
           : u,
       )
     } catch (err) {
@@ -135,7 +110,7 @@ export default function Team() {
     return (
       <div className="empty-state">
         <p>You haven't drafted an XI for this tournament yet.</p>
-        <Link className="btn-primary" to={`/draft?tournament=${tournament}`}>
+        <Link className="btn-primary" to={`/soccer/draft?tournament=${tournament}`}>
           Start the draft
         </Link>
       </div>
@@ -155,9 +130,9 @@ export default function Team() {
         </div>
         <h2>{draft.name}</h2>
         <div className="team-list">
-          {draft.players.map((p, i) => (
+          {draft.players.map((p) => (
             <div key={p.id} className="team-row">
-              <span className={`role-tag role-${p.role}`}>#{i + 1}</span>
+              <span className={`role-tag role-${p.role}`}>{p.role}</span>
               <span className="p-name">
                 {p.name} {draft.captain_id === p.id && <span className="captain-star">★</span>}
               </span>
@@ -167,7 +142,7 @@ export default function Team() {
             </div>
           ))}
         </div>
-        <Link to={`/draft?tournament=${tournament}`} className="link-btn">
+        <Link to={`/soccer/draft?tournament=${tournament}`} className="link-btn">
           Draft a new XI
         </Link>
       </section>
@@ -199,27 +174,19 @@ export default function Team() {
 
         {playing && (
           <div className="live-badge" style={{ marginBottom: '0.5rem' }}>
-            <span className="live-dot" /> Live
+            <span className="live-dot" /> Live · {live.minute}'
           </div>
         )}
         <div className="scoreboard-wrap" ref={scoreboardRef}>
           <div className="scoreboard">
-            <div className={`scoreboard-side ${activeSide === 'team' ? 'active' : ''}`}>
+            <div className="scoreboard-side">
               <div className="scoreboard-label">Your XI</div>
-              <FlipScore value={live.team.score} />
-              <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
-                {live.team.wickets} wkt · ov {live.team.over}
-              </div>
-              {priorScore.team !== null && <div className="ledger muted prior-innings">1st inns: {priorScore.team}</div>}
+              <FlipScore value={live.team} />
             </div>
             <div className="scoreboard-vs">vs</div>
-            <div className={`scoreboard-side ${activeSide === 'opp' ? 'active' : ''}`}>
+            <div className="scoreboard-side">
               <div className="scoreboard-label">Opponent</div>
-              <FlipScore value={live.opp.score} />
-              <div className="ledger muted" style={{ fontSize: '0.75rem', marginTop: '0.3rem' }}>
-                {live.opp.wickets} wkt · ov {live.opp.over}
-              </div>
-              {priorScore.opp !== null && <div className="ledger muted prior-innings">1st inns: {priorScore.opp}</div>}
+              <FlipScore value={live.opponent} />
             </div>
           </div>
           <AnimatePresence>
@@ -233,17 +200,6 @@ export default function Team() {
                 transition={{ duration: 0.25 }}
               >
                 {banner.text}
-              </motion.div>
-            )}
-            {breakText && (
-              <motion.div
-                key="break"
-                className="event-banner event-info"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-              >
-                {breakText}
               </motion.div>
             )}
           </AnimatePresence>
@@ -296,7 +252,7 @@ export default function Team() {
                   <div className="result-head" onClick={() => setExpanded(expanded === i ? null : i)}>
                     <span className={`stamp ${RESULT_CLASS[r.result]}`}>{RESULT_SHORT[r.result]}</span>
                     <span>
-                      {r.team_total} — {r.opponent_total} vs {r.opponent_name}
+                      {r.team_goals} — {r.opponent_goals} vs {r.opponent_name}
                     </span>
                     <span className={`ledger elo-pill ${r.elo_delta >= 0 ? 'up' : 'down'}`}>
                       {r.elo_delta >= 0 ? '+' : ''}
@@ -313,9 +269,7 @@ export default function Team() {
                             <span>
                               {p.name} {p.captain && '★'}
                             </span>
-                            <span className="muted">
-                              {p.runs}({p.balls}) {p.wickets ? `· ${p.wickets}/${p.runs_conceded} (${p.overs?.toFixed(1)}ov)` : ''}
-                            </span>
+                            <span className="muted">{p.goals} goal{p.goals !== 1 ? 's' : ''}</span>
                             <span>{p.points.toFixed(0)} pts</span>
                           </div>
                         ))}
@@ -329,9 +283,7 @@ export default function Team() {
                             <span>
                               {p.name} {p.captain && '★'}
                             </span>
-                            <span className="muted">
-                              {p.runs}({p.balls}) {p.wickets ? `· ${p.wickets}/${p.runs_conceded} (${p.overs?.toFixed(1)}ov)` : ''}
-                            </span>
+                            <span className="muted">{p.goals} goal{p.goals !== 1 ? 's' : ''}</span>
                             <span>{p.points.toFixed(0)} pts</span>
                           </div>
                         ))}

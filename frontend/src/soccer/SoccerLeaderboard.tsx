@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { api } from '../api'
-import type { LeaderboardEntry, Tournament } from '../types'
+import { soccerApi } from './api'
+import type { SoccerLeaderboardEntry, SoccerTournament } from './types'
 import { useUser } from '../UserContext'
 import RankBadge from '../components/RankBadge'
 
-export default function Leaderboard() {
+export default function SoccerLeaderboard() {
   const { username, tournament: currentTournament, setTournament, setSport } = useUser()
-  useEffect(() => setSport('cricket'), [setSport])
+  useEffect(() => setSport('soccer'), [setSport])
   const [searchParams, setSearchParams] = useSearchParams()
   const tournament = searchParams.get('tournament') || currentTournament
 
-  const [tournaments, setTournaments] = useState<Tournament[] | null>(null)
-  const [entries, setEntries] = useState<LeaderboardEntry[] | null>(null)
+  const [tournaments, setTournaments] = useState<SoccerTournament[] | null>(null)
+  const [entries, setEntries] = useState<SoccerLeaderboardEntry[] | null>(null)
 
   useEffect(() => {
-    api.getTournaments().then(setTournaments)
+    soccerApi.getTournaments().then(setTournaments)
   }, [])
 
   useEffect(() => {
     setEntries(null)
-    api.getLeaderboard(tournament).then(setEntries)
+    soccerApi.getLeaderboard(tournament).then(setEntries)
   }, [tournament])
 
   function selectTournament(slug: string) {

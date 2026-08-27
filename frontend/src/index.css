@@ -478,6 +478,24 @@ main {
   color: #8ff0b8;
 }
 
+/* Soccer roles */
+.role-tag.role-GK {
+  background: rgba(61, 220, 132, 0.22);
+  color: #8ff0b8;
+}
+.role-tag.role-DEF {
+  background: rgba(255, 77, 109, 0.22);
+  color: var(--brass-bright);
+}
+.role-tag.role-MID {
+  background: rgba(255, 176, 32, 0.22);
+  color: #ffcf6b;
+}
+.role-tag.role-FWD {
+  background: rgba(255, 77, 77, 0.22);
+  color: #ff9d9d;
+}
+
 .plaque-row-btn .p-name {
   font-family: 'Archivo Black', 'Inter', sans-serif;
   font-size: 1rem;
