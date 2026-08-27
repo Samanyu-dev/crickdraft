@@ -214,7 +214,7 @@ export default function Draft() {
           {picks.map((p) => (
             <div className="captain-row" key={p.id}>
               <span className={`role-tag role-${p.role}`}>{p.role}</span>
-              <span className="p-name" style={{ fontFamily: 'Fraunces, serif' }}>
+              <span className="p-name">
                 {p.name} <span className="muted ledger" style={{ fontSize: '0.72rem' }}>· {p.country} {p.era}</span>
               </span>
               <button
@@ -250,7 +250,7 @@ export default function Draft() {
             return (
               <div className="captain-row" key={p.id}>
                 <span className="ledger" style={{ color: 'var(--brass)', fontSize: '0.85rem' }}>#{i + 1}</span>
-                <span className="p-name" style={{ fontFamily: 'Fraunces, serif' }}>
+                <span className="p-name">
                   {p.name} {captainId === p.id && <span className="captain-star">★</span>}
                   <span className="muted ledger" style={{ fontSize: '0.72rem' }}>
                     {' '}

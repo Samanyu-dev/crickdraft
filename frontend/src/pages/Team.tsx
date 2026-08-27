@@ -196,6 +196,11 @@ export default function Team() {
           </div>
         )}
 
+        {playing && (
+          <div className="live-badge" style={{ marginBottom: '0.5rem' }}>
+            <span className="live-dot" /> Live
+          </div>
+        )}
         <div className="scoreboard-wrap" ref={scoreboardRef}>
           <div className="scoreboard">
             <div className={`scoreboard-side ${activeSide === 'team' ? 'active' : ''}`}>

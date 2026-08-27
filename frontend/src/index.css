@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
 :root {
-  /* Floodlight palette — built to host many tournaments/skins, not just one pavilion */
-  --wood-deep: #05070d;
-  --wood: #0a0f1c;
-  --wood-panel: #101828;
-  --wood-light: #1c2740;
-  --wood-hairline: #2c3a5c;
-  --brass: #2dd4bf;
-  --brass-bright: #7ff5e6;
-  --brass-dim: #1f8f82;
-  --parchment: #e7ecf7;
-  --parchment-dim: #c3cbdb;
-  --ink: #061018;
-  --cream: #eef2fb;
-  --cream-dim: #8b96b3;
-  --clay: #ff8a4c;
-  --leather: #ff5577;
-  --turf: #3ddc84;
-  --stamp-win: #3ddc84;
-  --stamp-loss: #ff5577;
+  /* Crimson Dashboard palette — bold, glassy, gradient-driven app energy */
+  --wood-deep: #170410;
+  --wood: #260819;
+  --wood-panel: #35102a;
+  --wood-light: #551a3f;
+  --wood-hairline: #75254f;
+  --brass: #ff4d6d;
+  --brass-bright: #ff90a8;
+  --brass-dim: #b83a56;
+  --parchment: #fdeef2;
+  --parchment-dim: #d9b8c4;
+  --ink: #1a020e;
+  --cream: #fdeef2;
+  --cream-dim: #c99aab;
+  --clay: #ffb020;
+  --leather: #ff4d4d;
+  --turf: #34d399;
+  --stamp-win: #34d399;
+  --stamp-loss: #ff4d6d;
   font-family: 'Inter', system-ui, sans-serif;
   color-scheme: dark;
 }
@@ -38,16 +38,17 @@ body {
   margin: 0;
   color: var(--cream);
   background:
-    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(45, 212, 191, 0.09), transparent 60%),
-    repeating-linear-gradient(115deg, rgba(0, 0, 0, 0.12) 0px, transparent 2px, transparent 42px, rgba(0, 0, 0, 0.12) 44px),
-    var(--wood-deep);
+    radial-gradient(ellipse 1100px 650px at 20% -15%, rgba(255, 77, 109, 0.35), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 100% 0%, rgba(255, 176, 32, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--wood) 0%, var(--wood-deep) 55%);
+  background-attachment: fixed;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: 'Fraunces', 'Iowan Old Style', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   margin: 0 0 0.4em;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -102,14 +103,16 @@ select {
   gap: 2rem;
   padding: 1rem 1.75rem;
   border-bottom: 1px solid var(--wood-hairline);
-  background: linear-gradient(180deg, var(--wood) 0%, var(--wood-deep) 100%);
+  background: rgba(23, 4, 16, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .brand {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-weight: 700;
   font-size: 1.3rem;
   letter-spacing: 0.02em;
@@ -181,7 +184,7 @@ main {
   background: linear-gradient(180deg, var(--brass-bright), var(--brass));
   color: var(--ink);
   font-weight: 600;
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   border: none;
   border-radius: 4px;
   padding: 0.7em 1.4em;
@@ -280,11 +283,13 @@ main {
 
 /* Plaque preview on the hero */
 .plaque-preview {
-  background: linear-gradient(180deg, var(--wood-panel), var(--wood));
+  background: linear-gradient(180deg, rgba(53, 16, 42, 0.72), rgba(38, 8, 25, 0.78));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--wood-hairline);
   border-radius: 6px;
   padding: 1.6rem 1.4rem;
-  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(45, 212, 191, 0.08);
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 77, 109, 0.08);
   position: relative;
 }
 
@@ -292,7 +297,7 @@ main {
   content: '';
   position: absolute;
   inset: 8px;
-  border: 1px solid rgba(45, 212, 191, 0.25);
+  border: 1px solid rgba(255, 77, 109, 0.25);
   border-radius: 3px;
   pointer-events: none;
 }
@@ -310,10 +315,10 @@ main {
 .plaque-preview .plaque-row {
   display: flex;
   justify-content: space-between;
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   color: var(--brass-bright);
   padding: 0.5rem 0.2rem;
-  border-bottom: 1px dashed rgba(45, 212, 191, 0.2);
+  border-bottom: 1px dashed rgba(255, 77, 109, 0.2);
   font-size: 0.98rem;
 }
 
@@ -373,21 +378,21 @@ main {
 }
 
 .plaque {
-  background:
-    linear-gradient(180deg, var(--wood-panel), var(--wood) 70%),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0px, transparent 3px, transparent 60px, rgba(0, 0, 0, 0.08) 63px);
+  background: linear-gradient(160deg, rgba(58, 18, 46, 0.75), rgba(30, 6, 20, 0.82));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--wood-hairline);
   border-radius: 8px;
   padding: 1.6rem 1.8rem;
   position: relative;
-  box-shadow: 0 24px 50px -25px rgba(0, 0, 0, 0.75), inset 0 0 0 1px rgba(45, 212, 191, 0.06);
+  box-shadow: 0 24px 50px -25px rgba(0, 0, 0, 0.75), inset 0 0 0 1px rgba(255, 77, 109, 0.06);
 }
 
 .plaque::before {
   content: '';
   position: absolute;
   inset: 10px;
-  border: 1px solid rgba(45, 212, 191, 0.22);
+  border: 1px solid rgba(255, 77, 109, 0.22);
   border-radius: 4px;
   pointer-events: none;
 }
@@ -396,11 +401,11 @@ main {
   text-align: center;
   margin-bottom: 1.3rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(45, 212, 191, 0.22);
+  border-bottom: 1px solid rgba(255, 77, 109, 0.22);
 }
 
 .plaque-header .country-era {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-style: italic;
   font-weight: 500;
   font-size: 1.6rem;
@@ -430,7 +435,7 @@ main {
   width: 100%;
   text-align: left;
   background: rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(45, 212, 191, 0.16);
+  border: 1px solid rgba(255, 77, 109, 0.16);
   border-radius: 4px;
   padding: 0.65rem 0.9rem;
   color: var(--cream);
@@ -438,7 +443,7 @@ main {
 }
 
 .plaque-row-btn:hover:not(:disabled) {
-  background: rgba(45, 212, 191, 0.1);
+  background: rgba(255, 77, 109, 0.1);
   border-color: var(--brass);
 }
 
@@ -457,15 +462,15 @@ main {
 }
 
 .role-tag.role-BAT {
-  background: rgba(255, 138, 76, 0.22);
-  color: #ffb98a;
+  background: rgba(255, 176, 32, 0.22);
+  color: #ffcf6b;
 }
 .role-tag.role-BOWL {
-  background: rgba(255, 85, 119, 0.22);
-  color: #ff9db0;
+  background: rgba(255, 77, 77, 0.22);
+  color: #ff9d9d;
 }
 .role-tag.role-AR {
-  background: rgba(45, 212, 191, 0.22);
+  background: rgba(255, 77, 109, 0.22);
   color: var(--brass-bright);
 }
 .role-tag.role-WK {
@@ -474,7 +479,7 @@ main {
 }
 
 .plaque-row-btn .p-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-size: 1rem;
   color: var(--cream);
 }
@@ -510,7 +515,9 @@ main {
 
 /* ---------- Squad ledger sidebar ---------- */
 .squad-panel {
-  background: linear-gradient(180deg, var(--wood-panel), var(--wood));
+  background: linear-gradient(180deg, rgba(53, 16, 42, 0.72), rgba(38, 8, 25, 0.78));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--wood-hairline);
   border-radius: 8px;
   padding: 1.2rem;
@@ -604,7 +611,7 @@ main {
 }
 
 .slot-row .slot-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   color: var(--cream);
   flex: 1;
 }
@@ -629,7 +636,7 @@ main {
   align-items: center;
   gap: 0.7rem;
   background: rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(45, 212, 191, 0.16);
+  border: 1px solid rgba(255, 77, 109, 0.16);
   border-radius: 4px;
   padding: 0.6rem 0.9rem;
 }
@@ -660,7 +667,9 @@ main {
 
 .team-summary,
 .sim-panel {
-  background: linear-gradient(180deg, var(--wood-panel), var(--wood));
+  background: linear-gradient(180deg, rgba(53, 16, 42, 0.72), rgba(38, 8, 25, 0.78));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--wood-hairline);
   border-radius: 8px;
   padding: 1.25rem;
@@ -685,7 +694,7 @@ main {
 }
 
 .team-row .p-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
 }
 
 .captain-star {
@@ -727,8 +736,8 @@ main {
 }
 
 .scoreboard-side.active {
-  background: rgba(127, 245, 230, 0.08);
-  box-shadow: 0 0 0 1px rgba(127, 245, 230, 0.35), 0 0 22px rgba(127, 245, 230, 0.18);
+  background: rgba(255, 144, 168, 0.08);
+  box-shadow: 0 0 0 1px rgba(255, 144, 168, 0.35), 0 0 22px rgba(255, 144, 168, 0.18);
 }
 
 .event-banner {
@@ -736,7 +745,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
   letter-spacing: 0.04em;
@@ -752,14 +761,14 @@ main {
   background: var(--wood-deep);
   border: 2px solid var(--leather);
   color: var(--leather);
-  box-shadow: 0 0 26px rgba(255, 85, 119, 0.5), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 26px rgba(255, 77, 77, 0.5), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
 }
 
 .event-banner.event-six {
   background: var(--wood-deep);
   border: 2px solid var(--brass);
   color: var(--brass-bright);
-  box-shadow: 0 0 26px rgba(45, 212, 191, 0.5), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 26px rgba(255, 77, 109, 0.5), 0 12px 30px -10px rgba(0, 0, 0, 0.6);
 }
 
 .event-banner.event-four {
@@ -811,7 +820,7 @@ main {
 }
 
 .promo-banner {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-style: italic;
   color: var(--brass-bright);
   font-size: 0.95rem;
@@ -863,7 +872,7 @@ main {
   position: relative;
   width: 1.5rem;
   height: 2.1rem;
-  background: linear-gradient(180deg, #16202f, #060b12);
+  background: linear-gradient(180deg, #2e0f22, #0f0209);
   border: 1px solid var(--wood-hairline);
   border-radius: 3px;
   overflow: hidden;
@@ -881,7 +890,7 @@ main {
 }
 
 .scoreboard-vs {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-style: italic;
   color: var(--brass-dim);
   font-size: 1.3rem;
@@ -952,7 +961,7 @@ main {
 }
 
 .stamp {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-weight: 700;
   font-size: 0.72rem;
   letter-spacing: 0.06em;
@@ -1013,9 +1022,9 @@ main {
 
 /* ---------- Leaderboard (the honours board) ---------- */
 .leaderboard-board {
-  background:
-    linear-gradient(180deg, var(--wood-panel), var(--wood) 60%),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0px, transparent 3px, transparent 60px, rgba(0, 0, 0, 0.08) 63px);
+  background: linear-gradient(160deg, rgba(58, 18, 46, 0.75), rgba(30, 6, 20, 0.82));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--wood-hairline);
   border-radius: 8px;
   padding: 2rem 2.2rem;
@@ -1028,7 +1037,7 @@ main {
   content: '';
   position: absolute;
   inset: 12px;
-  border: 1px solid rgba(45, 212, 191, 0.22);
+  border: 1px solid rgba(255, 77, 109, 0.22);
   border-radius: 4px;
   pointer-events: none;
 }
@@ -1056,7 +1065,7 @@ main {
   gap: 1rem;
   align-items: center;
   padding: 0.6rem 0.3rem;
-  border-bottom: 1px dashed rgba(45, 212, 191, 0.2);
+  border-bottom: 1px dashed rgba(255, 77, 109, 0.2);
   font-family: 'Space Mono', monospace;
   font-size: 0.85rem;
 }
@@ -1075,7 +1084,7 @@ main {
 }
 
 .board-row .name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
   font-size: 1.05rem;
   color: var(--cream);
 }
@@ -1121,7 +1130,9 @@ main {
 
 .tournament-card {
   text-align: left;
-  background: linear-gradient(180deg, var(--wood-panel), var(--wood));
+  background: linear-gradient(180deg, rgba(53, 16, 42, 0.72), rgba(38, 8, 25, 0.78));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--wood-hairline);
   border-radius: 10px;
   padding: 1.3rem;
@@ -1159,18 +1170,18 @@ main {
 }
 
 .tournament-format.format-T20 {
-  background: rgba(45, 212, 191, 0.2);
+  background: rgba(255, 77, 109, 0.2);
   color: var(--brass-bright);
 }
 
 .tournament-format.format-ODI {
-  background: rgba(255, 138, 76, 0.2);
-  color: #ffb98a;
+  background: rgba(255, 176, 32, 0.2);
+  color: #ffcf6b;
 }
 
 .tournament-format.format-TEST {
-  background: rgba(255, 85, 119, 0.2);
-  color: #ff9db0;
+  background: rgba(255, 77, 77, 0.2);
+  color: #ff9d9d;
 }
 
 .tournament-meta {
@@ -1202,7 +1213,7 @@ main {
 .tournament-tab.active {
   border-color: var(--brass);
   color: var(--brass-bright);
-  background: rgba(45, 212, 191, 0.1);
+  background: rgba(255, 77, 109, 0.1);
 }
 
 /* ---------- Small screens ---------- */
@@ -1301,4 +1312,31 @@ main {
   .scorecard {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Live badge ---------- */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--leather);
+  text-transform: uppercase;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--leather);
+  box-shadow: 0 0 8px var(--leather);
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
 }
