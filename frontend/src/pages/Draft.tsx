@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { api } from '../api'
 import { useUser } from '../UserContext'
-import PlayerCard from '../components/PlayerCard'
-import type { Player, Role } from '../types'
+import type { Player, Role, Squad } from '../types'
 
 const ROLE_RULES: Record<Role, [number, number]> = {
   WK: [1, 2],
@@ -11,84 +11,129 @@ const ROLE_RULES: Record<Role, [number, number]> = {
   BOWL: [3, 6],
   AR: [0, 4],
 }
+const ROLES: Role[] = ['WK', 'BAT', 'BOWL', 'AR']
 const SQUAD_SIZE = 11
 const CREDIT_CAP = 100
+const TOTAL_REROLLS = 2
+const MAX_ROLL_ATTEMPTS = 24
+
+function tally(picks: Player[]) {
+  const counts: Record<Role, number> = { WK: 0, BAT: 0, BOWL: 0, AR: 0 }
+  picks.forEach((p) => counts[p.role]++)
+  return counts
+}
+
+function totalCredits(picks: Player[]) {
+  return picks.reduce((sum, p) => sum + p.credit, 0)
+}
+
+function eligibility(picks: Player[], candidate: Player): { ok: boolean; reason?: string } {
+  const counts = tally(picks)
+  const [, max] = ROLE_RULES[candidate.role]
+  if (counts[candidate.role] >= max) return { ok: false, reason: `${candidate.role} slots full` }
+  if (totalCredits(picks) + candidate.credit > CREDIT_CAP) return { ok: false, reason: 'Over credit budget' }
+
+  const remainingAfterThis = SQUAD_SIZE - picks.length
+  let totalNeeded = 0
+  const neededByRole: Record<Role, number> = { WK: 0, BAT: 0, BOWL: 0, AR: 0 }
+  for (const r of ROLES) {
+    const need = Math.max(0, ROLE_RULES[r][0] - counts[r])
+    neededByRole[r] = need
+    totalNeeded += need
+  }
+  if (totalNeeded === remainingAfterThis && neededByRole[candidate.role] === 0) {
+    return { ok: false, reason: 'Must fill required roles first' }
+  }
+  return { ok: true }
+}
+
+const plaqueVariants: Variants = {
+  initial: { opacity: 0, rotateX: -14, y: -24, scale: 0.96 },
+  animate: { opacity: 1, rotateX: 0, y: 0, scale: 1, transition: { duration: 0.4, ease: 'easeOut' } },
+  exit: { opacity: 0, rotateX: 10, y: 14, scale: 0.97, transition: { duration: 0.22 } },
+}
+
+const rowContainerVariants: Variants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.045, delayChildren: 0.15 } },
+}
+
+const rowVariants: Variants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.25 } },
+}
 
 export default function Draft() {
   const { username } = useUser()
   const navigate = useNavigate()
-  const [players, setPlayers] = useState<Player[]>([])
-  const [countries, setCountries] = useState<string[]>([])
-  const [country, setCountry] = useState('')
-  const [role, setRole] = useState('')
-  const [search, setSearch] = useState('')
-  const [squad, setSquad] = useState<Player[]>([])
+
+  const [picks, setPicks] = useState<Player[]>([])
   const [captainId, setCaptainId] = useState<number | null>(null)
+  const [currentSquad, setCurrentSquad] = useState<Squad | null>(null)
+  const [seenSquadKeys, setSeenSquadKeys] = useState<string[]>([])
+  const [rerollsLeft, setRerollsLeft] = useState(TOTAL_REROLLS)
+  const [phase, setPhase] = useState<'rolling' | 'picking' | 'captain'>('rolling')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
+  const startedRef = useRef(false)
+
+  async function performRoll(picksSnapshot: Player[], seenSnapshot: string[]) {
+    setPhase('rolling')
+    setError(null)
+    let seen = [...seenSnapshot]
+    try {
+      for (let i = 0; i < MAX_ROLL_ATTEMPTS; i++) {
+        const squad = await api.rollSquad(seen)
+        seen = [...seen, squad.key]
+        const hasEligible = squad.players.some((p) => eligibility(picksSnapshot, p).ok)
+        if (hasEligible || i === MAX_ROLL_ATTEMPTS - 1) {
+          setSeenSquadKeys(seen)
+          setCurrentSquad(squad)
+          setPhase('picking')
+          return
+        }
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Could not roll a squad')
+      setPhase('picking')
+    }
+  }
 
   useEffect(() => {
-    api.getMeta().then((m) => setCountries(m.countries))
+    if (startedRef.current) return
+    startedRef.current = true
+    performRoll([], [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    api.getPlayers({ country: country || undefined, role: role || undefined, search: search || undefined }).then(setPlayers)
-  }, [country, role, search])
-
-  const roleCounts = useMemo(() => {
-    const counts: Record<Role, number> = { WK: 0, BAT: 0, BOWL: 0, AR: 0 }
-    squad.forEach((p) => counts[p.role]++)
-    return counts
-  }, [squad])
-
-  const totalCredits = useMemo(() => squad.reduce((sum, p) => sum + p.credit, 0), [squad])
-
-  function toggle(player: Player) {
-    setError(null)
-    const already = squad.some((p) => p.id === player.id)
-    if (already) {
-      setSquad(squad.filter((p) => p.id !== player.id))
-      if (captainId === player.id) setCaptainId(null)
-      return
+  function handlePick(player: Player) {
+    const check = eligibility(picks, player)
+    if (!check.ok) return
+    const newPicks = [...picks, player]
+    setPicks(newPicks)
+    setCurrentSquad(null)
+    if (newPicks.length === SQUAD_SIZE) {
+      setPhase('captain')
+    } else {
+      performRoll(newPicks, seenSquadKeys)
     }
-    if (squad.length >= SQUAD_SIZE) {
-      setError(`Your XI is already full (${SQUAD_SIZE} players).`)
-      return
-    }
-    const [, max] = ROLE_RULES[player.role]
-    if (roleCounts[player.role] >= max) {
-      setError(`You can only pick up to ${max} ${player.role} players.`)
-      return
-    }
-    if (totalCredits + player.credit > CREDIT_CAP) {
-      setError(`Adding ${player.name} would exceed the ${CREDIT_CAP} credit budget.`)
-      return
-    }
-    setSquad([...squad, player])
   }
 
-  const roleStatus = (r: Role) => {
-    const [min, max] = ROLE_RULES[r]
-    const count = roleCounts[r]
-    const ok = count >= min && count <= max
-    return { min, max, count, ok }
+  function handleReroll() {
+    if (rerollsLeft <= 0 || phase !== 'picking') return
+    setRerollsLeft((n) => n - 1)
+    performRoll(picks, seenSquadKeys)
   }
-
-  const canSubmit =
-    squad.length === SQUAD_SIZE &&
-    (Object.keys(ROLE_RULES) as Role[]).every((r) => roleStatus(r).ok) &&
-    totalCredits <= CREDIT_CAP &&
-    captainId !== null
 
   async function handleSubmit() {
-    if (!username || !canSubmit) return
+    if (!username || captainId === null) return
     setSubmitting(true)
     setError(null)
     try {
       await api.submitDraft({
         username,
         name: `${username}'s XI`,
-        player_ids: squad.map((p) => p.id),
+        player_ids: picks.map((p) => p.id),
         captain_id: captainId,
       })
       navigate('/team')
@@ -99,82 +144,150 @@ export default function Draft() {
     }
   }
 
-  return (
-    <div className="draft-layout">
-      <div className="draft-pool">
-        <div className="filters">
-          <input placeholder="Search players..." value={search} onChange={(e) => setSearch(e.target.value)} />
-          <select value={country} onChange={(e) => setCountry(e.target.value)}>
-            <option value="">All countries</option>
-            {countries.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="">All roles</option>
-            <option value="BAT">Batters</option>
-            <option value="BOWL">Bowlers</option>
-            <option value="AR">All-rounders</option>
-            <option value="WK">Wicketkeepers</option>
-          </select>
-        </div>
-        <div className="player-grid">
-          {players.map((p) => (
-            <PlayerCard key={p.id} player={p} selected={squad.some((s) => s.id === p.id)} onToggle={() => toggle(p)} />
+  const counts = tally(picks)
+  const credits = totalCredits(picks)
+
+  if (phase === 'captain') {
+    return (
+      <div className="squad-panel" style={{ maxWidth: 640, margin: '0 auto' }}>
+        <h2>Name your captain</h2>
+        <p className="muted" style={{ fontSize: '0.85rem' }}>
+          Your captain scores double points in every simulated match.
+        </p>
+        <div className="captain-list">
+          {picks.map((p) => (
+            <div className="captain-row" key={p.id}>
+              <span className={`role-tag role-${p.role}`}>{p.role}</span>
+              <span className="p-name" style={{ fontFamily: 'Fraunces, serif' }}>
+                {p.name} <span className="muted ledger" style={{ fontSize: '0.72rem' }}>· {p.country} {p.era}</span>
+              </span>
+              <button
+                className={`btn-crown ${captainId === p.id ? 'is-captain' : ''}`}
+                onClick={() => setCaptainId(p.id)}
+              >
+                {captainId === p.id ? '★ Captain' : 'Make captain'}
+              </button>
+            </div>
           ))}
         </div>
+        {error && <p className="error">{error}</p>}
+        <button className="btn-primary" disabled={captainId === null || submitting} onClick={handleSubmit}>
+          {submitting ? 'Sealing the XI…' : 'Begin simulation'}
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <div className="draft-shell">
+      <div>
+        <div className="draft-head">
+          <span className="pick-label">Pick {picks.length + 1} of {SQUAD_SIZE}</span>
+          <div className="reroll-tokens">
+            Rerolls
+            {Array.from({ length: TOTAL_REROLLS }).map((_, i) => (
+              <span key={i} className={`coin ${i < rerollsLeft ? '' : 'spent'}`} />
+            ))}
+          </div>
+        </div>
+
+        <AnimatePresence mode="wait">
+          {phase === 'rolling' || !currentSquad ? (
+            <motion.div
+              key="rolling"
+              className="plaque"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{ textAlign: 'center', padding: '3.5rem 1rem' }}
+            >
+              <span className="pick-label">Rolling the archives…</span>
+            </motion.div>
+          ) : (
+            <motion.div
+              key={currentSquad.key}
+              className="plaque"
+              variants={plaqueVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              <div className="plaque-header">
+                <div className="country-era">
+                  {currentSquad.country} · {currentSquad.era}
+                </div>
+                <div className="squad-name">{currentSquad.squad_name}</div>
+              </div>
+              <motion.div className="plaque-rows" variants={rowContainerVariants} initial="initial" animate="animate">
+                {currentSquad.players.map((p) => {
+                  const check = eligibility(picks, p)
+                  return (
+                    <motion.button
+                      key={p.id}
+                      variants={rowVariants}
+                      className="plaque-row-btn"
+                      disabled={!check.ok}
+                      onClick={() => handlePick(p)}
+                      title={check.reason}
+                    >
+                      <span className={`role-tag role-${p.role}`}>{p.role}</span>
+                      <span>
+                        <span className="p-name">{p.name}</span>
+                        <span className="p-stat">
+                          {p.batting ? `Bat ${p.batting.avg.toFixed(0)} avg` : ''}
+                          {p.batting && p.bowling ? ' · ' : ''}
+                          {p.bowling ? `Bowl ${p.bowling.avg.toFixed(0)} avg` : ''}
+                        </span>
+                        {!check.ok && check.reason && <span className="disabled-reason">{check.reason}</span>}
+                      </span>
+                      <span className="p-credit">{p.credit.toFixed(1)} cr</span>
+                    </motion.button>
+                  )
+                })}
+              </motion.div>
+              <div className="plaque-actions">
+                <button className="btn-ghost" onClick={handleReroll} disabled={rerollsLeft <= 0}>
+                  Reroll this squad ({rerollsLeft} left)
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {error && <p className="error">{error}</p>}
       </div>
 
       <aside className="squad-panel">
         <h2>
-          Your XI <span className="squad-count">{squad.length}/{SQUAD_SIZE}</span>
+          Your XI <span className="squad-count">{picks.length}/{SQUAD_SIZE}</span>
         </h2>
         <div className="credit-bar">
-          <div
-            className="credit-fill"
-            style={{ width: `${Math.min(100, (totalCredits / CREDIT_CAP) * 100)}%` }}
-          />
+          <div className="credit-fill" style={{ width: `${Math.min(100, (credits / CREDIT_CAP) * 100)}%` }} />
         </div>
         <p className="credit-text">
-          {totalCredits.toFixed(1)} / {CREDIT_CAP} credits
+          {credits.toFixed(1)} / {CREDIT_CAP} credits
         </p>
         <ul className="role-checklist">
-          {(Object.keys(ROLE_RULES) as Role[]).map((r) => {
-            const s = roleStatus(r)
+          {ROLES.map((r) => {
+            const [min, max] = ROLE_RULES[r]
+            const ok = counts[r] >= min && counts[r] <= max
             return (
-              <li key={r} className={s.ok ? 'ok' : ''}>
-                {r}: {s.count} <span>(need {s.min}-{s.max})</span>
+              <li key={r} className={ok ? 'ok' : ''}>
+                {r}: {counts[r]} <span>(need {min}-{max})</span>
               </li>
             )
           })}
         </ul>
-
-        <div className="squad-list">
-          {squad.map((p) => (
-            <div key={p.id} className="squad-row">
-              <span>{p.name}</span>
-              <button
-                className={`btn-captain small ${captainId === p.id ? 'is-captain' : ''}`}
-                onClick={() => setCaptainId(p.id)}
-              >
-                {captainId === p.id ? '★' : 'C'}
-              </button>
-              <button className="btn-remove small" onClick={() => toggle(p)}>
-                ✕
-              </button>
-            </div>
-          ))}
-          {squad.length === 0 && <p className="muted">Add players from the left to build your XI.</p>}
+        <div className="squad-slots">
+          {Array.from({ length: SQUAD_SIZE }).map((_, i) => {
+            const p = picks[i]
+            return (
+              <div key={i} className={`slot-row ${p ? 'filled' : 'empty'}`}>
+                <span className="slot-num">{i + 1}</span>
+                <span className="slot-name">{p ? p.name : '—'}</span>
+              </div>
+            )
+          })}
         </div>
-
-        {error && <p className="error">{error}</p>}
-        {!captainId && squad.length === SQUAD_SIZE && <p className="hint">Pick a captain (2x points) before saving.</p>}
-
-        <button className="btn-primary" disabled={!canSubmit || submitting} onClick={handleSubmit}>
-          {submitting ? 'Saving...' : 'Save my XI'}
-        </button>
       </aside>
     </div>
   )

@@ -1,4 +1,4 @@
-import type { Player, DraftDetail, User, SimulateResponse, LeaderboardEntry } from './types'
+import type { Player, DraftDetail, User, SimulateResponse, LeaderboardEntry, Squad } from './types'
 
 async function req<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`/api${path}`, {
@@ -20,6 +20,10 @@ export const api = {
     return req<Player[]>(`/players${suffix}`)
   },
   getMeta: () => req<{ countries: string[]; roles: string[]; eras: number[]; count: number }>('/players/meta'),
+  rollSquad: (excludeKeys: string[]) => {
+    const qs = excludeKeys.length ? `?exclude=${encodeURIComponent(excludeKeys.join(','))}` : ''
+    return req<Squad>(`/draft/roll${qs}`)
+  },
   createUser: (username: string) => req<User>('/users', { method: 'POST', body: JSON.stringify({ username }) }),
   getUser: (username: string) => req<User>(`/users/${username}`),
   submitDraft: (payload: { username: string; name: string; player_ids: number[]; captain_id: number | null }) =>

@@ -5,12 +5,21 @@ export interface Player {
   name: string
   country: string
   era: number
+  squad_name: string
   role: Role
   batting: { avg: number; sr: number } | null
   bowling: { avg: number; econ: number; sr: number } | null
   rating: number
   credit: number
   consistency: number
+}
+
+export interface Squad {
+  key: string
+  country: string
+  era: number
+  squad_name: string
+  players: Player[]
 }
 
 export interface DraftDetail {

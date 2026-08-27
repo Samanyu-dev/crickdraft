@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useUser } from '../UserContext'
 import { api } from '../api'
+import FlipScore from '../components/FlipScore'
 import type { DraftDetail, MatchResult, User } from '../types'
 
 export default function Team() {
@@ -10,6 +12,7 @@ export default function Team() {
   const [user, setUser] = useState<User | null>(null)
   const [rounds, setRounds] = useState(5)
   const [results, setResults] = useState<MatchResult[] | null>(null)
+  const [liveScore, setLiveScore] = useState({ team: 0, opponent: 0 })
   const [simulating, setSimulating] = useState(false)
   const [expanded, setExpanded] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -27,10 +30,21 @@ export default function Team() {
     setSimulating(true)
     setError(null)
     setResults(null)
+    setLiveScore({ team: 0, opponent: 0 })
     try {
       const res = await api.simulate(draft.id, rounds)
-      setResults(res.results)
       setUser((u) => (u ? { ...u, ...res.totals } : u))
+      // reveal matches one at a time so the scoreboard reads as a live feed
+      for (let i = 0; i < res.results.length; i++) {
+        const r = res.results[i]
+        setLiveScore({ team: r.team_score, opponent: r.opponent_score })
+        setResults((prev) => [...(prev ?? []), r])
+        if (i < res.results.length - 1) {
+          await new Promise((resolve) => setTimeout(resolve, 1100))
+          setLiveScore({ team: 0, opponent: 0 })
+          await new Promise((resolve) => setTimeout(resolve, 250))
+        }
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Simulation failed')
     } finally {
@@ -43,9 +57,9 @@ export default function Team() {
   if (draft === null) {
     return (
       <div className="empty-state">
-        <p>You haven't saved an XI yet.</p>
+        <p>You haven't drafted an XI yet.</p>
         <Link className="btn-primary" to="/draft">
-          Go build your squad
+          Start the draft
         </Link>
       </div>
     )
@@ -58,16 +72,18 @@ export default function Team() {
         <div className="team-list">
           {draft.players.map((p) => (
             <div key={p.id} className="team-row">
-              <span className={`role-badge role-${p.role}`}>{p.role}</span>
-              <span className="team-row-name">
+              <span className={`role-tag role-${p.role}`}>{p.role}</span>
+              <span className="p-name">
                 {p.name} {draft.captain_id === p.id && <span className="captain-star">★</span>}
               </span>
-              <span className="muted">{p.country} · {p.era}</span>
+              <span className="muted ledger" style={{ fontSize: '0.75rem' }}>
+                {p.country} · {p.era}
+              </span>
             </div>
           ))}
         </div>
         <Link to="/draft" className="link-btn">
-          Edit squad
+          Draft a new XI
         </Link>
       </section>
 
@@ -89,10 +105,22 @@ export default function Team() {
           </div>
         )}
 
+        <div className="scoreboard">
+          <div className="scoreboard-side">
+            <div className="scoreboard-label">Your XI</div>
+            <FlipScore value={liveScore.team} />
+          </div>
+          <div className="scoreboard-vs">vs</div>
+          <div className="scoreboard-side">
+            <div className="scoreboard-label">Opponent</div>
+            <FlipScore value={liveScore.opponent} />
+          </div>
+        </div>
+
         <div className="sim-controls">
           <label>
             Rounds
-            <select value={rounds} onChange={(e) => setRounds(Number(e.target.value))}>
+            <select value={rounds} onChange={(e) => setRounds(Number(e.target.value))} disabled={simulating}>
               {[1, 3, 5, 10].map((n) => (
                 <option key={n} value={n}>
                   {n}
@@ -101,56 +129,66 @@ export default function Team() {
             </select>
           </label>
           <button className="btn-primary" onClick={handleSimulate} disabled={simulating}>
-            {simulating ? 'Simulating...' : `Simulate ${rounds} match${rounds > 1 ? 'es' : ''}`}
+            {simulating ? 'Playing…' : `Simulate ${rounds} match${rounds > 1 ? 'es' : ''}`}
           </button>
         </div>
         {error && <p className="error">{error}</p>}
 
         {results && (
           <div className="results-list">
-            {results.map((r, i) => (
-              <div key={i} className={`result-card ${r.result === 'W' ? 'win' : 'loss'}`}>
-                <div className="result-head" onClick={() => setExpanded(expanded === i ? null : i)}>
-                  <span className={`result-badge ${r.result === 'W' ? 'win' : 'loss'}`}>{r.result}</span>
-                  <span>
-                    You {r.team_score.toFixed(0)} — {r.opponent_score.toFixed(0)} {r.opponent_name}
-                  </span>
-                  <span className="chevron">{expanded === i ? '▲' : '▼'}</span>
-                </div>
-                {expanded === i && (
-                  <div className="scorecard">
-                    <div>
-                      <h4>Your XI</h4>
-                      {r.scorecard.team.map((p) => (
-                        <div key={p.id} className="scorecard-row">
-                          <span>
-                            {p.name} {p.captain && '★'}
-                          </span>
-                          <span className="muted">
-                            {p.runs}r {p.wickets ? `/ ${p.wickets}w` : ''}
-                          </span>
-                          <span>{p.points.toFixed(0)} pts</span>
-                        </div>
-                      ))}
-                    </div>
-                    <div>
-                      <h4>{r.opponent_name}</h4>
-                      {r.scorecard.opponent.map((p) => (
-                        <div key={p.id} className="scorecard-row">
-                          <span>
-                            {p.name} {p.captain && '★'}
-                          </span>
-                          <span className="muted">
-                            {p.runs}r {p.wickets ? `/ ${p.wickets}w` : ''}
-                          </span>
-                          <span>{p.points.toFixed(0)} pts</span>
-                        </div>
-                      ))}
-                    </div>
+            <AnimatePresence initial={false}>
+              {results.map((r, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="result-card"
+                >
+                  <div className="result-head" onClick={() => setExpanded(expanded === i ? null : i)}>
+                    <span className={`stamp ${r.result === 'W' ? 'win' : 'loss'}`}>
+                      {r.result === 'W' ? 'Won' : 'Lost'}
+                    </span>
+                    <span>
+                      {r.team_score.toFixed(0)} — {r.opponent_score.toFixed(0)} vs {r.opponent_name}
+                    </span>
+                    <span className="chevron">{expanded === i ? '▲' : '▼'}</span>
                   </div>
-                )}
-              </div>
-            ))}
+                  {expanded === i && (
+                    <div className="scorecard">
+                      <div>
+                        <h4 style={{ fontSize: '0.85rem', color: 'var(--brass)' }}>Your XI</h4>
+                        {r.scorecard.team.map((p) => (
+                          <div key={p.id} className="scorecard-row">
+                            <span>
+                              {p.name} {p.captain && '★'}
+                            </span>
+                            <span className="muted">
+                              {p.runs}r {p.wickets ? `/ ${p.wickets}w` : ''}
+                            </span>
+                            <span>{p.points.toFixed(0)} pts</span>
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        <h4 style={{ fontSize: '0.85rem', color: 'var(--brass)' }}>{r.opponent_name}</h4>
+                        {r.scorecard.opponent.map((p) => (
+                          <div key={p.id} className="scorecard-row">
+                            <span>
+                              {p.name} {p.captain && '★'}
+                            </span>
+                            <span className="muted">
+                              {p.runs}r {p.wickets ? `/ ${p.wickets}w` : ''}
+                            </span>
+                            <span>{p.points.toFixed(0)} pts</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
         )}
       </section>

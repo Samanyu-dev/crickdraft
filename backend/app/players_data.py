@@ -9,6 +9,24 @@ with open(_DATA_PATH) as f:
 
 PLAYERS_BY_ID: Dict[int, dict] = {p["id"]: p for p in PLAYERS}
 
+
+def _squad_key(country: str, era: int) -> str:
+    return f"{country}|{era}"
+
+
+SQUADS: Dict[str, dict] = {}
+for _p in PLAYERS:
+    _key = _squad_key(_p["country"], _p["era"])
+    if _key not in SQUADS:
+        SQUADS[_key] = {
+            "key": _key,
+            "country": _p["country"],
+            "era": _p["era"],
+            "squad_name": _p["squad_name"],
+            "players": [],
+        }
+    SQUADS[_key]["players"].append(_p)
+
 ROLE_RULES = {
     # role: (min, max)
     "WK": (1, 2),

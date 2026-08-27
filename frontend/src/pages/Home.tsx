@@ -37,25 +37,49 @@ export default function Home() {
 
   return (
     <div className="hero">
-      <h1>Draft your all-time XI.</h1>
-      <p className="subtitle">
-        Pick 11 players from cricket's greatest eras — any country, any year, one credit budget.
-        Then run simulated matches and climb the global leaderboard.
-      </p>
-      <form onSubmit={handleSubmit} className="username-form">
-        <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="Choose a username"
-          maxLength={20}
-          autoFocus
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Entering...' : 'Enter the draft room'}
-        </button>
-      </form>
-      {error && <p className="error">{error}</p>}
-      <p className="hint">No password needed — your username is your identity on the leaderboard.</p>
+      <div className="hero-copy">
+        <span className="eyebrow">Est. today · Pavilion XI</span>
+        <h1>
+          Roll the archives.
+          <br />
+          <em>Draft your legends.</em>
+        </h1>
+        <p className="subtitle">
+          Every pick is a roll of a country and a year — India '83, Australia '99, Sri Lanka '96 — pick
+          one name off the board, then roll again. Eleven picks, two rerolls, one XI worth putting your
+          name on.
+        </p>
+        <form onSubmit={handleSubmit} className="username-form">
+          <input
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            placeholder="sign the ledger..."
+            maxLength={20}
+            autoFocus
+          />
+          <button type="submit" className="btn-primary" disabled={loading}>
+            {loading ? 'Entering...' : 'Enter the pavilion'}
+          </button>
+        </form>
+        {error && <p className="error">{error}</p>}
+        <p className="hint">No password — your name on the ledger is your name on the leaderboard.</p>
+      </div>
+
+      <div className="plaque-preview">
+        <div className="plaque-title">India · 1983 World Cup Winners</div>
+        <div className="plaque-row">
+          <span>Kapeel Dev</span>
+          <span>AR · 8.5 cr</span>
+        </div>
+        <div className="plaque-row">
+          <span>Sunil Gavaskaar</span>
+          <span>BAT · 8.0 cr</span>
+        </div>
+        <div className="plaque-row">
+          <span>Syed Kirmanii</span>
+          <span>WK · 7.0 cr</span>
+        </div>
+      </div>
     </div>
   )
 }

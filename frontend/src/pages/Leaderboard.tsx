@@ -11,40 +11,28 @@ export default function Leaderboard() {
     api.getLeaderboard().then(setEntries)
   }, [])
 
-  if (!entries) return <p className="muted">Loading leaderboard...</p>
+  if (!entries) return <p className="muted">Loading the honours board...</p>
 
   return (
-    <div className="leaderboard">
-      <h2>Global Leaderboard</h2>
+    <div className="leaderboard-board">
+      <h2>Honours Board</h2>
+      <div className="board-sub">Ranked by simulated points</div>
       {entries.length === 0 ? (
-        <p className="muted">No matches simulated yet. Be the first!</p>
+        <p className="muted" style={{ textAlign: 'center' }}>
+          No names carved yet. Draft an XI and simulate a match to be the first.
+        </p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Player</th>
-              <th>Points</th>
-              <th>Matches</th>
-              <th>W-L</th>
-              <th>Win %</th>
-            </tr>
-          </thead>
-          <tbody>
-            {entries.map((e, i) => (
-              <tr key={e.username} className={e.username === username ? 'me' : ''}>
-                <td>{i + 1}</td>
-                <td>{e.username}</td>
-                <td>{e.total_points.toFixed(0)}</td>
-                <td>{e.matches_played}</td>
-                <td>
-                  {e.wins}-{e.losses}
-                </td>
-                <td>{e.win_pct.toFixed(0)}%</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        entries.map((e, i) => (
+          <div key={e.username} className={`board-row ${e.username === username ? 'me' : ''}`}>
+            <span className={`rank ${i < 3 ? 'gold' : ''}`}>{i + 1}</span>
+            <span className="name">{e.username}</span>
+            <span className="points">{e.total_points.toFixed(0)} pts</span>
+            <span className="matches">{e.matches_played}m</span>
+            <span className="wl">
+              {e.wins}-{e.losses} · {e.win_pct.toFixed(0)}%
+            </span>
+          </div>
+        ))
       )}
     </div>
   )
