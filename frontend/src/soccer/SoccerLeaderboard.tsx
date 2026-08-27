@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { soccerApi } from './api'
-import type { SoccerLeaderboardEntry, SoccerTournament } from './types'
+import type { SoccerLeaderboardEntry, SoccerTournament, SoccerUser } from './types'
 import { useUser } from '../UserContext'
 import RankBadge from '../components/RankBadge'
 
@@ -13,6 +13,7 @@ export default function SoccerLeaderboard() {
 
   const [tournaments, setTournaments] = useState<SoccerTournament[] | null>(null)
   const [entries, setEntries] = useState<SoccerLeaderboardEntry[] | null>(null)
+  const [me, setMe] = useState<SoccerUser | null>(null)
 
   useEffect(() => {
     soccerApi.getTournaments().then(setTournaments)
@@ -22,6 +23,11 @@ export default function SoccerLeaderboard() {
     setEntries(null)
     soccerApi.getLeaderboard(tournament).then(setEntries)
   }, [tournament])
+
+  useEffect(() => {
+    setMe(null)
+    if (username) soccerApi.getUser(username, tournament).then(setMe).catch(() => setMe(null))
+  }, [tournament, username])
 
   function selectTournament(slug: string) {
     setTournament(slug)
@@ -48,6 +54,22 @@ export default function SoccerLeaderboard() {
       <div className="leaderboard-board">
         <h2>Honours Board</h2>
         <div className="board-sub">{activeName} · ranked by Elo rating</div>
+        {me && (
+          <div className="board-row me pinned-row">
+            <span className="rank">{me.rank ? `#${me.rank}` : '—'}</span>
+            <span className="name">
+              {me.username} <span className="muted" style={{ fontSize: '0.72rem' }}>(you)</span>
+            </span>
+            <RankBadge elo={me.elo_rating} size="sm" />
+            <span className="points">{me.elo_rating.toFixed(0)} elo</span>
+            <span className="matches">{me.matches_played}m</span>
+            <span className="wl">
+              {me.matches_played > 0
+                ? `${me.wins}-${me.losses}${me.draws > 0 ? `-${me.draws}` : ''} · ${Math.round((me.wins / me.matches_played) * 100)}%`
+                : 'Play a match to get ranked'}
+            </span>
+          </div>
+        )}
         {entries === null ? (
           <p className="muted">Loading the honours board...</p>
         ) : entries.length === 0 ? (

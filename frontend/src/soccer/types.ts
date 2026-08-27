@@ -52,6 +52,7 @@ export interface SoccerUser {
   draws: number
   matches_today: number
   matches_remaining_today: number
+  rank: number | null
 }
 
 export interface SoccerPlayerPerformance {

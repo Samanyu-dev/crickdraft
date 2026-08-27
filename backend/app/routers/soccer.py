@@ -2,7 +2,7 @@ import random
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlmodel import Session, select
+from sqlmodel import Session, select, func
 
 from ..database import get_session
 from ..models import User, Draft, TournamentStats, SimulationRun
@@ -52,6 +52,16 @@ def _serialize_user(user: User, session: Session, tournament: str) -> dict:
     stats = session.exec(
         select(TournamentStats).where(TournamentStats.user_id == user.id, TournamentStats.tournament == tournament)
     ).first()
+    rank = None
+    if stats and stats.matches_played > 0:
+        ahead = session.exec(
+            select(func.count()).select_from(TournamentStats).where(
+                TournamentStats.tournament == tournament,
+                TournamentStats.matches_played > 0,
+                TournamentStats.elo_rating > stats.elo_rating,
+            )
+        ).one()
+        rank = ahead + 1
     return {
         "id": user.id, "username": user.username, "tournament": tournament,
         "elo_rating": stats.elo_rating if stats else 1200.0,
@@ -61,6 +71,7 @@ def _serialize_user(user: User, session: Session, tournament: str) -> dict:
         "draws": stats.draws if stats else 0,
         "matches_today": matches_today,
         "matches_remaining_today": max(0, DAILY_MATCH_LIMIT - matches_today),
+        "rank": rank,
     }
 
 

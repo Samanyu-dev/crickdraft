@@ -1115,6 +1115,15 @@ main {
   color: var(--brass);
 }
 
+.pinned-row {
+  margin-bottom: 0.6rem;
+  padding: 0.7rem 0.6rem;
+  border: 1px solid var(--brass-bright);
+  border-radius: 6px;
+  background: rgba(255, 77, 109, 0.08);
+  border-bottom: 1px solid var(--brass-bright) !important;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero {
