@@ -8,6 +8,7 @@ from ..models import User, Draft
 from ..schemas import DraftCreate, DraftOut
 from ..players_data import validate_squad, PLAYERS_BY_ID
 from ..tournaments import get_tournament, DEFAULT_TOURNAMENT
+from ..moderation import contains_blocked_term
 
 router = APIRouter(prefix="/api/drafts", tags=["drafts"])
 
@@ -15,6 +16,8 @@ router = APIRouter(prefix="/api/drafts", tags=["drafts"])
 def _get_or_create_user(session: Session, username: str) -> User:
     user = session.exec(select(User).where(User.username == username)).first()
     if not user:
+        if contains_blocked_term(username):
+            raise HTTPException(status_code=400, detail="That username isn't allowed.")
         user = User(username=username)
         session.add(user)
         session.commit()

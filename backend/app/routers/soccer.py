@@ -11,6 +11,7 @@ from ..time_utils import ist_today
 from ..soccer.players_data import PLAYERS_BY_ID, squads_for_tournament, validate_squad, SQUADS
 from ..soccer.tournaments import get_tournament, list_tournaments, DEFAULT_TOURNAMENT
 from ..soccer.simulation import simulate_match, build_ai_opponent, name_opponent, team_elo_rating
+from ..moderation import contains_blocked_term
 
 router = APIRouter(prefix="/api/soccer", tags=["soccer"])
 
@@ -25,6 +26,8 @@ def expected_score(rating: float, opponent_rating: float) -> float:
 def _get_or_create_user(session: Session, username: str) -> User:
     user = session.exec(select(User).where(User.username == username)).first()
     if not user:
+        if contains_blocked_term(username):
+            raise HTTPException(status_code=400, detail="That username isn't allowed.")
         user = User(username=username)
         session.add(user)
         session.commit()

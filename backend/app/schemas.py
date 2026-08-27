@@ -1,9 +1,18 @@
 from typing import Optional, List
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
+
+from .moderation import contains_blocked_term
 
 
 class UserCreate(BaseModel):
     username: str = Field(min_length=3, max_length=20, pattern=r"^[A-Za-z0-9_]+$")
+
+    @field_validator("username")
+    @classmethod
+    def _no_slurs(cls, v: str) -> str:
+        if contains_blocked_term(v):
+            raise ValueError("That username isn't allowed.")
+        return v
 
 
 class DraftCreate(BaseModel):
