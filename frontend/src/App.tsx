@@ -1,5 +1,8 @@
-import { Routes, Route, NavLink, Navigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Routes, Route, NavLink, Navigate, useLocation } from 'react-router-dom'
 import { UserProvider, useUser } from './UserContext'
+import { api } from './api'
+import RankBadge from './components/RankBadge'
 import Home from './pages/Home'
 import Lobby from './pages/Lobby'
 import Draft from './pages/Draft'
@@ -14,6 +17,20 @@ function RequireUser({ children }: { children: React.ReactNode }) {
 
 function Shell() {
   const { username, setUsername, tournament } = useUser()
+  const location = useLocation()
+  const [elo, setElo] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (!username) {
+      setElo(null)
+      return
+    }
+    api.getUser(username, tournament).then((u) => setElo(u.elo_rating))
+    // re-check whenever the route changes, so a badge going stale after
+    // playing a match on the Team page catches up once you navigate away
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username, tournament, location.pathname])
+
   return (
     <div className="shell">
       <header className="topbar">
@@ -40,6 +57,7 @@ function Shell() {
         <div className="user-chip">
           {username ? (
             <>
+              {elo !== null && <RankBadge elo={elo} size="sm" />}
               <span>{username}</span>
               <button className="link-btn" onClick={() => setUsername(null)}>
                 switch

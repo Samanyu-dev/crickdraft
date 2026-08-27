@@ -110,6 +110,19 @@ export interface MatchResult {
   matches_remaining_today: number
 }
 
+export interface HistoryEntry {
+  opponent_name: string
+  opponent_rating: number
+  result: 'W' | 'L' | 'D'
+  team_total: number
+  opponent_total: number
+  elo_before: number
+  elo_after: number
+  elo_delta: number
+  scorecard: { team: PlayerPerformance[]; opponent: PlayerPerformance[] }
+  played_at?: string
+}
+
 export interface LeaderboardEntry {
   username: string
   elo_rating: number

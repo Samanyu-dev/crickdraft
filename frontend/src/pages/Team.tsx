@@ -6,7 +6,7 @@ import { api } from '../api'
 import FlipScore from '../components/FlipScore'
 import RankBadge from '../components/RankBadge'
 import { getRank } from '../rankTiers'
-import type { DraftDetail, InningsResult, MatchResult, OverEvent, User } from '../types'
+import type { DraftDetail, HistoryEntry, InningsResult, MatchResult, OverEvent, User } from '../types'
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -41,7 +41,7 @@ export default function Team() {
   const [shake, setShake] = useState(0)
   const [breakText, setBreakText] = useState<string | null>(null)
   const [lastMatch, setLastMatch] = useState<MatchResult | null>(null)
-  const [history, setHistory] = useState<MatchResult[]>([])
+  const [history, setHistory] = useState<HistoryEntry[]>([])
   const [playing, setPlaying] = useState(false)
   const [expanded, setExpanded] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -62,6 +62,7 @@ export default function Team() {
     if (!username) return
     api.getDraft(username, tournament).then(setDraft)
     api.getUser(username, tournament).then(setUser)
+    api.getMatchHistory(username, tournament).then(setHistory)
   }
 
   useEffect(refresh, [username, tournament])

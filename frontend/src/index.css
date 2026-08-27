@@ -1204,3 +1204,101 @@ main {
   color: var(--brass-bright);
   background: rgba(45, 212, 191, 0.1);
 }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+  .topbar {
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .topbar nav {
+    order: 3;
+    width: 100%;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.2rem;
+  }
+
+  .topbar nav a {
+    white-space: nowrap;
+  }
+
+  .user-chip {
+    margin-left: auto;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 1.7rem;
+  }
+
+  .username-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .username-form input {
+    width: 100%;
+  }
+
+  .draft-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .plaque-rows {
+    grid-template-columns: 1fr;
+  }
+
+  .plaque {
+    padding: 1.1rem 1rem;
+  }
+
+  .stat-row {
+    flex-wrap: wrap;
+    row-gap: 0.8rem;
+  }
+
+  .scoreboard {
+    padding: 1rem 0.4rem;
+  }
+
+  .flip-digit {
+    width: 1.15rem;
+    height: 1.7rem;
+  }
+
+  .flip-digit span {
+    font-size: 1rem;
+  }
+
+  .event-banner {
+    font-size: 1.05rem;
+    padding: 0.4em 0.8em;
+    max-width: 90%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .result-reveal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .captain-row,
+  .team-row,
+  .slot-row {
+    font-size: 0.8rem;
+  }
+
+  .scorecard {
+    grid-template-columns: 1fr;
+  }
+}

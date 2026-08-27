@@ -1,4 +1,4 @@
-import type { Player, DraftDetail, User, MatchResult, LeaderboardEntry, Squad, Tournament } from './types'
+import type { Player, DraftDetail, User, MatchResult, LeaderboardEntry, Squad, Tournament, HistoryEntry } from './types'
 
 async function req<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`/api${path}`, {
@@ -40,4 +40,6 @@ export const api = {
     req<DraftDetail | null>(`/drafts/${username}?tournament=${tournament}`),
   simulate: (draft_id: number) => req<MatchResult>('/simulate', { method: 'POST', body: JSON.stringify({ draft_id }) }),
   getLeaderboard: (tournament: string) => req<LeaderboardEntry[]>(`/leaderboard?tournament=${tournament}`),
+  getMatchHistory: (username: string, tournament: string) =>
+    req<HistoryEntry[]>(`/matches/${username}?tournament=${tournament}`),
 }
